@@ -13,5 +13,7 @@ public class Lid extends Gebruiker implements Serializable{
 		super(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email, wachtwoord,
 				adres, postcode, woonplaats, huisnummer, telefoonnummer);
 	}
+	
+	//Een test comment voor de branch
 
 }
