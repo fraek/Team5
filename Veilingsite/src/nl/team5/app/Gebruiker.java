@@ -1,6 +1,7 @@
 package nl.team5.app;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public abstract class Gebruiker implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,6 +14,7 @@ public abstract class Gebruiker implements Serializable{
 	private String adres;
 	private String postcode;
 	private String woonplaats;
+	private Date geboortedatum;
 	private int huisnummer;
 	private long telefoonnummer;	//Een int is niet lang genoeg voor een tel.nummer
 	
@@ -122,5 +124,13 @@ public abstract class Gebruiker implements Serializable{
 
 	public void setTelefoonnummer(long telefoonnummer) {
 		this.telefoonnummer = telefoonnummer;
+	}
+
+	public Date getGeboortedatum() {
+		return geboortedatum;
+	}
+
+	public void setGeboortedatum(Date geboortedatum) {
+		this.geboortedatum = geboortedatum;
 	}
 }

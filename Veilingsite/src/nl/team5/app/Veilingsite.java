@@ -6,11 +6,19 @@ import java.util.ArrayList;
 public class Veilingsite implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	private String naam;
 	private ArrayList<Gebruiker> alleGebruikers;
 	private ArrayList<Categorie> alleCategorieën;
 	private ArrayList<Veiling> alleVeilingen;
 		
-	
+	/* Constructor */
+	public Veilingsite(String naam){
+		this.naam = naam;
+		alleGebruikers = new ArrayList<Gebruiker>();
+		alleCategorieën = new ArrayList<Categorie>();
+		alleVeilingen = new ArrayList<Veiling>();
+	}
+		
 	/* Getters en Setters */
 	public ArrayList<Gebruiker> getAlleGebruikers() {
 		return alleGebruikers;
@@ -29,5 +37,11 @@ public class Veilingsite implements Serializable{
 	}
 	public void setAlleVeilingen(ArrayList<Veiling> alleVeilingen) {
 		this.alleVeilingen = alleVeilingen;
+	}
+	public String getNaam() {
+		return naam;
+	}
+	public void setNaam(String naam) {
+		this.naam = naam;
 	}
 }
