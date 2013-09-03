@@ -13,6 +13,6 @@ public class Beheerder extends Gebruiker implements Serializable{
 		super(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email, wachtwoord,
 				adres, postcode, woonplaats, huisnummer, telefoonnummer);
 	}
-	//hallo
-
+//hallo
+//thomas
 }
