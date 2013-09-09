@@ -15,5 +15,9 @@
 		    <result>index.html</result>
 		</action>
 		
+		<action name="Login">
+		    <result>/users/login.html</result>
+		</action>
+		
 	</package>
 </struts>
