@@ -1,4 +1,4 @@
-package nl.plaatsmarkt.servlets;
+package nl.plaatsmarkt.actions;
 
 public class ContextListener {
 	//Placeholder
