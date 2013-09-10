@@ -22,7 +22,7 @@ public abstract class Gebruiker implements Serializable{
 	/* Constructor */
 	public Gebruiker(String voornaam, String tussenvoegsel, String achternaam, String gebruikersnaam,
 			String email, String wachtwoord, String adres, String postcode, String woonplaats,
-			int huisnummer, long telefoonnummer){
+			Date geboortedatum, int huisnummer, long telefoonnummer){
 		
 		this.voornaam = voornaam;
 		this.tussenvoegsel = tussenvoegsel;
@@ -33,9 +33,25 @@ public abstract class Gebruiker implements Serializable{
 		this.adres = adres;
 		this.postcode = postcode;
 		this.woonplaats = woonplaats;
+		this.geboortedatum = geboortedatum;
 		this.huisnummer = huisnummer;
 		this.telefoonnummer = telefoonnummer;
 	}
+	
+	public String toString()
+    {
+		if(!tussenvoegsel.equals("") && !tussenvoegsel.equals(null)){
+        return "Voornaam: " + voornaam + " Tussenvoegsel: " + tussenvoegsel + " Achternaam: " + achternaam +
+        		" Gebruikersnaam: " + gebruikersnaam + " E-mail: " + email + " Wachtwoord: " + wachtwoord + 
+        		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats + 
+        		" Huisnummer: " + huisnummer + " Telefoonnummer: " + telefoonnummer;
+		}else{
+		return "Voornaam: " + voornaam + " Achternaam: " + achternaam +
+        		" Gebruikersnaam: " + gebruikersnaam + " E-mail: " + email + " Wachtwoord: " + wachtwoord + 
+        		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats + 
+        		" Huisnummer: " + huisnummer + " Telefoonnummer: " + telefoonnummer;	
+		}
+    }
 
 	/* Getters en Setters */
 	public String getVoornaam() {

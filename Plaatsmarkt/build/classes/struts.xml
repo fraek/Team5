@@ -10,15 +10,9 @@
 	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
 
 	<package name="default" extends="struts-default" namespace="/">
-
-		<action name="Menu">
-		    <result>index.html</result>
-		</action>
-		
 		<action name="Login">
 		    <result>jsp/login.jsp</result>
 		</action>
-		
 	</package>
 	
 </struts>
