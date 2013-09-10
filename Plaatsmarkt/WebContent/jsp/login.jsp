@@ -17,6 +17,7 @@
    <s:token />
    <s:submit key="submit" />
    </s:form>
-   Nog geen account?<br /><a href="<s:url value="registreren.jsp"/>">Klik hier</a> om te registreren!<br />
+   Nog geen account?<br />
+   <a href="<s:url value="/jsp/registreren.jsp"/>">Klik hier</a> om te registreren!<br />
 </body>
 </html>
