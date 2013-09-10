@@ -28,6 +28,6 @@
 			
 	    <hr />
 	    
-	    <a href=" <s:url value="index.html"/> ">Terug naar het startmenu</a>
+	    <a href=" <s:url value="/index.html"/> ">Terug naar het startmenu</a>
 	</body> 
 </html>
