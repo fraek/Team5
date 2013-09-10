@@ -9,12 +9,13 @@
 <title>Inloggen</title>
 </head>
 <body>
-   <s:div>Willekeurige voorbeeld Form</s:div>
-   <s:text name="Please fill in the form below:" />
+   <s:div>Welkom bij Plaatsmarkt</s:div>
+   <s:text name="Inloggen:" />
    <s:form action="LoginForm" method="post" enctype="multipart/form-data">
-   <s:textfield key="email.from" name="from" />
-   <s:password key="email.password" name="password" />
+   <s:textfield key="email" name="mail" />
+   <s:password key="wachtword" name="password" />
    <s:token />
+   Nog geen account?<a href="/registreren.jsp">klik hier</a>om in te loggen!
    <s:submit key="submit" />
    </s:form>
 </body>
