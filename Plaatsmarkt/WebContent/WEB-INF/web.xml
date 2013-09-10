@@ -12,7 +12,7 @@
   version="3.0"
   metadata-complete="true">
   
-    <display-name>S2 HelloWorld (XML Based)</display-name>
+    <display-name>Plaatsmarkt (XML Based)</display-name>
 
 		<!-- Declaration of the Struts 2 filter.  Since our entire web application will be a Struts 2
 					application, we will not have any other servlets or filters.  Of course, real Struts 2 
@@ -37,7 +37,7 @@
     </filter-mapping>
         
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>/html/index.html</welcome-file>
     </welcome-file-list>
  
 </web-app>
