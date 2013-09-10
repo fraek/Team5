@@ -11,7 +11,7 @@
 	    
 	    <hr />
 	    
-		<s:form action="Registreren">
+		<s:form action="RegisterForm">
     	  <s:textfield name="voornaam" label="Voornaam*"/>
     	  <s:textfield name="tussenvoegsel" label="Tussenvoegsel"/>
     	  <s:textfield name="achternaam" label="Achternaam*"/>

@@ -7,18 +7,17 @@
 <head>
 <s:head/>
 <title>Inloggen</title>
-<link rel="stylesheet" type="text/css" href="css/Plaatsmarkt.css" />
 </head>
 <body>
    <s:div>Welkom bij Plaatsmarkt</s:div>
    <s:text name="Inloggen:" />
-   <s:form action="LoginForm" method="post" enctype="multipart/form-data"><br />
+   <s:form action="action.LoginForm" method="post" enctype="multipart/form-data"><br />
    <s:textfield key="email" name="mail" />
    <s:password key="wachtword" name="password" />
    <s:token />
    <s:submit key="submit" />
    </s:form>
    Nog geen account?<br />
-   <a href="<s:url value="/jsp/registreren.jsp"/>">Klik hier</a> om te registreren!<br />
+   <a href="<s:url value="/jsp/guest/registreren.jsp"/>">Klik hier</a> om te registreren!<br />
 </body>
 </html>
