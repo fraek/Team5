@@ -15,7 +15,7 @@
    <s:textfield key="email" name="mail" />
    <s:password key="wachtword" name="password" />
    <s:token />
-   Nog geen account?<a href="/registreren.jsp">klik hier</a>om in te loggen!
+   Nog geen account?<a href="registreren.jsp">klik hier</a>om in te loggen!
    <s:submit key="submit" />
    </s:form>
 </body>
