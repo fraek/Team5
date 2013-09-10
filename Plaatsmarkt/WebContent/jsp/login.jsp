@@ -11,12 +11,12 @@
 <body>
    <s:div>Welkom bij Plaatsmarkt</s:div>
    <s:text name="Inloggen:" />
-   <s:form action="LoginForm" method="post" enctype="multipart/form-data">
+   <s:form action="LoginForm" method="post" enctype="multipart/form-data"><br />
    <s:textfield key="email" name="mail" />
    <s:password key="wachtword" name="password" />
    <s:token />
-   Nog geen account?<a href="registreren.jsp">klik hier</a>om in te loggen!
    <s:submit key="submit" />
    </s:form>
+   Nog geen account?<br /><a href="<s:url value="registreren.jsp"/>">Klik hier</a> om te registreren!<br />
 </body>
 </html>
