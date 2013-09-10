@@ -1,10 +1,4 @@
 body {
 	background-color: #CCCCFF;
-	font-family: MarktFont; 
-}
-
-@font-face
-{
-font-family: MarktFont;
-src: url('MarktFont.ttf');
+	font-family: Arial,sans-serif; 
 }
