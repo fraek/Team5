@@ -7,6 +7,7 @@
 <head>
 <s:head/>
 <title>Inloggen</title>
+<link rel="stylesheet" type="text/css" href="css/Plaatsmarkt.css" />
 </head>
 <body>
    <s:div>Welkom bij Plaatsmarkt</s:div>
