@@ -1,14 +1,25 @@
 package nl.plaatsmarkt.actions.users;
 
-import nl.plaatsmarkt.app.Gebruiker;
+import java.util.Date;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class RegisterForm extends ActionSupport {
 	
 	private static final long serialVersionUID = 1L;
-	
-	private Gebruiker gebruiker;
+	private String voornaam;
+	private String tussenvoegsel;
+	private String achternaam;
+	private String gebruikersnaam;
+	private String email;
+	private String wachtwoord1, wachtwoord2, wachtwoord;
+	private String adres;
+	private String postcode;
+	private String woonplaats;
+	private String geboortedatum; //Om op te halen
+	private Date geboorteDate;
+	private int huisnummer;
+	private long telefoonnummer;	//Een int is niet lang genoeg voor een tel.nummer
 	
 	/*
 	 * Controle of persoon 16 jaar is of ouder
@@ -22,40 +33,154 @@ public class RegisterForm extends ActionSupport {
 		//call Service class to store gebruiker's state in database
 		
 		return SUCCESS;
-		
+	}
+	
+	public void validate(){
+		if (voornaam == null || voornaam.trim().equals("")){
+			addFieldError("voornaam","Een voornaam is vereist");
+		}
+		if (achternaam == null || achternaam.trim().equals("")){
+			addFieldError("achternaam","Een achternaam is vereist");
+		}
+		if (gebruikersnaam == null || gebruikersnaam.trim().equals("")){
+			addFieldError("gebruikersnaam","Een gebruikersnaam is vereist");
+		}
+		if (email == null || email.trim().equals("")){
+			addFieldError("email","Een email is vereist");
+		}else if (2>3){
+			//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
+		}
+		if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
+			addFieldError("wachtwoord1","Een wachtwoord is vereist");
+		}
+		if (wachtwoord2 == null || wachtwoord2.trim().equals("")){
+			addFieldError("wachtwoord2","Een wachtwoord is vereist");
+		}
+		if (wachtwoord1 != wachtwoord2){
+			addFieldError("wachtwoord2","De wachtwoorden komen niet overeen");
+		}
+		if (geboortedatum == null || geboortedatum.trim().equals("")){
+			addFieldError("geboortedatum","Een geboortedatum is vereist");
+		}
+	}
+	
+	public String getVoornaam() {
+       return voornaam;
+	}
+	   public void setVoornaam(String voornaam) {
+       this.voornaam = voornaam;
 	}
 
-	public void validate(){
-		if (gebruiker.getVoornaam() == null || gebruiker.getVoornaam().trim().equals("")){
-			addFieldError("name","Een voornaam is vereist");
-		}
-		if (gebruiker.getAchternaam() == null || achternaam.getVoornaam().trim().equals("")){
-			addFieldError("name","Een achternaam is vereist");
-		}
-		if (gebruiker.getVoornaam() == null || gebruiker.getVoornaam().trim().equals("")){
-			addFieldError("name","Een voornaam is vereist");
-		}
-		if (gebruiker.getVoornaam() == null || gebruiker.getVoornaam().trim().equals("")){
-			addFieldError("name","Een voornaam is vereist");
-		}
-		if (gebruiker.getVoornaam() == null || gebruiker.getVoornaam().trim().equals("")){
-			addFieldError("name","Een voornaam is vereist");
-		}
-		if (gebruiker.getVoornaam() == null || gebruiker.getVoornaam().trim().equals("")){
-			addFieldError("name","Een voornaam is vereist");
-		}
+	public String getTussenvoegsel() {
+		return tussenvoegsel;
 	}
-	
-	public Gebruiker getGebruiker() {
-		
-		return gebruiker;
-		
+
+	public void setTussenvoegsel(String tussenvoegsel) {
+		this.tussenvoegsel = tussenvoegsel;
 	}
-	
-	public void setPersonBean(Gebruiker nieuweGebruiker) {
-		
-		gebruiker = nieuweGebruiker;
-		
+
+	public String getAchternaam() {
+		return achternaam;
+	}
+
+	public void setAchternaam(String achternaam) {
+		this.achternaam = achternaam;
+	}
+
+	public String getGebruikersnaam() {
+		return gebruikersnaam;
+	}
+
+	public void setGebruikersnaam(String gebruikersnaam) {
+		this.gebruikersnaam = gebruikersnaam;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWachtwoord() {
+		return wachtwoord;
+	}
+
+	public void setWachtwoord(String wachtwoord) {
+		this.wachtwoord = wachtwoord;
+	}
+
+	public String getAdres() {
+		return adres;
+	}
+
+	public void setAdres(String adres) {
+		this.adres = adres;
+	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getWoonplaats() {
+		return woonplaats;
+	}
+
+	public void setWoonplaats(String woonplaats) {
+		this.woonplaats = woonplaats;
+	}
+
+	public String getGeboortedatum() {
+		return geboortedatum;
+	}
+
+	public void setGeboortedatum(String geboortedatum) {
+		this.geboortedatum = geboortedatum;
+	}
+
+	public int getHuisnummer() {
+		return huisnummer;
+	}
+
+	public void setHuisnummer(int huisnummer) {
+		this.huisnummer = huisnummer;
+	}
+
+	public long getTelefoonnummer() {
+		return telefoonnummer;
+	}
+
+	public void setTelefoonnummer(long telefoonnummer) {
+		this.telefoonnummer = telefoonnummer;
+	}
+
+	public String getWachtwoord1() {
+		return wachtwoord1;
+	}
+
+	public void setWachtwoord1(String wachtwoord1) {
+		this.wachtwoord1 = wachtwoord1;
+	}
+
+	public String getWachtwoord2() {
+		return wachtwoord2;
+	}
+
+	public void setWachtwoord2(String wachtwoord2) {
+		this.wachtwoord2 = wachtwoord2;
+	}
+
+	public Date getGeboorteDate() {
+		return geboorteDate;
+	}
+
+	public void setGeboorteDate(Date geboorteDate) {
+		this.geboorteDate = geboorteDate;
 	}
 
 }
