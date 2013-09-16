@@ -5,7 +5,7 @@
 
 <struts>
 	<package name="guest" namespace="/guest" extends="struts-default">
-		<action name="RegisterForm" class="nl.plaatsmarkt.actions.users">
+		<action name="RegisterForm" class="nl.plaatsmarkt.actions.users.RegisterForm">
 			<result name="success">/jsp/visitor/registrerenComplete.jsp</result>
 			<result name="input">/jsp/visitor/registreren.jsp</result>
 		</action>
@@ -15,5 +15,4 @@
 			<result name="input">/jsp/visitor/login.jsp</result>
 		</action>
 	</package>
-
 </struts>
