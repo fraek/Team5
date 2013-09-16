@@ -10,9 +10,9 @@
 			<result name="input">/jsp/visitor/registreren.jsp</result>
 		</action>
 		
-		<action name="LoginForm" class="nl.plaatsmarkt.actions.users">
-			<result name="success">/jsp/visitor/registrerenComplete.jsp</result>
-			<result name="input">/jsp/visitor/registreren.jsp</result>
+		<action name="LoginForm" class="nl.plaatsmarkt.actions.users.LoginForm">
+			<result name="success">/jsp/visitor/loginComplete.jsp</result>
+			<result name="input">/jsp/visitor/login.jsp</result>
 		</action>
 	</package>
 

@@ -13,7 +13,7 @@
    <s:text name="Inloggen:" />
    <s:form action="LoginForm.action" method="post" enctype="multipart/form-data"><br />
    <s:textfield key="email" name="mail" />
-   <s:password key="wachtword" name="password" />
+   <s:password key="wachtwoord" name="password" />
    <s:token />
    <s:submit key="submit" />
    </s:form>
