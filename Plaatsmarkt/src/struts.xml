@@ -8,8 +8,12 @@
 		<action name="Login">
 		    <result>jsp/guest/login.jsp</result>
 		</action>
+		
+		<action name="Menu">
+		    <result>jsp/guest/login.jsp</result>
+		</action>
 	</package>	
 		
-    <include file="nl.plaatsmarkt.actions.users/users.xml"/>
+    <include file="nl/plaatsmarkt/actions/users.xml"/>
  
 </struts>

@@ -9,6 +9,8 @@
 <title>Inloggen</title>
 </head>
 <body>
+	<s:property value="geslaagd"/>
+
    <s:div>Welkom bij Plaatsmarkt</s:div>
    <s:text name="Inloggen:" />
    <s:form action="LoginForm.action" method="post" enctype="multipart/form-data"><br />

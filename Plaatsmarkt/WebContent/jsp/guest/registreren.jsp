@@ -11,11 +11,13 @@
 	    
 	    <hr />
 	    
-		<s:form action="RegisterForm.action">
+		<s:form action="Register.action">
     	  <s:textfield name="voornaam" label="Voornaam*"/>
     	  <s:textfield name="tussenvoegsel" label="Tussenvoegsel"/>
     	  <s:textfield name="achternaam" label="Achternaam*"/>
-    	  <s:textfield name="email" label="Email*"/>
+    	  <s:textfield name="email1" label="Email*"/>
+    	  <s:textfield name="email2" label="Email* bevestiging"/>
+    	  <s:textfield name="gebruikersnaam" label="Gebruikersnaam**"/>
     	  <s:password name="wachtwoord1" label="Wachtwoord*"/>
     	  <s:password name="wachtwoord2" label="Wachtwoord* bevestiging"/>
     	  <s:textfield name="geboortedatum" label="Geboorte Datum*"/>
@@ -25,6 +27,7 @@
     	  <s:textfield name="telefoonnummer" label="Telefoon nummer*"/>
     	  <s:submit value="maak account aan"/>
 		</s:form>
+		<s:label name="input"></s:label>
 			
 	    <hr />
 	    

@@ -1,4 +1,4 @@
-import nl.plaatsmarkt.app.Veilingsite;
+import nl.plaatsmarkt.domain.Veilingsite;
 
 public class Main {
 
