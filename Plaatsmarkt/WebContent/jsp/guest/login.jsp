@@ -14,8 +14,8 @@
    <s:div>Welkom bij Plaatsmarkt</s:div>
    <s:text name="Inloggen:" />
    <s:form action="LoginForm.action" method="post" enctype="multipart/form-data"><br />
-   <s:textfield key="email" name="mail" />
-   <s:password key="wachtwoord" name="password" />
+   <s:textfield key="gebruikersnaam" name="gebruikersnaam" />
+   <s:password key="wachtwoord" name="wachtwoord" />
    <s:token />
    <s:submit key="submit" />
    </s:form>
