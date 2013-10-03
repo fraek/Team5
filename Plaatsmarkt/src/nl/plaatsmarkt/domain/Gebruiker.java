@@ -3,7 +3,7 @@ package nl.plaatsmarkt.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Gebruiker implements Serializable{
+public class Gebruiker implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int ID;
 	private String voornaam;
@@ -17,14 +17,13 @@ public abstract class Gebruiker implements Serializable{
 	private String woonplaats;
 	private Date geboortedatum;
 	private GebruikerRol gebruikerRol;
-	private int huisnummer;
 	private long telefoonnummer;	//Een int is niet lang genoeg voor een tel.nummer
 	
 	
 	/* Constructor */
 	public Gebruiker(String voornaam, String tussenvoegsel, String achternaam, String gebruikersnaam,
 			String email, String wachtwoord, String adres, String postcode, String woonplaats,
-			Date geboortedatum, int huisnummer, long telefoonnummer){
+			Date geboortedatum, long telefoonnummer){
 		
 		this.voornaam = voornaam;
 		this.tussenvoegsel = tussenvoegsel;
@@ -36,14 +35,13 @@ public abstract class Gebruiker implements Serializable{
 		this.postcode = postcode;
 		this.woonplaats = woonplaats;
 		this.geboortedatum = geboortedatum;
-		this.huisnummer = huisnummer;
 		this.telefoonnummer = telefoonnummer;
 		this.gebruikerRol = GebruikerRol.Member;		//Standaard wordt er een member aangemaakt
 	}
 	
 	public Gebruiker(String voornaam, String tussenvoegsel, String achternaam, String gebruikersnaam,
 			String email, String wachtwoord, String adres, String postcode, String woonplaats,
-			Date geboortedatum, int huisnummer, long telefoonnummer, int ID){
+			Date geboortedatum, long telefoonnummer, int ID){
 		
 		this.ID = ID;
 		this.voornaam = voornaam;
@@ -56,7 +54,6 @@ public abstract class Gebruiker implements Serializable{
 		this.postcode = postcode;
 		this.woonplaats = woonplaats;
 		this.geboortedatum = geboortedatum;
-		this.huisnummer = huisnummer;
 		this.telefoonnummer = telefoonnummer;
 		this.gebruikerRol = GebruikerRol.Member;		//Standaard wordt er een member aangemaakt
 	}
@@ -66,13 +63,13 @@ public abstract class Gebruiker implements Serializable{
 		if(!tussenvoegsel.equals("") && !tussenvoegsel.equals(null)){
         return "Voornaam: " + voornaam + " Tussenvoegsel: " + tussenvoegsel + " Achternaam: " + achternaam +
         		" Gebruikersnaam: " + gebruikersnaam + " E-mail: " + email + " Wachtwoord: " + wachtwoord + 
-        		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats + 
-        		" Huisnummer: " + huisnummer + " Telefoonnummer: " + telefoonnummer;
+        		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats
+        		+ " Telefoonnummer: " + telefoonnummer;
 		}else{
 		return "Voornaam: " + voornaam + " Achternaam: " + achternaam +
         		" Gebruikersnaam: " + gebruikersnaam + " E-mail: " + email + " Wachtwoord: " + wachtwoord + 
         		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats + 
-        		" Huisnummer: " + huisnummer + " Telefoonnummer: " + telefoonnummer;	
+        		" Telefoonnummer: " + telefoonnummer;	
 		}
     }
 
@@ -147,14 +144,6 @@ public abstract class Gebruiker implements Serializable{
 
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
-	}
-
-	public int getHuisnummer() {
-		return huisnummer;
-	}
-
-	public void setHuisnummer(int huisnummer) {
-		this.huisnummer = huisnummer;
 	}
 
 	public long getTelefoonnummer() {

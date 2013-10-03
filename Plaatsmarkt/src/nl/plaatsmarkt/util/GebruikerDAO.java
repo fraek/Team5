@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Gebruiker;
-import nl.plaatsmarkt.domain.Lid;
 
-public class LidDAO implements IDAO<Lid>{
+public class GebruikerDAO implements IDAO<Gebruiker>{
 	private DatabaseDAO db = ServiceProvider.getDatabaseDAO();
 	
 	@Override
 	public void create(Object T) throws SQLException {
-		Lid lid = (Lid) T;
+		Gebruiker gebruiker = (Gebruiker) T;
 		db.open();
 		db.createStmt();
 		
@@ -24,18 +23,18 @@ public class LidDAO implements IDAO<Lid>{
 		String statement = "INSERT INTO TO5_GEBRUIKER(NAAM, TUSSENVOEGSEL, ACHTERNAAM, EMAIL, WACHTWOORD, GEBOORTEDATUM, " +
 				"WOONPLAATS, POSTCODE, ADRES, TELEFOONNUMMER, GEBRUIKERSNAAM, ROL) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
-		preparedStatement.setString(1, lid.getVoornaam());
-		preparedStatement.setString(2, lid.getTussenvoegsel());
-		preparedStatement.setString(3, lid.getAchternaam());
-		preparedStatement.setString(4, lid.getEmail());
-		preparedStatement.setString(5, lid.getWachtwoord());
+		preparedStatement.setString(1, gebruiker.getVoornaam());
+		preparedStatement.setString(2, gebruiker.getTussenvoegsel());
+		preparedStatement.setString(3, gebruiker.getAchternaam());
+		preparedStatement.setString(4, gebruiker.getEmail());
+		preparedStatement.setString(5, gebruiker.getWachtwoord());
 		preparedStatement.setDate(6, null); // Util Date omzetten naar SQL Date
-		preparedStatement.setString(7, lid.getWoonplaats());
-		preparedStatement.setString(8, lid.getPostcode());
-		preparedStatement.setString(9, lid.getAdres());
-		preparedStatement.setLong(10, lid.getTelefoonnummer());
-		preparedStatement.setString(11, lid.getGebruikersnaam());
-		preparedStatement.setString(12, lid.getGebruikerRol().toString());
+		preparedStatement.setString(7, gebruiker.getWoonplaats());
+		preparedStatement.setString(8, gebruiker.getPostcode());
+		preparedStatement.setString(9, gebruiker.getAdres());
+		preparedStatement.setLong(10, gebruiker.getTelefoonnummer());
+		preparedStatement.setString(11, gebruiker.getGebruikersnaam());
+		preparedStatement.setString(12, gebruiker.getGebruikerRol().toString());
 		preparedStatement.execute();
 		
 		db.close();
@@ -43,29 +42,29 @@ public class LidDAO implements IDAO<Lid>{
 	}
 
 	@Override
-	public List<Lid> read() throws SQLException {
+	public List<Gebruiker> read() throws SQLException {
 		db.open();
 		db.createStmt();
 		String query = "SELECT * FROM PERS_COMPONIST";
 		ResultSet rs = db.getStmt().executeQuery(query);
 		
-		List<Lid> alleComponisten = new ArrayList<Lid>();
-		while(rs.next())
-			{
-			alleComponisten.add(
-					new Lid	(			rs.getString("NAAM"),
-										rs.getString("LAND"),
-										rs.getString("TIJDVAK"),
-										rs.getString("COMPOSITIES"),
-										rs.getInt("ID")
-									) 	);
-			}
+		List<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
+//		while(rs.next())
+//			{
+//			alleComponisten.add(
+//					new Lid	(			rs.getString("NAAM"),
+//										rs.getString("LAND"),
+//										rs.getString("TIJDVAK"),
+//										rs.getString("COMPOSITIES"),
+//										rs.getInt("ID")
+//									) 	);
+//			}
 		rs.close();
 		
 		db.close();
 		db.closeStmt();		
 		
-		return alleGebruikers;
+		return null;
 	}
 
 	@Override

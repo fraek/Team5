@@ -2,7 +2,7 @@ package nl.plaatsmarkt.actions.guest;
 
 import java.util.Date;
 
-import nl.plaatsmarkt.domain.Lid;
+import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
 
@@ -26,7 +26,7 @@ public class Register extends ActionSupport {
 	private int huisnummer;
 	private long telefoonnummer;	//Een int is niet lang genoeg voor een tel.nummer
 	private String geslaagd;
-	private Lid lid;
+	private Gebruiker gebruiker;
 	
 	/*
 	 * Controle of persoon 16 jaar is of ouder
@@ -36,10 +36,9 @@ public class Register extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		lid = new Lid(	voornaam, tussenvoegsel, achternaam, gebruikersnaam, 
-						email1, wachtwoord1, adres, postcode, woonplaats, geboorteDate, 
-						huisnummer, telefoonnummer);
-		dao.create(lid);
+		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
+					wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
+		dao.create(gebruiker);
 		
 		setGeslaagd("U bent succesvol geregisteerd met "+ email1);
 		
@@ -48,34 +47,34 @@ public class Register extends ActionSupport {
 	
 	public void validate(){
 		if (voornaam == null || voornaam.trim().equals("")){
-			addFieldError("input","Een voornaam is vereist");
+			addFieldError("voornaam","Een voornaam is vereist");
 		}
 		if (achternaam == null || achternaam.trim().equals("")){
-			addFieldError("input","Een achternaam is vereist");
+			addFieldError("achternaam","Een achternaam is vereist");
 		}
 		if (gebruikersnaam == null || gebruikersnaam.trim().equals("")){
-			addFieldError("input","Een gebruikersnaam is vereist");
+			addFieldError("gebruikersnaam","Een gebruikersnaam is vereist");
 		}
 		if (email1 == null || email1.trim().equals("")){
-			addFieldError("input","Een e-mail adres is vereist");
+			addFieldError("email1","Een e-mail adres is vereist");
 		}
-		if (!email1.equalsIgnoreCase(email2)){
-			addFieldError("input","De e-mail adressen komen niet overeen: "  + email1 + email2);
+		if (email1 != null && !email1.equalsIgnoreCase(email2)){
+			addFieldError("email1","De e-mail adressen komen niet overeen: ");
 		}
 		//else if (2>3){
 			//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
 		//}
 		if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
-			addFieldError("input","Een wachtwoord is vereist");
+			addFieldError("wachtwoord1","Een wachtwoord is vereist");
 		}
 		if (wachtwoord2 == null || wachtwoord2.trim().equals("")){
-			addFieldError("input","Een wachtwoord is vereist");
+			addFieldError("wachtwoord2","Een wachtwoord is vereist");
 		}
-		if (!wachtwoord1.equalsIgnoreCase(wachtwoord2)){
-			addFieldError("input","De wachtwoorden komen niet overeen");
+		if (wachtwoord1 != null && !wachtwoord1.equalsIgnoreCase(wachtwoord2)){
+			addFieldError("wachtwoord1","De wachtwoorden komen niet overeen");
 		}
 		if (geboortedatum == null || geboortedatum.trim().equals("")){
-			addFieldError("input","Een geboortedatum is vereist");
+			addFieldError("geboortedatum","Een geboortedatum is vereist");
 		}
 	}
 	

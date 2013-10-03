@@ -7,10 +7,10 @@
 	<package name="default" namespace="/" extends="struts-default"> 
 		<action name="Login">
 		    <result>jsp/guest/login.jsp</result>
-		</action>
+		</action>		
 		
-		<action name="Menu">
-		    <result>jsp/guest/login.jsp</result>
+		<action name="Index">
+			<result>jsp/guest/index.jsp</result>
 		</action>
 	</package>	
 		

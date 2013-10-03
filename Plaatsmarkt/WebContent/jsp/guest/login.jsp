@@ -1,25 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<s:head/>
-<title>Inloggen</title>
-</head>
-<body>
-	<s:property value="geslaagd"/>
+<%@include file="/jsp/guest/header.jsp" %>
+<div id="container">
 
-   <s:div>Welkom bij Plaatsmarkt</s:div>
-   <s:text name="Inloggen:" />
-   <s:form action="LoginForm.action" method="post" enctype="multipart/form-data"><br />
-   <s:textfield key="gebruikersnaam" name="gebruikersnaam" />
-   <s:password key="wachtwoord" name="wachtwoord" />
-   <s:token />
-   <s:submit key="submit" />
-   </s:form>
-   Nog geen account?<br />
-   <a href="<s:url value="/jsp/guest/registreren.jsp"/>">Klik hier</a> om te registreren!<br />
-</body>
-</html>
+	<div id="center" class="column">
+		<div id="box">
+			<div id="boxHead">Inloggen</div>
+			<div id="boxBody">
+				<s:property value="geslaagd"/>
+				
+				<s:div>Welkom bij Plaatsmarkt</s:div>
+				<s:text name="Inloggen:" />
+				<s:form action="LoginForm.action" method="post" enctype="multipart/form-data"><br />
+					<s:textfield key="gebruikersnaam" name="gebruikersnaam" label="Gebruikersnaam"/>
+					<s:password key="wachtwoord" name="wachtwoord" label="Wachtwoord"/>
+					<s:token />
+					<s:submit key="submit" />
+				</s:form>
+				Nog geen account?<br />
+			<a href="<s:url value="/jsp/guest/registreren.jsp"/>">Klik hier</a> om te registreren!<br />
+			</div>
+		</div>
+		
+		
+	</div>
+	<%@include file="/jsp/guest/menu.jsp" %>
+</div>
+<%@include file="/jsp/guest/footer.jsp" %>

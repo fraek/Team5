@@ -1,0 +1,4 @@
+<div id="box">
+    	<div id="boxHead">Welkom!</div>
+        <div id="boxBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ipsum orci, dapibus et orci eu, ornare bibendum lectus. Donec eu rutrum velit. Quisque porttitor turpis ac purus blandit, a volutpat dolor vulputate. Phasellus fringilla leo ac lacus mattis tristique. Phasellus ac dignissim diam. Aenean eu magna blandit, placerat purus convallis, molestie risus. Fusce nibh elit, tincidunt et sodales et, rhoncus at magna. Duis pellentesque dictum ipsum, a iaculis leo adipiscing vitae. Aliquam elementum orci ac augue tristique, nec bibendum dui faucibus. Proin at diam non dui pulvinar mollis sed vel arcu. Maecenas sodales sapien in diam sagittis, ac sollicitudin tellus accumsan.</div>
+    </div>

@@ -1,14 +1,14 @@
 package nl.plaatsmarkt.util;
 
-import nl.plaatsmarkt.domain.Lid;
+import nl.plaatsmarkt.domain.Gebruiker;
 
 
 public class ServiceProvider {
 	private static DatabaseDAO DatabaseDAO = new DatabaseDAO();
-	private static IDAO<Lid> LidDAO = new LidDAO();
+	private static IDAO<Gebruiker> GebruikerDAO = new GebruikerDAO();
 
-	public static IDAO<Lid> getLidDAO() {
-		return LidDAO;
+	public static IDAO<Gebruiker> getLidDAO() {
+		return GebruikerDAO;
 	}
 
 	public static DatabaseDAO getDatabaseDAO() {
