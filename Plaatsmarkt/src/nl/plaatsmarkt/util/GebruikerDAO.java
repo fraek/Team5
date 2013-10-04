@@ -49,6 +49,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		db.createStmt();
 		String query = "SELECT * FROM TO5_GEBRUIKER";
 		ResultSet rs = db.getStmt().executeQuery(query);
+		@SuppressWarnings("unused")
 		List<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
 		GebruikerRol rol = null;
 		while(rs.next())
