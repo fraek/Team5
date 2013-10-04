@@ -2,6 +2,7 @@ package nl.plaatsmarkt.actions.users;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+@SuppressWarnings("serial")
 public class LoginForm extends ActionSupport {
 	private String gebruikersnaam;
 	private String wachtwoord;

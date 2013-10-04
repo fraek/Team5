@@ -48,6 +48,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		String query = "SELECT * FROM PERS_COMPONIST";
 		ResultSet rs = db.getStmt().executeQuery(query);
 		
+		@SuppressWarnings("unused")
 		List<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
 //		while(rs.next())
 //			{
