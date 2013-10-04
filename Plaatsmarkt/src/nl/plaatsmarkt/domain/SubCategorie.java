@@ -8,6 +8,7 @@ public class SubCategorie implements Serializable{
 	private ArrayList<Veiling> alleVeilingen;
 	private String naam;
 	private String omschrijving;
+	private Categorie categorie;
 	private int ID;
 	
 	/* Constructors*/
@@ -27,9 +28,10 @@ public class SubCategorie implements Serializable{
 	}
 	
 	public SubCategorie(String naam,
-			String omschrijving, int iD) {
+			String omschrijving, int iD, Categorie categorie) {
 		this.naam = naam;
 		this.omschrijving = omschrijving;
+		this.categorie = categorie;
 		ID = iD;
 	}
 	
@@ -63,6 +65,14 @@ public class SubCategorie implements Serializable{
 	}
 	public void setID(int iD) {
 		ID = iD;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
 }

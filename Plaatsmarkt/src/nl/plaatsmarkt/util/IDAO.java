@@ -10,7 +10,9 @@ public interface IDAO<T> {
 	void create(Object T) throws SQLException;
 	List<T> read() throws SQLException;
 	Object getObject(int ID) throws SQLException;
+	Object getObject(String NAAM) throws SQLException;
 	void update(Object T) throws SQLException;
 	void delete(Object T) throws SQLException;
+	void delete(int ID) throws SQLException;
 	int count();
 }

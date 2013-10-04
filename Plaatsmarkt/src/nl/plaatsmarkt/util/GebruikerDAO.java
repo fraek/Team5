@@ -173,10 +173,29 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		db.close();
 		db.closeStmt();	
 	}
+	
+	@Override
+	public void delete(int ID) throws SQLException {
+		db.open();
+		db.createStmt();
+		
+		String statement = "DELETE FROM TO5_GEBRUIKER WHERE id = " + ID;
+		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
+		preparedStatement.execute();
+		
+		db.close();
+		db.closeStmt();	
+	}
 
 	@Override
 	public int count() {
 		return db.getRows("TO5_GEBRUIKER");
+	}
+
+	@Override
+	public Object getObject(String NAAM) throws SQLException {
+		//Deze methode zou theoretisch te gebruiken kunnen zijn bij 1 String waarde
+		return null;
 	}
 
 }
