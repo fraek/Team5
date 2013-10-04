@@ -5,12 +5,12 @@
 		<div id="box">
 			<div id="boxHead">Registreren</div>
 			<div id="boxBody">
-			<h4>Een account aanmaken.</h4> 	
+			<h4>U kunt hier een account aanmaken</h4> 	
 	    
 		    <hr />
 		    
 			<s:form action="Register.action">
-		   	  <s:textfield name="voornaam" label="Voornaam*"/>
+		   	  <s:textfield name="voornaam" label="Voornaam*" />
 		   	  <s:textfield name="tussenvoegsel" label="Tussenvoegsel"/>
 		   	  <s:textfield name="achternaam" label="Achternaam*"/>
 		   	  <s:textfield name="email1" label="Email*"/>
@@ -25,11 +25,11 @@
 		   	  <s:textfield name="telefoonnummer" label="Telefoon nummer*"/>
 		   	  <s:submit value="maak account aan"/>
 			</s:form>			
-		    <hr />
+		    <hr /><br/>
 			</div>
 		</div>    
 	    
 	</div>
-	<%@include file="/jsp/guest/menu.jsp" %>
+	<%@include file="../menu.jsp" %>
 </div>
 <%@include file="/jsp/guest/footer.jsp" %>

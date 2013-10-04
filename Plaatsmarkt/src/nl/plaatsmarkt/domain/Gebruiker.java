@@ -39,9 +39,9 @@ public class Gebruiker implements Serializable{
 		this.gebruikerRol = GebruikerRol.Member;		//Standaard wordt er een member aangemaakt
 	}
 	
-	public Gebruiker(String voornaam, String tussenvoegsel, String achternaam, String gebruikersnaam,
+	public Gebruiker(int ID, String voornaam, String tussenvoegsel, String achternaam, String gebruikersnaam,
 			String email, String wachtwoord, String adres, String postcode, String woonplaats,
-			Date geboortedatum, long telefoonnummer, int ID){
+			Date geboortedatum, long telefoonnummer, GebruikerRol rol){
 		
 		this.ID = ID;
 		this.voornaam = voornaam;
@@ -55,7 +55,7 @@ public class Gebruiker implements Serializable{
 		this.woonplaats = woonplaats;
 		this.geboortedatum = geboortedatum;
 		this.telefoonnummer = telefoonnummer;
-		this.gebruikerRol = GebruikerRol.Member;		//Standaard wordt er een member aangemaakt
+		this.gebruikerRol = rol;
 	}
 	
 	public String toString()

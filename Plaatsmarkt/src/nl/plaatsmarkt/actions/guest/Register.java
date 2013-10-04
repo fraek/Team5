@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class Register extends ActionSupport {
 	
 	private static final long serialVersionUID = 1L;
-	private IDAO<?> dao = ServiceProvider.getLidDAO();
+	private IDAO<?> dao = ServiceProvider.getGebruikerDAO();
 	private String voornaam;
 	private String tussenvoegsel;
 	private String achternaam;
@@ -47,7 +47,9 @@ public class Register extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	@Override
 	public void validate(){
+<<<<<<< HEAD
 		if (voornaam == null || voornaam.trim().equals("")){
 			addFieldError("voornaam","Een voornaam is vereist");
 		}
@@ -80,6 +82,54 @@ public class Register extends ActionSupport {
 		}
 		if (geboortedatum == null || geboortedatum.trim().equals("")){
 			addFieldError("geboortedatum","Een geboortedatum is vereist");
+=======
+		if		(	(voornaam == null || voornaam.trim().equals("")					)									 
+					& 	(achternaam == null || achternaam.trim().equals("")			)					
+					& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
+					& 	(email1 == null || email1.trim().equals("")					)						
+					& 	(email2 == null || email2.trim().equals("")					)						
+					& 	(wachtwoord1 == null || wachtwoord1.trim().equals("")		)				
+					& 	(wachtwoord2 == null || wachtwoord2.trim().equals("")		)				
+					& 	(geboortedatum == null || geboortedatum.trim().equals("")	)	
+				)
+		{
+			addFieldError("voornaam","Velden met * zijn verplicht");
+		}else{
+		
+			if (voornaam == null || voornaam.trim().equals("")){
+				addFieldError("voornaam","Een voornaam is vereist");
+			}
+			if (achternaam == null || achternaam.trim().equals("")){
+				addFieldError("achternaam","Een achternaam is vereist");
+			}
+			if (gebruikersnaam == null || gebruikersnaam.trim().equals("")){
+				addFieldError("gebruikersnaam","Een gebruikersnaam is vereist");
+			}
+			if (email1 == null || email1.trim().equals("")){
+				addFieldError("email1","Een e-mail adres is vereist");
+			}
+			if (email2 == null || email2.trim().equals("")){
+				addFieldError("email2","Een e-mail adres is vereist");
+			}
+			if (email1 != null && !email1.equalsIgnoreCase(email2)){
+				addFieldError("email1","De e-mail adressen komen niet overeen: ");
+			}
+			//else if (2>3){
+				//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
+			//}
+			if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
+				addFieldError("wachtwoord1","Een wachtwoord is vereist");
+			}
+			if (wachtwoord2 == null || wachtwoord2.trim().equals("")){
+				addFieldError("wachtwoord2","Een wachtwoord is vereist");
+			}
+			if (wachtwoord1 != null && !wachtwoord1.equalsIgnoreCase(wachtwoord2)){
+				addFieldError("wachtwoord1","De wachtwoorden komen niet overeen");
+			}
+			if (geboortedatum == null || geboortedatum.trim().equals("")){
+				addFieldError("geboortedatum","Een geboortedatum is vereist");
+			}
+>>>>>>> fe976289e763542d790a38e8d4690fe2e381d065
 		}
 	}
 	

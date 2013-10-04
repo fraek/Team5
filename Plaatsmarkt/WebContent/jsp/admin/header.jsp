@@ -6,9 +6,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Plaatsmarkt</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
 <div id="wrapper">
-<div id="header" onclick="location.href='Index.action';" style="cursor:pointer;">»Plaatsmarkt</div>
+<div id="header" onclick="location.href='<s:url action='Index' namespace="/"/>';" style="cursor:pointer;">»Plaatsmarkt</div>

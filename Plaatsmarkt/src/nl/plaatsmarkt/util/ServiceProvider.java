@@ -7,7 +7,7 @@ public class ServiceProvider {
 	private static DatabaseDAO DatabaseDAO = new DatabaseDAO();
 	private static IDAO<Gebruiker> GebruikerDAO = new GebruikerDAO();
 
-	public static IDAO<Gebruiker> getLidDAO() {
+	public static IDAO<Gebruiker> getGebruikerDAO() {
 		return GebruikerDAO;
 	}
 
