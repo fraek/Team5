@@ -5,10 +5,6 @@ import java.util.regex.Pattern;
 
 public class Validate {
 
-	public Validate() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public boolean mail(String email){
 		Pattern pattern;
 		Matcher matcher;
