@@ -48,6 +48,7 @@ public class Register extends ActionSupport {
 
 	@Override
 	public void validate(){
+<<<<<<< HEAD
 		if		(	(voornaam == null || voornaam.trim().equals("")				)									 
 				& 	(achternaam == null || achternaam.trim().equals("")			)					
 				& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
@@ -104,6 +105,87 @@ public class Register extends ActionSupport {
 				addFieldError("postcode","Postcode is onjuist");
 			}
 			
+=======
+		if (voornaam == null || voornaam.trim().equals("")){
+			addFieldError("voornaam","Een voornaam is vereist");
+		}
+		if (achternaam == null || achternaam.trim().equals("")){
+			addFieldError("achternaam","Een achternaam is vereist");
+		}
+		if (gebruikersnaam == null || gebruikersnaam.trim().equals("")){
+			addFieldError("gebruikersnaam","Een gebruikersnaam is vereist");
+		}
+		if (email1 == null || email1.trim().equals("")){
+			addFieldError("email1","Een e-mail adres is vereist");
+		}
+		if (email1 != null && !email1.equalsIgnoreCase(email2)){
+			addFieldError("email1","De e-mail adressen komen niet overeen: ");
+		}
+		if(!mailIsValid(email1)){
+			addFieldError("email1","De e-mail is onjuist");
+		}
+		//else if (2>3){
+		//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
+		//}
+		if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
+			addFieldError("wachtwoord1","Een wachtwoord is vereist");
+		}
+		if (wachtwoord2 == null || wachtwoord2.trim().equals("")){
+			addFieldError("wachtwoord2","Een wachtwoord is vereist");
+		}
+		if (wachtwoord1 != null && !wachtwoord1.equalsIgnoreCase(wachtwoord2)){
+			addFieldError("wachtwoord1","De wachtwoorden komen niet overeen");
+		}
+		if (geboortedatum == null || geboortedatum.trim().equals("")){
+			addFieldError("geboortedatum","Een geboortedatum is vereist");
+			if		(	(voornaam == null || voornaam.trim().equals("")					)									 
+					& 	(achternaam == null || achternaam.trim().equals("")			)					
+					& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
+					& 	(email1 == null || email1.trim().equals("")					)						
+					& 	(email2 == null || email2.trim().equals("")					)						
+					& 	(wachtwoord1 == null || wachtwoord1.trim().equals("")		)				
+					& 	(wachtwoord2 == null || wachtwoord2.trim().equals("")		)				
+					& 	(geboortedatum == null || geboortedatum.trim().equals("")	)	
+					)
+			{
+				addFieldError("voornaam","Velden met * zijn verplicht");
+			}else{
+
+				if (voornaam == null || voornaam.trim().equals("")){
+					addFieldError("voornaam","Een voornaam is vereist");
+				}
+				if (achternaam == null || achternaam.trim().equals("")){
+					addFieldError("achternaam","Een achternaam is vereist");
+				}
+				if (gebruikersnaam == null || gebruikersnaam.trim().equals("")){
+					addFieldError("gebruikersnaam","Een gebruikersnaam is vereist");
+				}
+				if (email1 == null || email1.trim().equals("")){
+					addFieldError("email1","Een e-mail adres is vereist");
+				}
+				if (email2 == null || email2.trim().equals("")){
+					addFieldError("email2","Een e-mail adres is vereist");
+				}
+				if (email1 != null && !email1.equalsIgnoreCase(email2)){
+					addFieldError("email1","De e-mail adressen komen niet overeen: ");
+				}
+				//else if (2>3){
+				//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
+				//}
+				if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
+					addFieldError("wachtwoord1","Een wachtwoord is vereist");
+				}
+				if (wachtwoord2 == null || wachtwoord2.trim().equals("")){
+					addFieldError("wachtwoord2","Een wachtwoord is vereist");
+				}
+				if (wachtwoord1 != null && !wachtwoord1.equalsIgnoreCase(wachtwoord2)){
+					addFieldError("wachtwoord1","De wachtwoorden komen niet overeen");
+				}
+				if (geboortedatum == null || geboortedatum.trim().equals("")){
+					addFieldError("geboortedatum","Een geboortedatum is vereist");
+				}
+			}
+>>>>>>> 22a20aead9a362ff94c9d218665e99bbb93c0ee3
 		}
 	}
 
@@ -234,5 +316,18 @@ public class Register extends ActionSupport {
 		this.geslaagd = geslaagd;
 	}
 
+<<<<<<< HEAD
+=======
+	public boolean mailIsValid(String email){
+		Pattern pattern;
+		Matcher matcher;
+		final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+		pattern = Pattern.compile(EMAIL_PATTERN);
+
+		matcher = pattern.matcher(email);
+		return matcher.matches();
+	}
+>>>>>>> 22a20aead9a362ff94c9d218665e99bbb93c0ee3
 
 }
