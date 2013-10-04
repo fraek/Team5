@@ -1,6 +1,8 @@
 package nl.plaatsmarkt.actions.guest;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.util.IDAO;
@@ -60,6 +62,9 @@ public class Register extends ActionSupport {
 		}
 		if (email1 != null && !email1.equalsIgnoreCase(email2)){
 			addFieldError("email1","De e-mail adressen komen niet overeen: ");
+		}
+		if(!mailIsValid(email1)){
+			addFieldError("email1","De e-mail is onjuist");
 		}
 		//else if (2>3){
 			//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
@@ -203,6 +208,23 @@ public class Register extends ActionSupport {
 
 	public void setGeslaagd(String geslaagd) {
 		this.geslaagd = geslaagd;
+	}
+	
+	public boolean mailIsValid(String email){
+		Pattern pattern;
+		Matcher matcher;
+		final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+		
+		pattern = Pattern.compile(EMAIL_PATTERN);
+		
+		matcher = pattern.matcher(email);
+		return matcher.matches();
+	}
+	public boolean telefoonIsValid(long tel){
+		Pattern pattern;
+		Matcher matcher;
+		final String TEL_PATTERN = "^[0-9]"
+		return true;
 	}
 
 }
