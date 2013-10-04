@@ -10,7 +10,7 @@
 		    <hr />
 		    
 			<s:form action="MyAccountEdit.action">
-		   	  <s:textfield name="voornaam" label="Voornaam*" value="%{gebruiker.ID}"/>
+		   	  <s:textfield name="voornaam" label="Voornaam*" value="%{gebruiker.voornaam}"/>
 		   	  <s:textfield name="tussenvoegsel" label="Tussenvoegsel" value="%{gebruiker.tussenvoegsel}"/>
 		   	  <s:textfield name="achternaam" label="Achternaam*" value="%{gebruiker.achternaam}"/>
 		   	  <s:textfield name="email1" label="Email*" value="%{gebruiker.email}"/>

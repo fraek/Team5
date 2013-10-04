@@ -93,7 +93,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 			db.open();
 			GebruikerRol rol = null;
 			Date datum = null;
-			String query = "SELECT * FROM TO5_GEBRUIKER";
+			String query = "SELECT * FROM TO5_GEBRUIKER WHERE id = " + ID;
 			PreparedStatement ps;
 			ps = db.getCon().prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
