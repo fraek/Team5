@@ -37,7 +37,7 @@ html, body {
 }
 
 #container {
-	padding-right: 240px;
+	padding-right: 230px;
 	padding-bottom: 20px;
 	overflow:auto;
 }
@@ -51,10 +51,10 @@ html, body {
 	width: 100%;
 }
 #menu {
-	width: 169px;
-	padding: 11px 0px 20px 30px;
+	width: 179px;
+	padding: 10px 0px 10px 10px;
 	margin-top:  -1px;
-	margin-right: -240px;
+	margin-right: -280px;
 	border: 1px solid #3b679e;
 	border-top: none;
 	border-right: none;

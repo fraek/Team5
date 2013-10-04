@@ -32,7 +32,7 @@ public class Logout extends ActionSupport implements GebruikerAware, SessionAwar
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void setSession(Map<String, Object> arg0) {
+	public void setSession(Map session) {
 		this.session = (SessionMap) session;
 	}
 

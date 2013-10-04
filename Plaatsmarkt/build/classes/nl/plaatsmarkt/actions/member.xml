@@ -23,12 +23,16 @@
 			</result>
 		</global-results>
 		
-		<action name="MyAccount">
+		<action name="MyAccount" class="nl.plaatsmarkt.actions.members.MyAccount">
+			<result name="success">/jsp/member/mijnaccount.jsp</result>
+		</action>
+		
+		<action name="MyAccountEdit">
 			<result name="success">/jsp/member/welcome.jsp</result>
 		</action>
 		
-		<action name="Logout">
-			<result name="success">/jsp/member/welcome.jsp</result>
+		<action name="Logout" class="nl.plaatsmarkt.actions.members.Logout">
+			<result name="success">/jsp/member/LoggedOut.jsp</result>
 		</action>
 		
 		<action name="welkom">
