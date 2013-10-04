@@ -8,6 +8,36 @@ public class Categorie implements Serializable{
 	private ArrayList<SubCategorie> alleSubCategoriën;
 	private String naam;
 	private String omschrijving;
+	private int ID;
+	
+	/* Constructors*/
+	public Categorie(ArrayList<SubCategorie> alleSubCategoriën, String naam,
+			String omschrijving, int iD) {
+		this.alleSubCategoriën = alleSubCategoriën;
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+		ID = iD;
+	}
+	
+	public Categorie(ArrayList<SubCategorie> alleSubCategoriën, String naam,
+			String omschrijving) {
+		this.alleSubCategoriën = alleSubCategoriën;
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+	}
+	
+	public Categorie(String naam,
+			String omschrijving, int iD) {
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+		ID = iD;
+	}
+	
+	public Categorie( String naam,
+			String omschrijving) {
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+	}
 		
 	/* Getters en Setters */
 	public String getNaam() {
@@ -27,6 +57,12 @@ public class Categorie implements Serializable{
 	}
 	public void setalleSubCategoriën(ArrayList<SubCategorie> alleSubCategoriën) {
 		this.alleSubCategoriën = alleSubCategoriën;
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
 	}
 
 }

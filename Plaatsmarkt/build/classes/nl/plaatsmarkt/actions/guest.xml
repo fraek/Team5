@@ -6,10 +6,23 @@
 <struts>
 	<package name="guest" namespace="/" extends="struts-default">
 		<action name="Register" class="nl.plaatsmarkt.actions.guest.Register">
-		    <result name="success">/jsp/guest/login.jsp</result>
+		    <result name="success">/jsp/guest/account/login.jsp</result>
 		    <result name="error">error.jsp</result>
-		    <result name="input">/jsp/guest/registreren.jsp</result>
+		    <result name="input">/jsp/guest/account/registreren.jsp</result>
 		</action>	
+		
+		<action name="ZoekVeiling">
+			<result name="success">/jsp/guest/veiling/zoekVeiling.jsp</result>
+		</action>
+		<action name="ZoekVeilingForm">
+			<result name="success">/jsp/guest/veiling/zoekVeilingForm.jsp</result>
+		</action>
+		<action name="CategorieLijst">
+			<result name="success">/jsp/guest/veiling/categorieList.jsp</result>
+		</action>
+		<action name="SubCategorieLijst">
+			<result name="success">/jsp/guest/veiling/subCategorieList.jsp</result>
+		</action>
 		
 		<action name="Login" class="nl.plaatsmarkt.actions.guest.Login">
 		 	<result name="success">/jsp/member/welcome.jsp</result>
@@ -21,7 +34,7 @@
 		 		<param name="location">member/welkom.action</param>
 				<param name="parse">false</param>
 		 	</result>		 	
-		    <result name="input">/jsp/guest/login.jsp</result>
+		    <result name="input">/jsp/guest/account/login.jsp</result>
 		    <result name="error">error.jsp</result>
 		</action>
      </package>

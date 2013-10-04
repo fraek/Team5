@@ -1,4 +1,4 @@
-<%@include file="/jsp/guest/header.jsp" %>
+<%@include file="/../jsp/guest/header.jsp" %>
 <div id="container">
 
 	<div id="center" class="column">
@@ -24,6 +24,6 @@
 		
 		
 	</div>
-	<%@include file="../menu.jsp" %>
+	<%@include file="../../menu.jsp" %>
 </div>
-<%@include file="/jsp/guest/footer.jsp" %>
+<%@include file="/../jsp/guest/footer.jsp" %>
