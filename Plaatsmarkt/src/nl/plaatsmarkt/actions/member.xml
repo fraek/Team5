@@ -27,8 +27,9 @@
 			<result name="success">/jsp/member/mijnaccount.jsp</result>
 		</action>
 		
-		<action name="MyAccountEdit">
-			<result name="success">/jsp/member/welcome.jsp</result>
+		<action name="MyAccountEdit" class="nl.plaatsmarkt.actions.members.MyAccountEdit">
+			<result name="success">/jsp/member/mijnaccountEdit.jsp</result>
+			<result name="input">/jsp/member/mijnaccount.jsp</result>
 		</action>
 		
 		<action name="Logout" class="nl.plaatsmarkt.actions.members.Logout">

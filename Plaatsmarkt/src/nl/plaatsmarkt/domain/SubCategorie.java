@@ -3,11 +3,12 @@ package nl.plaatsmarkt.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Categorie implements Serializable{
+public class SubCategorie implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private ArrayList<SubCategorie> alleSubCategoriën;
+	
 	private String naam;
 	private String omschrijving;
+	private ArrayList<Veiling> alleVeilingen;
 		
 	/* Getters en Setters */
 	public String getNaam() {
@@ -22,11 +23,11 @@ public class Categorie implements Serializable{
 	public void setOmschrijving(String omschrijving) {
 		this.omschrijving = omschrijving;
 	}
-	public ArrayList<SubCategorie> alleSubCategoriën() {
-		return alleSubCategoriën;
+	public ArrayList<Veiling> alleVeilingen() {
+		return alleVeilingen;
 	}
-	public void setalleSubCategoriën(ArrayList<SubCategorie> alleSubCategoriën) {
-		this.alleSubCategoriën = alleSubCategoriën;
+	public void setalleSubCategoriën(ArrayList<Veiling> alleVeilingen) {
+		this.alleVeilingen = alleVeilingen;
 	}
 
 }

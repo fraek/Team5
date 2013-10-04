@@ -8,7 +8,7 @@ public class Veiling implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Gebruiker deAanbieder;
-	private Voorwerp hetVoorwerp;
+	private SubCategorie deSubCategorie;
 	private ArrayList<Bod> alleBiedingen;
 	private String titel;
 	private String beschrijving;
@@ -22,12 +22,6 @@ public class Veiling implements Serializable{
 	}
 	public void setDeAanbieder(Gebruiker deAanbieder) {
 		this.deAanbieder = deAanbieder;
-	}
-	public Voorwerp getHetVoorwerp() {
-		return hetVoorwerp;
-	}
-	public void setHetVoorwerp(Voorwerp hetVoorwerp) {
-		this.hetVoorwerp = hetVoorwerp;
 	}
 	public ArrayList<Bod> getAlleBiedingen() {
 		return alleBiedingen;
@@ -58,5 +52,11 @@ public class Veiling implements Serializable{
 	}
 	public void setVerloopDatum(Date verloopDatum) {
 		this.verloopDatum = verloopDatum;
+	}
+	public SubCategorie getDeSubCategorie() {
+		return deSubCategorie;
+	}
+	public void setDeSubCategorie(SubCategorie deSubCategorie) {
+		this.deSubCategorie = deSubCategorie;
 	}
 }

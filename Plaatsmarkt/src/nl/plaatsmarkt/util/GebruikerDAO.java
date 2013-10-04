@@ -138,7 +138,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		db.open();
 		db.createStmt();
 		
-		String statement = "UPDATE PERS_COMPONIST SET NAAM=?, TUSSENVOEGSEL=?, ACHTERNAAM=?, EMAIL=?, WACHTWOORD=?, GEBOORTEDATUM=?, WOONPLAATS=?, POSTCODE=?, ADRES=?, TELEFOONNUMMER=?, GEBRUIKERSNAAM=?, ROL=? WHERE ID = " + id;
+		String statement = "UPDATE TO5_GEBRUIKER SET NAAM=?, TUSSENVOEGSEL=?, ACHTERNAAM=?, EMAIL=?, WACHTWOORD=?, GEBOORTEDATUM=?, WOONPLAATS=?, POSTCODE=?, ADRES=?, TELEFOONNUMMER=?, GEBRUIKERSNAAM=?, ROL=? WHERE ID = " + id;
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, gebruiker.getVoornaam());
 		preparedStatement.setString(2, gebruiker.getTussenvoegsel());
