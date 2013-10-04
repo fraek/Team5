@@ -7,21 +7,23 @@
 			<div id="boxBody">
 				<s:property value="geslaagd"/>
 				
-				<s:div>Welkom bij Plaatsmarkt</s:div>
-				<s:text name="Inloggen:" />
-				<s:form action="LoginForm.action" method="post" enctype="multipart/form-data"><br />
-					<s:textfield key="gebruikersnaam" name="gebruikersnaam" label="Gebruikersnaam"/>
-					<s:password key="wachtwoord" name="wachtwoord" label="Wachtwoord"/>
-					<s:token />
-					<s:submit key="submit" />
+				<h4>U kunt hier inloggen</h4> 	
+	    
+		    	<hr />
+				<s:form action="Login.action">
+				 	<s:textfield name="gebruikersnaam" label="Gebruikersnaam**"/>
+		   	 		 <s:password name="wachtwoord" label="Wachtwoord*"/>
+					<s:submit value="Inloggen" />
 				</s:form>
+				<hr />
+				
 				Nog geen account?<br />
-			<a href="<s:url value="/jsp/guest/registreren.jsp"/>">Klik hier</a> om te registreren!<br />
+			<a href="<s:url value="Register.action"/>">Klik hier</a> om te registreren!<br /><br />
 			</div>
 		</div>
 		
 		
 	</div>
-	<%@include file="/jsp/guest/menu.jsp" %>
+	<%@include file="../menu.jsp" %>
 </div>
 <%@include file="/jsp/guest/footer.jsp" %>

@@ -5,15 +5,13 @@
 
 <struts>
 	<package name="default" namespace="/" extends="struts-default"> 
-		<action name="Login">
-		    <result>jsp/guest/login.jsp</result>
-		</action>		
-		
 		<action name="Index">
 			<result>jsp/guest/index.jsp</result>
 		</action>
 	</package>	
 		
-    <include file="nl/plaatsmarkt/actions/users.xml"/>
+    <include file="nl/plaatsmarkt/actions/guest.xml"/>
+    <include file="nl/plaatsmarkt/actions/member.xml"/>
+    <include file="nl/plaatsmarkt/actions/admin.xml"/>
  
 </struts>

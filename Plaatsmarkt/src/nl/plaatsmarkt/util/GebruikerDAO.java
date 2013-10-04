@@ -4,9 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Gebruiker;
+import nl.plaatsmarkt.domain.GebruikerRol;
 
 public class GebruikerDAO implements IDAO<Gebruiker>{
 	private DatabaseDAO db = ServiceProvider.getDatabaseDAO();
@@ -45,26 +47,43 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 	public List<Gebruiker> read() throws SQLException {
 		db.open();
 		db.createStmt();
-		String query = "SELECT * FROM PERS_COMPONIST";
+		String query = "SELECT * FROM TO5_GEBRUIKER";
 		ResultSet rs = db.getStmt().executeQuery(query);
-		
 		List<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
-//		while(rs.next())
-//			{
-//			alleComponisten.add(
-//					new Lid	(			rs.getString("NAAM"),
-//										rs.getString("LAND"),
-//										rs.getString("TIJDVAK"),
-//										rs.getString("COMPOSITIES"),
-//										rs.getInt("ID")
-//									) 	);
-//			}
+		GebruikerRol rol = null;
+		while(rs.next())
+			{
+			
+			//Per result rol bepalen
+			if(rs.getString("ROL").equalsIgnoreCase("Member")){
+				rol = GebruikerRol.Member;
+			}else if(rs.getString("ROL").equalsIgnoreCase("Admin")){
+				rol = GebruikerRol.Admin;
+			}
+			
+			Date datum = null;
+			alleGebruikers.add(
+					new Gebruiker	(	
+							Integer.parseInt(rs.getString("ID")),
+							rs.getString("NAAM"),
+							rs.getString("TUSSENVOEGSEL"),
+							rs.getString("ACHTERNAAM"),
+							rs.getString("GEBRUIKERSNAAM"),
+							rs.getString("EMAIL"),
+							rs.getString("WACHTWOORD"),
+							rs.getString("ADRES"),
+							rs.getString("POSTCODE"),
+							rs.getString("WOONPLAATS"),
+							datum, //N.Y.I DATE		
+							rs.getLong("TELEFOONNUMMER"),
+							rol) 	);
+			}
 		rs.close();
 		
 		db.close();
 		db.closeStmt();		
 		
-		return null;
+		return alleGebruikers;
 	}
 
 	@Override

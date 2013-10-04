@@ -16,6 +16,6 @@
 		
 		
 	</div>
-	<%@include file="/jsp/guest/menu.jsp" %>
+	<%@include file="../menu.jsp" %>
 </div>
 <%@include file="/jsp/guest/footer.jsp" %>
