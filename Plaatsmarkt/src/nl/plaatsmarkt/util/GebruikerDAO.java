@@ -59,6 +59,8 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 				rol = GebruikerRol.Member;
 			}else if(rs.getString("ROL").equalsIgnoreCase("Admin")){
 				rol = GebruikerRol.Admin;
+			}else if(rs.getString("ROL").equalsIgnoreCase("Geblokkeerd")){
+				rol = GebruikerRol.Geblokkeerd;
 			}
 			
 			Date datum = null;
@@ -104,6 +106,8 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 				rol = GebruikerRol.Member;
 			}else if(rs.getString("ROL").equalsIgnoreCase("Admin")){
 				rol = GebruikerRol.Admin;
+			}else if(rs.getString("ROL").equalsIgnoreCase("Geblokkeerd")){
+				rol = GebruikerRol.Geblokkeerd;
 			}
 			
 			opgehaaldeGebruiker = new Gebruiker	(	

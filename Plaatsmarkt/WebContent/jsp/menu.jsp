@@ -34,7 +34,7 @@
 	    <a href="<s:url action='SubCategorieLijst' namespace="/admin"/>">Subcategorie Overzicht</a><br/>
 	    <a href="<s:url action='AddSubCategorieForm' namespace="/admin"/>">Subcategorie Toevoegen</a><br/><br/>
 	    <a href="<s:url action='LedenLijst' namespace="/admin"/>">Lid Overzicht</a><br/>
-	    <a href="<s:url action='AddLidForm' namespace="/admin"/>">Lid Toevoegen</a><br/><br/>
+	    <a href="<s:url action='AddLid' namespace="/admin"/>">Lid Toevoegen</a><br/><br/>
 	    
 	    <b>Account</b><br/>
 	    <a href="<s:url action='MyAccount' namespace="/member"/>">Mijn Account</a><br/>

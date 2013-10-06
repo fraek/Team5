@@ -1,4 +1,4 @@
-package nl.plaatsmarkt.actions.members;
+package nl.plaatsmarkt.actions.member;
 
 import java.util.Map;
 

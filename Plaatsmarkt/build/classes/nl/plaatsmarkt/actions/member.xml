@@ -24,14 +24,14 @@
 		</global-results>
 		
 		<!-- Account Beheer -->
-		<action name="MyAccount" class="nl.plaatsmarkt.actions.members.MyAccount">
+		<action name="MyAccount" class="nl.plaatsmarkt.actions.member.MyAccount">
 			<result name="success">/jsp/member/account/mijnaccount.jsp</result>
 		</action>
-		<action name="MyAccountEdit" class="nl.plaatsmarkt.actions.members.MyAccountEdit">
+		<action name="MyAccountEdit" class="nl.plaatsmarkt.actions.member.MyAccountEdit">
 			<result name="success">/jsp/member/account/mijnaccountEdit.jsp</result>
 			<result name="input">/jsp/member/account/mijnaccount.jsp</result>
 		</action>
-		<action name="Logout" class="nl.plaatsmarkt.actions.members.Logout">
+		<action name="Logout" class="nl.plaatsmarkt.actions.member.Logout">
 			<result name="success">/jsp/member/account/LoggedOut.jsp</result>
 		</action>
 				

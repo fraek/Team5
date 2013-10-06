@@ -11,4 +11,4 @@
 
 <body>
 <div id="wrapper">
-<div id="header" onclick="location.href='<s:url action='Index' namespace="/"/>';" style="cursor:pointer;">»Plaatsmarkt</div>
+<div id="header" onclick="Index.action" style="cursor:pointer;">»Plaatsmarkt</div>

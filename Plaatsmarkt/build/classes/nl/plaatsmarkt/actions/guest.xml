@@ -33,6 +33,10 @@
 		 	<result name="member" type="redirect">
 		 		<param name="location">member/welkom.action</param>
 				<param name="parse">false</param>
+		 	</result>
+		 	<result name="geblokkeerd" type="redirect">
+		 		<param name="location">jsp/guest/geblokkeerd.jsp</param>
+				<param name="parse">false</param>
 		 	</result>		 	
 		    <result name="input">/jsp/guest/account/login.jsp</result>
 		    <result name="error">error.jsp</result>

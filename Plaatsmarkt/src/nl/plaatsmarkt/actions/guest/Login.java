@@ -24,11 +24,14 @@ public class Login extends ActionSupport implements SessionAware{
 	
 	@SuppressWarnings("unchecked")
 	public String execute() throws Exception {
-		session.put( "gebruiker", gebruiker);
 		if(gebruiker.getGebruikerRol() == GebruikerRol.Member){
+			session.put( "gebruiker", gebruiker);
 			return "member";
 		}if(gebruiker.getGebruikerRol() == GebruikerRol.Admin){
+			session.put( "gebruiker", gebruiker);
 			return "admin";
+		}if(gebruiker.getGebruikerRol() == GebruikerRol.Geblokkeerd){
+			return "geblokkeerd";
 		}
 		return SUCCESS;
 	}

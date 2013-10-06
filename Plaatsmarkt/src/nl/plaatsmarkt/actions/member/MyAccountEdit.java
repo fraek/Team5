@@ -1,4 +1,4 @@
-package nl.plaatsmarkt.actions.members;
+package nl.plaatsmarkt.actions.member;
 
 import java.util.Date;
 
@@ -45,6 +45,12 @@ public class MyAccountEdit extends ActionSupport implements GebruikerAware{
 			ENUMRol = GebruikerRol.Admin;
 		}
 		
+		//Als wachtwoord niet verandert is, dan wachtwoord uit DB gebruiken
+		if(wachtwoord1 == null || wachtwoord1.trim().equals("")){
+			Gebruiker dbGebruiker = (Gebruiker) dao.getObject(id);
+			wachtwoord1 = dbGebruiker.getWachtwoord();
+		}
+
 		gebruiker = new Gebruiker(id, voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
 				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer, ENUMRol);
 		
