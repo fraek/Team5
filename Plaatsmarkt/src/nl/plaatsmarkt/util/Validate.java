@@ -26,4 +26,5 @@ public class Validate {
 		matcher = pattern.matcher(postcode);
 		return matcher.matches();
 	}
+	
 }
