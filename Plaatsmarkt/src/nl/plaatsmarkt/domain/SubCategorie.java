@@ -36,9 +36,10 @@ public class SubCategorie implements Serializable{
 	}
 	
 	public SubCategorie(String naam,
-			String omschrijving) {
+			String omschrijving, Categorie categorie) {
 		this.naam = naam;
 		this.omschrijving = omschrijving;
+		this.categorie = categorie;
 	}
 		
 	/* Getters en Setters */

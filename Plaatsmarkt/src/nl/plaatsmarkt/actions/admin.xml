@@ -34,17 +34,19 @@
 		<action name="AddCategorieForm">
 			<result name="success">/jsp/admin/veiling/addCategorieForm.jsp</result>
 		</action>
-		<action name="AddCategorie">
+		<action name="AddCategorie" class="nl.plaatsmarkt.actions.admin.AddCategorie">
 			<result name="success">/jsp/admin/veiling/addCategorie.jsp</result>
+			<result name="input">/jsp/admin/veiling/addCategorieForm.jsp</result>
 		</action>
 		<action name="SubCategorieLijst">
 			<result name="success">/jsp/admin/veiling/subCategorieList.jsp</result>
 		</action>
-		<action name="AddSubCategorieForm">
+		<action name="AddSubCategorieForm" class="nl.plaatsmarkt.actions.admin.CategorieList">
 			<result name="success">/jsp/admin/veiling/addSubCategorieForm.jsp</result>
 		</action>
-		<action name="AddSubCategorie">
+		<action name="AddSubCategorie" class="nl.plaatsmarkt.actions.admin.AddSubCategorie">
 			<result name="success">/jsp/admin/veiling/addSubCategorie.jsp</result>
+			<result name="input">/jsp/admin/veiling/addSubCategorieForm.jsp</result>
 		</action>
 		<action name="LedenLijst" class="nl.plaatsmarkt.actions.admin.MemberList">
 			<result name="success">/jsp/admin/account/ledenLijst.jsp</result>

@@ -8,11 +8,9 @@
 			<s:form action="AddSubCategorie.action">
 				<s:textfield name="titel" label="Titel*" />
 				<s:textarea name="omschrijving" label="Omschrijving*" />
-				<select name="Categorie" id="Categorie" label="Categorie*"> 
-					<option value="bing.com">bing.com</option> 
-					<option value="yahoo.com">yahoo.com</option> 
-					<option value="baidu.com">baidu.com</option> 
-				</select> 
+				<!--
+					<s:select name="categorie" label="Categorieën*" headerKey="-1" headerValue="Selecteer Categorie" list="alleCategorieen" listValue="naam"/>
+	   	    	-->
 	   	    <s:submit value="Subcategorie Toevoegen"/>
 			</s:form>
 			</div>

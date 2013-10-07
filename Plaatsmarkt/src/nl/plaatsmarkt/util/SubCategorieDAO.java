@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Categorie;
-import nl.plaatsmarkt.domain.GebruikerRol;
 import nl.plaatsmarkt.domain.SubCategorie;
 
 public class SubCategorieDAO implements IDAO<SubCategorie>{
@@ -24,7 +23,7 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, subcategorie.getOmschrijving());
 		preparedStatement.setString(2, subcategorie.getNaam());
-		preparedStatement.setString(2, subcategorie.getCategorie().toString());
+		preparedStatement.setInt(3, subcategorie.getCategorie().getID());
 		preparedStatement.execute();
 
 		db.close();
