@@ -37,6 +37,7 @@ public class Register extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
+		geboorteDate = new Date();
 		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
 				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
 		dao.create(gebruiker);
@@ -102,6 +103,9 @@ public class Register extends ActionSupport {
 			}
 			if(!validate.postcode(postcode)){
 				addFieldError("postcode","Postcode is onjuist");
+			}
+			if(!validate.datum(geboortedatum)){
+				addFieldError("geboortedatum","Geboorte datum is ongeldig");
 			}
 		}
 	}
