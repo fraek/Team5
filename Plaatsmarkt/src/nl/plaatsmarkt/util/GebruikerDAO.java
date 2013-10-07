@@ -49,7 +49,6 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		db.createStmt();
 		String query = "SELECT * FROM TO5_GEBRUIKER";
 		ResultSet rs = db.getStmt().executeQuery(query);
-		@SuppressWarnings("unused")
 		List<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
 		GebruikerRol rol = null;
 		while(rs.next())
@@ -60,6 +59,8 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 				rol = GebruikerRol.Member;
 			}else if(rs.getString("ROL").equalsIgnoreCase("Admin")){
 				rol = GebruikerRol.Admin;
+			}else if(rs.getString("ROL").equalsIgnoreCase("Geblokkeerd")){
+				rol = GebruikerRol.Geblokkeerd;
 			}
 			
 			Date datum = null;
@@ -89,20 +90,116 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 
 	@Override
 	public Object getObject(int ID) throws SQLException {
-		return null;
+		Gebruiker opgehaaldeGebruiker = null;
+		try {
+			db.open();
+			GebruikerRol rol = null;
+			Date datum = null;
+			String query = "SELECT * FROM TO5_GEBRUIKER WHERE id = " + ID;
+			PreparedStatement ps;
+			ps = db.getCon().prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+		
+			//Per result rol bepalen
+			if(rs.getString("ROL").equalsIgnoreCase("Member")){
+				rol = GebruikerRol.Member;
+			}else if(rs.getString("ROL").equalsIgnoreCase("Admin")){
+				rol = GebruikerRol.Admin;
+			}else if(rs.getString("ROL").equalsIgnoreCase("Geblokkeerd")){
+				rol = GebruikerRol.Geblokkeerd;
+			}
+			
+			opgehaaldeGebruiker = new Gebruiker	(	
+						Integer.parseInt(rs.getString("ID")),
+						rs.getString("NAAM"),
+						rs.getString("TUSSENVOEGSEL"),
+						rs.getString("ACHTERNAAM"),
+						rs.getString("GEBRUIKERSNAAM"),
+						rs.getString("EMAIL"),
+						rs.getString("WACHTWOORD"),
+						rs.getString("ADRES"),
+						rs.getString("POSTCODE"),
+						rs.getString("WOONPLAATS"),
+						datum, //N.Y.I DATE		
+						rs.getLong("TELEFOONNUMMER"),
+						rol);
+			
+			ps.close();
+			db.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return opgehaaldeGebruiker;
 	}
 
 	@Override
 	public void update(Object T) throws SQLException {
+		Gebruiker gebruiker = (Gebruiker)T;
+		int id = gebruiker.getID();
+		
+		db.open();
+		db.createStmt();
+		
+		String statement = "UPDATE TO5_GEBRUIKER SET NAAM=?, TUSSENVOEGSEL=?, ACHTERNAAM=?, EMAIL=?, WACHTWOORD=?, GEBOORTEDATUM=?, WOONPLAATS=?, POSTCODE=?, ADRES=?, TELEFOONNUMMER=?, GEBRUIKERSNAAM=?, ROL=? WHERE ID = " + id;
+		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
+		preparedStatement.setString(1, gebruiker.getVoornaam());
+		preparedStatement.setString(2, gebruiker.getTussenvoegsel());
+		preparedStatement.setString(3, gebruiker.getAchternaam());
+		preparedStatement.setString(4, gebruiker.getEmail());
+		preparedStatement.setString(5, gebruiker.getWachtwoord());
+		preparedStatement.setDate(6, null);								//gebruiker.getGeboortedatum()
+		preparedStatement.setString(7, gebruiker.getWoonplaats());
+		preparedStatement.setString(8, gebruiker.getPostcode());
+		preparedStatement.setString(9, gebruiker.getAdres());
+		preparedStatement.setFloat(10, gebruiker.getTelefoonnummer());
+		preparedStatement.setString(11, gebruiker.getGebruikersnaam());
+		preparedStatement.setString(12, gebruiker.getGebruikerRol().toString());
+		preparedStatement.execute();
+		
+		db.close();
+		db.closeStmt();		
 	}
 
 	@Override
 	public void delete(Object T) throws SQLException {
+		Gebruiker gebruiker = (Gebruiker)T;
+		int id = gebruiker.getID();
+		
+		db.open();
+		db.createStmt();
+		
+		String statement = "DELETE FROM TO5_GEBRUIKER WHERE id = " + id;
+		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
+		preparedStatement.execute();
+		
+		db.close();
+		db.closeStmt();	
+	}
+	
+	@Override
+	public void delete(int ID) throws SQLException {
+		db.open();
+		db.createStmt();
+		
+		String statement = "DELETE FROM TO5_GEBRUIKER WHERE id = " + ID;
+		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
+		preparedStatement.execute();
+		
+		db.close();
+		db.closeStmt();	
 	}
 
 	@Override
 	public int count() {
-		return 0;
+		return db.getRows("TO5_GEBRUIKER");
+	}
+
+	@Override
+	public Object getObject(String NAAM) throws SQLException {
+		//Deze methode zou theoretisch te gebruiken kunnen zijn bij 1 String waarde
+		return null;
 	}
 
 }

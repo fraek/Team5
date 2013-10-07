@@ -1,0 +1,26 @@
+package nl.plaatsmarkt.actions.admin;
+
+import nl.plaatsmarkt.domain.Gebruiker;
+import nl.plaatsmarkt.util.IDAO;
+import nl.plaatsmarkt.util.ServiceProvider;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class DeleteLid extends ActionSupport{
+	private IDAO<Gebruiker> dao = ServiceProvider.getGebruikerDAO();
+	private static final long serialVersionUID = 1L;
+	private int id;
+
+	public String execute() throws Exception {
+		dao.delete(id);
+		return SUCCESS;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+}

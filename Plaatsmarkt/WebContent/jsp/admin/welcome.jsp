@@ -5,7 +5,7 @@
 		<div id="box">
 			<div id="boxHead">Welkom ADMIN!</div>
 			<div id="boxBody">
-				U bent succesvol ingelogd <s:property value="gebruiker.gebruikersnaam"/>
+				U bent succesvol ingelogd <s:property value="#session['gebruiker'].gebruikersnaam"/>
 			</div>
 		</div>
 		

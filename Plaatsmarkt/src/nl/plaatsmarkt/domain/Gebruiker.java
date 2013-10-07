@@ -55,7 +55,7 @@ public class Gebruiker implements Serializable{
 		this.woonplaats = woonplaats;
 		this.geboortedatum = geboortedatum;
 		this.telefoonnummer = telefoonnummer;
-		this.gebruikerRol = rol;		//Standaard wordt er een member aangemaakt
+		this.gebruikerRol = rol;
 	}
 	
 	public String toString()

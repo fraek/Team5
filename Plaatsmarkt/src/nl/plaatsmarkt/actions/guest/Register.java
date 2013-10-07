@@ -5,11 +5,12 @@ import java.util.Date;
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
+import nl.plaatsmarkt.util.Validate;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Register extends ActionSupport {
-	
+
 	private static final long serialVersionUID = 1L;
 	private IDAO<?> dao = ServiceProvider.getGebruikerDAO();
 	private String voornaam;
@@ -27,39 +28,39 @@ public class Register extends ActionSupport {
 	private long telefoonnummer;	//Een int is niet lang genoeg voor een tel.nummer
 	private String geslaagd;
 	private Gebruiker gebruiker;
-	
+
 	/*
 	 * Controle of persoon 16 jaar is of ouder
 	 * Controle op beide wachtwoorden valid
 	 * Controle op valid email
-	*/
+	 */
 
 	@Override
 	public String execute() throws Exception {
 		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
-					wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
+				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
 		dao.create(gebruiker);
-		
+
 		setGeslaagd("U bent succesvol geregisteerd met "+ email1);
-		
+
 		return SUCCESS;
 	}
-	
+
 	@Override
 	public void validate(){
-		if		(	(voornaam == null || voornaam.trim().equals("")					)									 
-					& 	(achternaam == null || achternaam.trim().equals("")			)					
-					& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
-					& 	(email1 == null || email1.trim().equals("")					)						
-					& 	(email2 == null || email2.trim().equals("")					)						
-					& 	(wachtwoord1 == null || wachtwoord1.trim().equals("")		)				
-					& 	(wachtwoord2 == null || wachtwoord2.trim().equals("")		)				
-					& 	(geboortedatum == null || geboortedatum.trim().equals("")	)	
+		if		(	(voornaam == null || voornaam.trim().equals("")				)									 
+				& 	(achternaam == null || achternaam.trim().equals("")			)					
+				& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
+				& 	(email1 == null || email1.trim().equals("")					)						
+				& 	(email2 == null || email2.trim().equals("")					)						
+				& 	(wachtwoord1 == null || wachtwoord1.trim().equals("")		)				
+				& 	(wachtwoord2 == null || wachtwoord2.trim().equals("")		)				
+				& 	(geboortedatum == null || geboortedatum.trim().equals("")	)	
 				)
 		{
 			addFieldError("voornaam","Velden met * zijn verplicht");
 		}else{
-		
+			//check if empty
 			if (voornaam == null || voornaam.trim().equals("")){
 				addFieldError("voornaam","Een voornaam is vereist");
 			}
@@ -76,11 +77,8 @@ public class Register extends ActionSupport {
 				addFieldError("email2","Een e-mail adres is vereist");
 			}
 			if (email1 != null && !email1.equalsIgnoreCase(email2)){
-				addFieldError("email1","De e-mail adressen komen niet overeen: ");
+				addFieldError("email1","De e-mail adressen komen niet overeen");
 			}
-			//else if (2>3){
-				//addFieldError("email","Er moet een geldig email adres worden ingevoerd");
-			//}
 			if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
 				addFieldError("wachtwoord1","Een wachtwoord is vereist");
 			}
@@ -93,14 +91,26 @@ public class Register extends ActionSupport {
 			if (geboortedatum == null || geboortedatum.trim().equals("")){
 				addFieldError("geboortedatum","Een geboortedatum is vereist");
 			}
+
+			//init validator
+
+			Validate validate = new Validate();
+
+			//validate values
+			if(!validate.mail(email1)){
+				addFieldError("email1","Email is onjuist");
+			}
+			if(!validate.postcode(postcode)){
+				addFieldError("postcode","Postcode is onjuist");
+			}
 		}
 	}
-	
+
 	public String getVoornaam() {
-       return voornaam;
+		return voornaam;
 	}
-	   public void setVoornaam(String voornaam) {
-       this.voornaam = voornaam;
+	public void setVoornaam(String voornaam) {
+		this.voornaam = voornaam;
 	}
 
 	public String getTussenvoegsel() {
@@ -126,7 +136,7 @@ public class Register extends ActionSupport {
 	public void setGebruikersnaam(String gebruikersnaam) {
 		this.gebruikersnaam = gebruikersnaam;
 	}
-	
+
 	public String getEmail1() {
 		return email1;
 	}
@@ -134,7 +144,7 @@ public class Register extends ActionSupport {
 	public void setEmail1(String email1) {
 		this.email1 = email1;
 	}
-	
+
 	public String getEmail2() {
 		return email2;
 	}

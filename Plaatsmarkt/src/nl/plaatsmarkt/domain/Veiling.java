@@ -6,14 +6,63 @@ import java.util.Date;
 
 public class Veiling implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
 	private Gebruiker deAanbieder;
-	private Voorwerp hetVoorwerp;
+	private SubCategorie deSubCategorie;
 	private ArrayList<Bod> alleBiedingen;
 	private String titel;
 	private String beschrijving;
 	private Date aanmaakDatum;
 	private Date verloopDatum;
+	private int ID;
+	
+	/* Constuctors */
+	public Veiling(Gebruiker deAanbieder, SubCategorie deSubCategorie,
+			ArrayList<Bod> alleBiedingen, String titel, String beschrijving,
+			Date aanmaakDatum, Date verloopDatum, int iD) {
+		this.deAanbieder = deAanbieder;
+		this.deSubCategorie = deSubCategorie;
+		this.alleBiedingen = alleBiedingen;
+		this.titel = titel;
+		this.beschrijving = beschrijving;
+		this.aanmaakDatum = aanmaakDatum;
+		this.verloopDatum = verloopDatum;
+		ID = iD;
+	}
+	
+	public Veiling(Gebruiker deAanbieder, SubCategorie deSubCategorie,
+			ArrayList<Bod> alleBiedingen, String titel, String beschrijving,
+			Date aanmaakDatum, Date verloopDatum) {
+		this.deAanbieder = deAanbieder;
+		this.deSubCategorie = deSubCategorie;
+		this.alleBiedingen = alleBiedingen;
+		this.titel = titel;
+		this.beschrijving = beschrijving;
+		this.aanmaakDatum = aanmaakDatum;
+		this.verloopDatum = verloopDatum;
+	}
+	
+	public Veiling(Gebruiker deAanbieder, SubCategorie deSubCategorie,
+			String titel, String beschrijving,
+			Date aanmaakDatum, Date verloopDatum, int iD) {
+		this.deAanbieder = deAanbieder;
+		this.deSubCategorie = deSubCategorie;
+		this.titel = titel;
+		this.beschrijving = beschrijving;
+		this.aanmaakDatum = aanmaakDatum;
+		this.verloopDatum = verloopDatum;
+		ID = iD;
+	}
+	
+	public Veiling(Gebruiker deAanbieder, SubCategorie deSubCategorie,
+			String titel, String beschrijving,
+			Date aanmaakDatum, Date verloopDatum) {
+		this.deAanbieder = deAanbieder;
+		this.deSubCategorie = deSubCategorie;
+		this.titel = titel;
+		this.beschrijving = beschrijving;
+		this.aanmaakDatum = aanmaakDatum;
+		this.verloopDatum = verloopDatum;
+	}
 	
 	
 	/* Getters en Setters */
@@ -22,12 +71,6 @@ public class Veiling implements Serializable{
 	}
 	public void setDeAanbieder(Gebruiker deAanbieder) {
 		this.deAanbieder = deAanbieder;
-	}
-	public Voorwerp getHetVoorwerp() {
-		return hetVoorwerp;
-	}
-	public void setHetVoorwerp(Voorwerp hetVoorwerp) {
-		this.hetVoorwerp = hetVoorwerp;
 	}
 	public ArrayList<Bod> getAlleBiedingen() {
 		return alleBiedingen;
@@ -58,5 +101,17 @@ public class Veiling implements Serializable{
 	}
 	public void setVerloopDatum(Date verloopDatum) {
 		this.verloopDatum = verloopDatum;
+	}
+	public SubCategorie getDeSubCategorie() {
+		return deSubCategorie;
+	}
+	public void setDeSubCategorie(SubCategorie deSubCategorie) {
+		this.deSubCategorie = deSubCategorie;
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
 	}
 }

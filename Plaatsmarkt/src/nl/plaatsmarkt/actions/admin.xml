@@ -27,5 +27,45 @@
 			<result name="success">/jsp/admin/welcome.jsp</result>
 		</action>
 		
+		<!-- Admin Management -->
+		<action name="CategorieLijst">
+			<result name="success">/jsp/admin/veiling/categorieList.jsp</result>
+		</action>
+		<action name="AddCategorieForm">
+			<result name="success">/jsp/admin/veiling/addCategorieForm.jsp</result>
+		</action>
+		<action name="AddCategorie">
+			<result name="success">/jsp/admin/veiling/addCategorie.jsp</result>
+		</action>
+		<action name="SubCategorieLijst">
+			<result name="success">/jsp/admin/veiling/subCategorieList.jsp</result>
+		</action>
+		<action name="AddSubCategorieForm">
+			<result name="success">/jsp/admin/veiling/addSubCategorieForm.jsp</result>
+		</action>
+		<action name="AddSubCategorie">
+			<result name="success">/jsp/admin/veiling/addSubCategorie.jsp</result>
+		</action>
+		<action name="LedenLijst" class="nl.plaatsmarkt.actions.admin.MemberList">
+			<result name="success">/jsp/admin/account/ledenLijst.jsp</result>
+		</action>
+		<action name="AddLid" class="nl.plaatsmarkt.actions.admin.AddLid">
+			<result name="success">/jsp/admin/account/addLid.jsp</result>
+			<result name="input">/jsp/admin/account/addLid.jsp</result>
+		</action>
+		<action name="EditLidForm" class="nl.plaatsmarkt.actions.admin.LidDetails">
+			<result name="success">/jsp/admin/account/editLidForm.jsp</result>
+		</action>
+		<action name="EditLid" class="nl.plaatsmarkt.actions.admin.EditLid">
+			<result name="success">/jsp/admin/account/editLid.jsp</result>
+			<result name="input">/jsp/admin/account/editLidForm.jsp</result>
+		</action>
+		<action name="DeleteLidForm" class="nl.plaatsmarkt.actions.admin.LidDetails">
+			<result name="success">/jsp/admin/account/deleteLidForm.jsp</result>
+		</action>
+		<action name="DeleteLid" class="nl.plaatsmarkt.actions.admin.DeleteLid">
+			<result name="success">/jsp/admin/account/deleteLid.jsp</result>
+			<result name="input">/jsp/admin/account/deleteLidForm.jsp</result>
+		</action>
 	</package>
 </struts>

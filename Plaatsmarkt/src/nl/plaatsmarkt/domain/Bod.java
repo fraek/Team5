@@ -11,6 +11,22 @@ public class Bod implements Serializable{
 	private Gebruiker deBieder;
 	private Date datum;
 	private Time tijd;
+	private int ID;
+	
+	/* Constructors*/
+	public Bod(double bedrag, Gebruiker deBieder, Date datum, Time tijd, int iD) {
+		Bedrag = bedrag;
+		this.deBieder = deBieder;
+		this.datum = datum;
+		this.tijd = tijd;
+		ID = iD;
+	}
+	public Bod(double bedrag, Gebruiker deBieder, Date datum, Time tijd) {
+		Bedrag = bedrag;
+		this.deBieder = deBieder;
+		this.datum = datum;
+		this.tijd = tijd;
+	}
 	
 	
 	/* Getters en Setters */
@@ -37,5 +53,11 @@ public class Bod implements Serializable{
 	}
 	public void setTijd(Time tijd) {
 		this.tijd = tijd;
+	}
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
 	}
 }
