@@ -1,5 +1,6 @@
 package nl.plaatsmarkt.actions.admin;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Categorie;
@@ -20,7 +21,7 @@ public class AddSubCategorie extends ActionSupport{
 	private String geslaagd;
 	private Categorie categorie;
 	private SubCategorie subcategorie;
-	//private List<Categorie> alleCategorieen;
+	private List<Categorie> alleCategorieen;
 
 	/*
 	 * Controle of naam niet leeg is
@@ -32,7 +33,6 @@ public class AddSubCategorie extends ActionSupport{
 		categorie = (Categorie) dao.getObject(categorieTitel);
 		subcategorie = new SubCategorie(titel, omschrijving, categorie);
 		subdao.create(subcategorie);
-		//setAlleCategorieen(dao.read());
 
 		setGeslaagd("U heeft succesvol de categorie "+ titel + " aangemaakt");
 
@@ -41,7 +41,11 @@ public class AddSubCategorie extends ActionSupport{
 
 	@Override
 	public void validate(){
-		System.out.println(categorieTitel);
+		try {
+			setAlleCategorieen(dao.read());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		//check if empty
 		if (titel == null || titel.trim().equals("")){
 			addFieldError("titel","Een titel is vereist");
