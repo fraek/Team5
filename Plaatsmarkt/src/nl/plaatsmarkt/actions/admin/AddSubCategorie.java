@@ -17,9 +17,9 @@ public class AddSubCategorie extends ActionSupport{
 	private IDAO<SubCategorie> subdao = ServiceProvider.getSubCategorieDAO();
 	private String titel;
 	private String omschrijving;
-	private String categorieTitel;
+	private String categorie;
 	private String geslaagd;
-	private Categorie categorie;
+	private Categorie categorieo;
 	private SubCategorie subcategorie;
 	private List<Categorie> alleCategorieen;
 
@@ -30,11 +30,12 @@ public class AddSubCategorie extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		categorie = (Categorie) dao.getObject(categorieTitel);
-		subcategorie = new SubCategorie(titel, omschrijving, categorie);
+		int temp = Integer.parseInt(categorie);
+		categorieo = (Categorie) dao.getObject(temp);
+		subcategorie = new SubCategorie(titel, omschrijving, categorieo);
 		subdao.create(subcategorie);
 
-		setGeslaagd("U heeft succesvol de categorie "+ titel + " aangemaakt");
+		setGeslaagd("U heeft succesvol de subcategorie "+ titel + " aangemaakt");
 
 		return SUCCESS;
 	}
@@ -53,8 +54,8 @@ public class AddSubCategorie extends ActionSupport{
 		if (omschrijving == null || omschrijving.trim().equals("")){
 			addFieldError("omschrijving","Een omschrijving is vereist");
 		}
-		if (categorieTitel == null || categorieTitel.equals("") || categorieTitel.equals("Selecteer Categorie")){
-			addFieldError("categorieTitel","Een categorie is vereist");
+		if (categorie == null || categorie.equals("") || categorie.equals("Selecteer Categorie")){
+			addFieldError("categorie","Een categorie is vereist");
 		}
 	}
 
@@ -88,5 +89,13 @@ public class AddSubCategorie extends ActionSupport{
 
 	public void setGeslaagd(String geslaagd) {
 		this.geslaagd = geslaagd;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
 	}
 }

@@ -19,7 +19,7 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 		db.open();
 		db.createStmt();
 
-		String statement = "INSERT INTO TO5_SUBCATEGORIE(OMSCHRIJVING, NAAM, CATEGORIE) values (?,?,?)";
+		String statement = "INSERT INTO TO5_SUBCATEGORIE(OMSCHRIJVING, NAAM, FK_ID) values (?,?,?)";
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, subcategorie.getOmschrijving());
 		preparedStatement.setString(2, subcategorie.getNaam());
@@ -44,14 +44,31 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 		while(rs.next())
 		{	
 			//De categorie van de subcategorie ophalen dmv DAO
-			categorie = (Categorie) catDAO.getObject(rs.getString("CATEGORIE"));
-			alleSubcategoriën.add(
-					new SubCategorie(	
-							rs.getString("NAAM"),
-							rs.getString("OMSCHRIJVING"),
-							Integer.parseInt(rs.getString("ID")),
-							categorie)
-					);
+			int categorieID = (int) rs.getInt("FK_ID");
+			categorie = (Categorie) catDAO.getObject(categorieID);
+			System.out.println(categorie.getNaam());
+			//categorie = (Categorie) catDAO.getObject(rs.getString("FK_ID"));
+			
+			System.out.println(rs.getString(1));
+			System.out.println(rs.getString(2));
+			System.out.println(rs.getString(3));
+			System.out.println(rs.getString(4));
+			
+			int subcategorieID = 6;
+			System.out.println(subcategorieID);
+			System.out.println(Integer.parseInt(rs.getString("ID")));
+			SubCategorie sc = new SubCategorie(rs.getString("NAAM"), rs.getString("OMSCHRIJVING"), subcategorieID, categorie);
+			System.out.println(sc.getID());
+			alleSubcategoriën.add(sc);
+			
+			//alleSubcategoriën.add(
+			//		new SubCategorie(	
+			//				rs.getString("NAAM"),
+			//				rs.getString("OMSCHRIJVING"),
+			//				Integer.parseInt(rs.getString("ID")),
+			//				categorie)
+			//		);
+			
 		}
 		rs.close();
 
