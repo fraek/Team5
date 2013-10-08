@@ -9,19 +9,18 @@ import nl.plaatsmarkt.util.ServiceProvider;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class subcategorieDetails extends ActionSupport {
+public class SubcategorieDetails extends ActionSupport {
 	private int id;
 	private IDAO<Categorie> dao = ServiceProvider.getCategorieDAO();
 	private IDAO<SubCategorie> subdao = ServiceProvider.getSubCategorieDAO();
 	private static final long serialVersionUID = 1L;
 	private Categorie categorie;
 	private SubCategorie subcategorie;
-	private List<SubCategorie> alleSubCategorieen;
+	private List<Categorie> alleCategorieen;
 
 	public String execute() throws Exception {
-		setAlleSubCategorieen(subdao.read());
 		subcategorie = (SubCategorie) subdao.getObject(id);
-		categorie = (Categorie) dao.getObject(subcategorie.getFK_ID());
+		setAlleCategorieen((List<Categorie>)dao.read());
 		return SUCCESS;
 	}
 	
@@ -49,11 +48,11 @@ public class subcategorieDetails extends ActionSupport {
 		this.subcategorie = subcategorie;
 	}
 
-	public List<SubCategorie> getAlleSubCategorieen() {
-		return alleSubCategorieen;
+	public List<Categorie> getAlleCategorieen() {
+		return alleCategorieen;
 	}
 
-	public void setAlleSubCategorieen(List<SubCategorie> alleSubCategorieen) {
-		this.alleSubCategorieen = alleSubCategorieen;
+	public void setAlleCategorieen(List<Categorie> alleCategorieen) {
+		this.alleCategorieen = alleCategorieen;
 	}
 }

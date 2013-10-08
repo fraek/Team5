@@ -15,24 +15,26 @@ public class EditSubCategorie extends ActionSupport {
 	private String omschrijving;
 	private String categorie;
 	private int id;
-	private Categorie categorieo;
+	private Categorie categorieObject;
 	private SubCategorie subcategorie;
 	
 	
 	public String execute() throws Exception {	
 		int temp = Integer.parseInt(categorie);
-		categorieo = (Categorie) dao.getObject(temp);
-		subcategorie = new SubCategorie(naam, omschrijving, categorieo, temp);
+		categorieObject = (Categorie) dao.getObject(temp);
+		System.out.println(temp);
+		System.out.println(categorie);
+		//subcategorie = new SubCategorie(naam, omschrijving, categorieo, temp);
 		
-		subdao.update(subcategorie);
+		//subdao.update(subcategorie);
 		
 		return SUCCESS;
 	}
 	
 	public void validate(){
 		//Categorie aanmaken zodat bij een fail je de ingevulde gegevens ziet
-		categorieo = new Categorie(naam, omschrijving, subcategorie.getID());
-		subcategorie = new SubCategorie(naam, omschrijving, id, categorieo);
+		//categorieObject = new Categorie(naam, omschrijving, subcategorie.getID());
+		//subcategorie = new SubCategorie(categorieObject);
 		
 		if (naam == null || naam.trim().equals("")){
 			addFieldError("naam","Een naam is vereist");
@@ -67,14 +69,6 @@ public class EditSubCategorie extends ActionSupport {
 
 	public void setOmschrijving(String omschrijving) {
 		this.omschrijving = omschrijving;
-	}
-
-	public Categorie getCategorieo() {
-		return categorieo;
-	}
-
-	public void setCategorieo(Categorie categorieo) {
-		this.categorieo = categorieo;
 	}
 
 	public String getCategorie() {

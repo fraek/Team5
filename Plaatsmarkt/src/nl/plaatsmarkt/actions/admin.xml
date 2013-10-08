@@ -39,14 +39,14 @@
 			<result name="success">/jsp/admin/veiling/addCategorie.jsp</result>
 			<result name="input">/jsp/admin/veiling/addCategorieForm.jsp</result>
 		</action>
-		<action name="EditCategorieForm" class="nl.plaatsmarkt.actions.admin.categorieDetails">
+		<action name="EditCategorieForm" class="nl.plaatsmarkt.actions.admin.CategorieDetails">
 			<result name="success">/jsp/admin/veiling/editCategorieForm.jsp</result>
 		</action>
 		<action name="EditCategorie" class="nl.plaatsmarkt.actions.admin.EditCategorie">
 			<result name="success">/jsp/admin/veiling/editCategorie.jsp</result>
 			<result name="input">/jsp/admin/veiling/editCategorieForm.jsp</result>
 		</action>
-		<action name="DeleteCategorieForm" class="nl.plaatsmarkt.actions.admin.categorieDetails">
+		<action name="DeleteCategorieForm" class="nl.plaatsmarkt.actions.admin.CategorieDetails">
 			<result name="success">/jsp/admin/veiling/deleteCategorieForm.jsp</result>
 		</action>
 		<action name="DeleteCategorie" class="nl.plaatsmarkt.actions.admin.DeleteCategorie">
@@ -64,14 +64,14 @@
 			<result name="success">/jsp/admin/veiling/addSubCategorie.jsp</result>
 			<result name="input">/jsp/admin/veiling/addSubCategorieForm.jsp</result>
 		</action>
-		<action name="EditSubCategorieForm" class="nl.plaatsmarkt.actions.admin.subcategorieDetails">
+		<action name="EditSubCategorieForm" class="nl.plaatsmarkt.actions.admin.SubcategorieDetails">
 			<result name="success">/jsp/admin/veiling/editSubCategorieForm.jsp</result>
 		</action>
 		<action name="EditSubCategorie" class="nl.plaatsmarkt.actions.admin.EditSubCategorie">
 			<result name="success">/jsp/admin/veiling/editSubCategorie.jsp</result>
 			<result name="input">/jsp/admin/veiling/editSubCategorieForm.jsp</result>
 		</action>
-		<action name="DeleteSubCategorieForm" class="nl.plaatsmarkt.actions.admin.subcategorieDetails">
+		<action name="DeleteSubCategorieForm" class="nl.plaatsmarkt.actions.admin.SubcategorieDetails">
 			<result name="success">/jsp/admin/veiling/deleteSubCategorieForm.jsp</result>
 		</action>
 		<action name="DeleteSubCategorie" class="nl.plaatsmarkt.actions.admin.DeleteSubCategorie">

@@ -6,7 +6,7 @@ import nl.plaatsmarkt.util.ServiceProvider;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class categorieDetails extends ActionSupport {
+public class CategorieDetails extends ActionSupport {
 	private int id;
 	private IDAO<Categorie> dao = ServiceProvider.getCategorieDAO();
 	private static final long serialVersionUID = 1L;
