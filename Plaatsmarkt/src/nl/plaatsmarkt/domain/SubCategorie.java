@@ -10,7 +10,8 @@ public class SubCategorie implements Serializable{
 	private String omschrijving;
 	private Categorie categorie;
 	private int ID;
-	
+	private int FK_ID;
+
 	/* Constructors*/
 	public SubCategorie(ArrayList<Veiling> alleVeilingen, String naam,
 			String omschrijving, int iD) {
@@ -40,6 +41,23 @@ public class SubCategorie implements Serializable{
 		this.naam = naam;
 		this.omschrijving = omschrijving;
 		this.categorie = categorie;
+	}
+	
+	public SubCategorie(String naam,
+			String omschrijving, int iD, Categorie categorie, int FK_ID) {
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+		this.categorie = categorie;
+		ID = iD;
+		this.FK_ID = FK_ID;
+	}
+	
+	public SubCategorie(String naam,
+			String omschrijving, Categorie categorie, int FK_ID) {
+		this.naam = naam;
+		this.omschrijving = omschrijving;
+		this.categorie = categorie;
+		this.FK_ID = FK_ID;
 	}
 		
 	/* Getters en Setters */
@@ -74,5 +92,13 @@ public class SubCategorie implements Serializable{
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+	
+	public int getFK_ID() {
+		return FK_ID;
+	}
+
+	public void setFK_ID(int fK_ID) {
+		FK_ID = fK_ID;
 	}
 }

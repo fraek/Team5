@@ -13,10 +13,10 @@
 					</tr>
 					
 					<s:iterator value="alleCategorieen">
-					<s:url action="EditLidForm.action" var="editURL" namespace="/admin">
+					<s:url action="EditCategorieForm.action" var="editURL" namespace="/admin">
 					    <s:param name="id"><s:property value="ID" /></s:param>
 					</s:url>
-					<s:url action="DeleteLidForm.action" var="deleteURL" namespace="/admin">
+					<s:url action="DeleteCategorieForm.action" var="deleteURL" namespace="/admin">
 					    <s:param name="id"><s:property value="ID" /></s:param>
 					</s:url>
 
