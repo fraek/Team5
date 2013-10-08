@@ -3,14 +3,14 @@
 
 	<div id="center" class="column">
 		<div id="box">
-			<div id="boxHead">Categorie Bewerken</div>
+			<div id="boxHead">Subcategorie Bewerken</div>
 			<div id="boxBody">
-			<s:form action="EditCategorie.action">
-				<s:textfield name="naam" label="Naam*" value="%{categorie.naam}"/>
-				<s:textarea name="omschrijving" label="Omschrijving*" value="%{categorie.omschrijving}"/>
+			<s:form action="EditSubCategorie.action">
+				<s:textfield name="naam" label="Naam*" value="%{subcategorie.naam}"/>
+				<s:textarea name="omschrijving" label="Omschrijving*" value="%{subcategorie.omschrijving}"/>
 				<s:select name="categorie" label="Categorieën*" list="alleCategorieen" listValue="naam" listKey="ID"/>
-				<s:hidden name="id" value="%{categorie.ID}" />
-				<s:submit value="Bewerk Categorie"/>
+				<s:hidden name="id" value="%{subcategorie.ID}" />
+				<s:submit value="Bewerk Subcategorie"/>
 			</s:form>		
 			</div>
 		</div>

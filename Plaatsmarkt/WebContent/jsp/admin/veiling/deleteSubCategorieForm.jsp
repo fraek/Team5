@@ -7,7 +7,8 @@
 			<div id="boxBody">
 			Weet u zeker dat u deze subcategorie wilt verwijderen?
 			<s:form action="DeleteSubCategorie.action">
-				<s:hidden name="id" value="%{subcategorie.ID}" />
+				<s:hidden name="id" value="%{subcategorie.id}" />
+					Test:<s:property value="%{subcategorie.ID}"/>
 				<s:submit value="Subcategorie verwijderen"/>
 			</s:form>		
 			</div>

@@ -20,6 +20,7 @@ public class SubcategorieDetails extends ActionSupport {
 
 	public String execute() throws Exception {
 		subcategorie = (SubCategorie) subdao.getObject(id);
+		System.out.println(subcategorie.getID());
 		setAlleCategorieen((List<Categorie>)dao.read());
 		return SUCCESS;
 	}

@@ -111,8 +111,6 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 					);
 			ps.close();
 			db.close();
-			System.out.println(opgehaaldeSubcategorie.getNaam());
-			System.out.println(opgehaaldeSubcategorie.getFK_ID());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
