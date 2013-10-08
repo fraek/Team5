@@ -8,7 +8,7 @@
 			<s:form action="AddSubCategorie.action">
 				<s:textfield name="titel" label="Titel*" />
 				<s:textarea name="omschrijving" label="Omschrijving*" />
-				<s:select name="categorie" label="Categorieën*" headerKey="-1" headerValue="Selecteer Categorie" list="alleCategorieen" listValue="naam"/>
+				<s:select name="categorie" label="Categorieën*" list="alleCategorieen" listValue="naam" listKey="ID"/>
 	   	    <s:submit value="Subcategorie Toevoegen"/>
 			</s:form>
 			</div>

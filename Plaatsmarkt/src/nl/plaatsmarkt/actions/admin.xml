@@ -28,7 +28,7 @@
 		</action>
 		
 		<!-- Admin Management -->
-		<action name="CategorieLijst">
+		<action name="CategorieLijst" class="nl.plaatsmarkt.actions.admin.CategorieList">
 			<result name="success">/jsp/admin/veiling/categorieList.jsp</result>
 		</action>
 		<action name="AddCategorieForm">
@@ -38,7 +38,7 @@
 			<result name="success">/jsp/admin/veiling/addCategorie.jsp</result>
 			<result name="input">/jsp/admin/veiling/addCategorieForm.jsp</result>
 		</action>
-		<action name="SubCategorieLijst">
+		<action name="SubCategorieLijst" class="nl.plaatsmarkt.actions.admin.SubCategorieList">
 			<result name="success">/jsp/admin/veiling/subCategorieList.jsp</result>
 		</action>
 		<action name="AddSubCategorieForm" class="nl.plaatsmarkt.actions.admin.CategorieList">

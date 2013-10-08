@@ -64,5 +64,4 @@ public class Categorie implements Serializable{
 	public void setID(int iD) {
 		ID = iD;
 	}
-
 }

@@ -75,5 +75,4 @@ public class SubCategorie implements Serializable{
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-
 }
