@@ -3,7 +3,7 @@ package nl.plaatsmarkt.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Validate {
+public class Validator {
 	private Pattern pattern;
 	private Matcher matcher;
 
@@ -23,6 +23,43 @@ public class Validate {
 
 		matcher = pattern.matcher(postcode);
 		return matcher.matches();
+	}
+	
+	public boolean gebruikersnaam(String gebruikersnaam){
+		final String USERNAME_PATTERN = "^[a-z0-9_-]{3,15}$";
+		
+		pattern = Pattern.compile(USERNAME_PATTERN);
+		
+		matcher = pattern.matcher(gebruikersnaam);
+		return matcher.matches();
+	}
+
+	public boolean wachtwoord(String wachtwoord){
+		if(wachtwoord.length() < 8){
+			return false;
+		}else{
+			int hoofdletters =0;
+			int kleineletters =0;
+			int cijfers =0;
+			for(int i = 0; i < wachtwoord.length(); i++){
+				char c = wachtwoord.charAt(i);
+				if(Character.isWhitespace(c)){ return false; }
+				if(Character.isUpperCase(c)){
+					hoofdletters++;
+				}
+				if(Character.isLowerCase(c)){
+					kleineletters++;
+				}
+				if(Character.isDigit(c)){
+					cijfers++;
+				}
+			}
+			if(hoofdletters ==0 || kleineletters ==0 || cijfers ==0){
+				return false;
+			}else{
+				return true;
+			}
+		}
 	}
 
 	public boolean datum(String datum){
@@ -68,6 +105,13 @@ public class Validate {
 		}else{
 			return false;
 		}			    
+	}
+
+	public boolean isLeeg(String s){
+		if(s == null || s.trim().equals("")){
+			return true;
+		}
+		else return false;
 	}
 
 }

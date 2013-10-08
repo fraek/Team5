@@ -6,7 +6,7 @@ import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.GebruikerRol;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
-import nl.plaatsmarkt.util.Validate;
+import nl.plaatsmarkt.util.Validator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -88,7 +88,7 @@ public class EditLid extends ActionSupport{
 			if (!email1.equalsIgnoreCase(email2)){
 				addFieldError("email1","De e-mail adressen komen niet overeen");
 			}
-			Validate validate = new Validate();
+			Validator validate = new Validator();
 			if(!validate.mail(email1)){
 				addFieldError("email1","Het ingevoerde e-mail adres is ongeldig");
 			}

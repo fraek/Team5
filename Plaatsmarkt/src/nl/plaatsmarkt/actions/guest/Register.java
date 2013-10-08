@@ -3,9 +3,10 @@ package nl.plaatsmarkt.actions.guest;
 import java.util.Date;
 
 import nl.plaatsmarkt.domain.Gebruiker;
+import nl.plaatsmarkt.util.DateConverter;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
-import nl.plaatsmarkt.util.Validate;
+import nl.plaatsmarkt.util.Validator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -37,6 +38,8 @@ public class Register extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
+		DateConverter dc = new DateConverter();
+		Date geboorteDate = dc.stringToDate(geboortedatum);
 		geboorteDate = new Date();
 		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
 				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
@@ -49,6 +52,8 @@ public class Register extends ActionSupport {
 
 	@Override
 	public void validate(){
+		Validator validator = new Validator();
+		
 		if		(	(voornaam == null || voornaam.trim().equals("")				)									 
 				& 	(achternaam == null || achternaam.trim().equals("")			)					
 				& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
@@ -62,50 +67,51 @@ public class Register extends ActionSupport {
 			addFieldError("voornaam","Velden met * zijn verplicht");
 		}else{
 			//check if empty
-			if (voornaam == null || voornaam.trim().equals("")){
+			if (validator.isLeeg(voornaam)){
 				addFieldError("voornaam","Een voornaam is vereist");
 			}
-			if (achternaam == null || achternaam.trim().equals("")){
+			if (validator.isLeeg(achternaam)){
 				addFieldError("achternaam","Een achternaam is vereist");
 			}
-			if (gebruikersnaam == null || gebruikersnaam.trim().equals("")){
+			if (validator.isLeeg(gebruikersnaam)){
 				addFieldError("gebruikersnaam","Een gebruikersnaam is vereist");
 			}
-			if (email1 == null || email1.trim().equals("")){
+			if (validator.isLeeg(email1)){
 				addFieldError("email1","Een e-mail adres is vereist");
 			}
-			if (email2 == null || email2.trim().equals("")){
+			if (validator.isLeeg(email2)){
 				addFieldError("email2","Een e-mail adres is vereist");
 			}
-			if (email1 != null && !email1.equalsIgnoreCase(email2)){
+			if (!email1.equals(email2)){
 				addFieldError("email1","De e-mail adressen komen niet overeen");
 			}
-			if (wachtwoord1 == null || wachtwoord1.trim().equals("")){
+			if (validator.isLeeg(wachtwoord1)){
 				addFieldError("wachtwoord1","Een wachtwoord is vereist");
 			}
-			if (wachtwoord2 == null || wachtwoord2.trim().equals("")){
+			if (validator.isLeeg(wachtwoord2)){
 				addFieldError("wachtwoord2","Een wachtwoord is vereist");
 			}
-			if (wachtwoord1 != null && !wachtwoord1.equalsIgnoreCase(wachtwoord2)){
+			if (!wachtwoord1.equals(wachtwoord2)){
 				addFieldError("wachtwoord1","De wachtwoorden komen niet overeen");
 			}
-			if (geboortedatum == null || geboortedatum.trim().equals("")){
+			if (validator.isLeeg(geboortedatum)){
 				addFieldError("geboortedatum","Een geboortedatum is vereist");
 			}
-
-			//init validator
-
-			Validate validate = new Validate();
-
-			//validate values
-			if(!validate.mail(email1)){
-				addFieldError("email1","Email is onjuist");
+			//validator checks
+			if(!validator.gebruikersnaam(gebruikersnaam)){
+				addFieldError("gebruikersnaam","Gebruikersnaam is ongeldig");
 			}
-			if(!validate.postcode(postcode)){
-				addFieldError("postcode","Postcode is onjuist");
+			if(!validator.mail(email1)){
+				addFieldError("email1","Email is ongeldig");
 			}
-			if(!validate.datum(geboortedatum)){
+			if(!validator.postcode(postcode)){
+				addFieldError("postcode","Postcode is ongeldig");
+			}
+			if(!validator.datum(geboortedatum)){
 				addFieldError("geboortedatum","Geboorte datum is ongeldig");
+			}
+			if(!validator.wachtwoord(wachtwoord1)){
+				addFieldError("wachtwoord1", "Wachtwoord is ongeldig");
 			}
 		}
 	}

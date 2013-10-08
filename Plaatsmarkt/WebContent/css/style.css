@@ -167,3 +167,14 @@ html, body {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
+
+div .infoveld{
+	display: none;
+	font-style: italic;
+	color: #888888;
+	background-color: #EEEEEE;
+}
+a:hover + .infoveld{
+	display: block;
+}

@@ -5,7 +5,7 @@ import java.util.Date;
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
-import nl.plaatsmarkt.util.Validate;
+import nl.plaatsmarkt.util.Validator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -91,7 +91,7 @@ public class AddLid extends ActionSupport {
 
 			//init validator
 
-			Validate validate = new Validate();
+			Validator validate = new Validator();
 
 			//validate values
 			if(!validate.mail(email1)){

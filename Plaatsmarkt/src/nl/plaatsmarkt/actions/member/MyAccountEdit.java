@@ -7,7 +7,7 @@ import nl.plaatsmarkt.domain.GebruikerRol;
 import nl.plaatsmarkt.util.GebruikerAware;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
-import nl.plaatsmarkt.util.Validate;
+import nl.plaatsmarkt.util.Validator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -60,6 +60,7 @@ public class MyAccountEdit extends ActionSupport implements GebruikerAware{
 	}
 	
 	public void validate(){
+		Validator validator = new Validator();
 		if (voornaam == null || voornaam.trim().equals("")){
 			addFieldError("voornaam","Een voornaam is vereist");
 		}
@@ -86,10 +87,12 @@ public class MyAccountEdit extends ActionSupport implements GebruikerAware{
 			if (!email1.equalsIgnoreCase(email2)){
 				addFieldError("email1","De e-mail adressen komen niet overeen");
 			}
-			Validate validate = new Validate();
-			if(!validate.mail(email1)){
+			if(!validator.mail(email1)){
 				addFieldError("email1","Het ingevoerde e-mail adres is ongeldig");
 			}
+		}
+		if(!validator.datum(geboortedatum)){
+			addFieldError("geboortedatum","Geboorte datum is ongeldig");
 		}
 	}
 	
