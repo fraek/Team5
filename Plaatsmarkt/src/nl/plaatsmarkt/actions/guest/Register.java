@@ -39,8 +39,7 @@ public class Register extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		DateConverter dc = new DateConverter();
-		Date geboorteDate = dc.stringToDate(geboortedatum);
-		geboorteDate = new Date();
+		java.util.Date geboorteDate = dc.stringToDate(geboortedatum);
 		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
 				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
 		dao.create(gebruiker);

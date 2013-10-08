@@ -19,8 +19,9 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		db.open();
 		db.createStmt();
 		
-		//java.util.Date utilGeboortedatum = lid.getGeboortedatum();
-	    //java.sql.Date sqlGeboortedatum = new java.sql.Date(utilGeboortedatum.getTime());
+		DateConverter dc = new DateConverter();
+		java.util.Date utilGeboortedatum = gebruiker.getGeboortedatum();
+	    java.sql.Date sqlGeboortedatum = dc.utilToSql(utilGeboortedatum);
 		
 		String statement = "INSERT INTO TO5_GEBRUIKER(NAAM, TUSSENVOEGSEL, ACHTERNAAM, EMAIL, WACHTWOORD, GEBOORTEDATUM, " +
 				"WOONPLAATS, POSTCODE, ADRES, TELEFOONNUMMER, GEBRUIKERSNAAM, ROL) values (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -30,7 +31,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		preparedStatement.setString(3, gebruiker.getAchternaam());
 		preparedStatement.setString(4, gebruiker.getEmail());
 		preparedStatement.setString(5, gebruiker.getWachtwoord());
-		preparedStatement.setDate(6, null); // Util Date omzetten naar SQL Date
+		preparedStatement.setDate(6, sqlGeboortedatum); // Util Date omzetten naar SQL Date
 		preparedStatement.setString(7, gebruiker.getWoonplaats());
 		preparedStatement.setString(8, gebruiker.getPostcode());
 		preparedStatement.setString(9, gebruiker.getAdres());
