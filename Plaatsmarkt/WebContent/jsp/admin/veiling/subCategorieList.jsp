@@ -23,7 +23,7 @@
 
 					<tr>
 						<td><s:property value="ID" /></td>
-						<td><s:property value="categorie" /></td>
+						<td><s:property value="categorie.naam" /></td>
 						<td><s:property value="naam" /></td>
 						<td><s:property value="omschrijving" /></td>
 						<td><a href="<s:property value="#editURL" />"><img src="../img/edit.png"></a></td>

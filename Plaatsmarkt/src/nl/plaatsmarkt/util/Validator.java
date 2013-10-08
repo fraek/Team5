@@ -26,7 +26,7 @@ public class Validator {
 	}
 	
 	public boolean gebruikersnaam(String gebruikersnaam){
-		final String USERNAME_PATTERN = "^[a-z0-9_-]{3,15}$";
+		final String USERNAME_PATTERN = "^[A-Za-z0-9_-]{3,15}$";
 		
 		pattern = Pattern.compile(USERNAME_PATTERN);
 		
