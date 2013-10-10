@@ -40,34 +40,44 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 		//Een lege lijst aanmaken die je uiteindelijk gevuld teruggeeft
 		List<SubCategorie> alleSubcategoriën = new ArrayList<SubCategorie>();
 		//Een lege 'categorie' aanmaken die iedere keer opnieuw wordt gevuld in de loop
-		Categorie categorie = null;
+		
 		while(rs.next())
 		{	
+			int CatID = Integer.parseInt(rs.getString("FK_ID"));
+			Categorie opgehaaldeCategorie = null;
+			try {
+				String CatQuery = "SELECT * FROM TO5_CATEGORIE WHERE id = " + CatID;
+				PreparedStatement ps;
+				ps = db.getCon().prepareStatement(CatQuery);
+				ResultSet Catrs = ps.executeQuery();
+				Catrs.next();
+			
+				opgehaaldeCategorie = new Categorie	(	
+						Catrs.getString("NAAM"),
+						Catrs.getString("OMSCHRIJVING"),
+						Integer.parseInt(Catrs.getString("ID"))
+					);
+				
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
+			
 			//De categorie van de subcategorie ophalen dmv DAO
-			int categorieID = (int) rs.getInt("FK_ID");
-			categorie = (Categorie) catDAO.getObject(categorieID);
-			System.out.println(categorie.getNaam());
-			//categorie = (Categorie) catDAO.getObject(rs.getString("FK_ID"));
+//			int categorieID = (int) rs.getInt("FK_ID");
+//			Categorie categorie = (Categorie) catDAO.getObject(categorieID);
+		
+			//SubCategorie sc = new SubCategorie(rs.getString("NAAM"), rs.getString("OMSCHRIJVING"), 0, categorie);
+			//alleSubcategoriën.add(sc);
 			
-			System.out.println(rs.getString(1));
-			System.out.println(rs.getString(2));
-			System.out.println(rs.getString(3));
-			System.out.println(rs.getString(4));
-			
-			int subcategorieID = 6;
-			System.out.println(subcategorieID);
-			System.out.println(Integer.parseInt(rs.getString("ID")));
-			SubCategorie sc = new SubCategorie(rs.getString("NAAM"), rs.getString("OMSCHRIJVING"), subcategorieID, categorie);
-			System.out.println(sc.getID());
-			alleSubcategoriën.add(sc);
-			
-			//alleSubcategoriën.add(
-			//		new SubCategorie(	
-			//				rs.getString("NAAM"),
-			//				rs.getString("OMSCHRIJVING"),
-			//				Integer.parseInt(rs.getString("ID")),
-			//				categorie)
-			//		);
+			alleSubcategoriën.add(
+					new SubCategorie(	
+							rs.getString("NAAM"),
+							rs.getString("OMSCHRIJVING"),
+							Integer.parseInt(rs.getString("ID")),
+							opgehaaldeCategorie,
+							rs.getInt("FK_ID"))
+					);
 			
 		}
 		rs.close();
@@ -90,14 +100,15 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 			rs.next();
 			
 			//De categorie van de subcategorie ophalen dmv DAO
-			Categorie categorie = (Categorie) catDAO.getObject(rs.getString("CATEGORIE"));
+			Categorie categorie = (Categorie) catDAO.getObject(Integer.parseInt(rs.getString("FK_ID")));
+			System.out.println(categorie.getNaam());
 			opgehaaldeSubcategorie = new SubCategorie	(	
 					rs.getString("NAAM"),
 					rs.getString("OMSCHRIJVING"),
 					Integer.parseInt(rs.getString("ID")),
-					categorie
+					(Categorie) catDAO.getObject(categorie.getNaam()),
+					Integer.parseInt(rs.getString("FK_ID"))
 					);
-
 			ps.close();
 			db.close();
 		} catch (SQLException e) {
@@ -123,7 +134,8 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 					rs.getString("NAAM"),
 					rs.getString("OMSCHRIJVING"),
 					Integer.parseInt(rs.getString("ID")),
-					categorie
+					categorie,
+					rs.getInt("FK_ID")
 					);
 
 			ps.close();
@@ -142,11 +154,12 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 		db.open();
 		db.createStmt();
 
-		String statement = "UPDATE TO5_SUBCATEGORIE SET OMSCHRIJVING=?, NAAM=?, CATEGORIE=? WHERE ID = " + id;
+		String statement = "UPDATE TO5_SUBCATEGORIE SET OMSCHRIJVING=?, NAAM=?, CATEGORIE=?, FK_ID=? WHERE ID = " + id;
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, subcategorie.getOmschrijving());
 		preparedStatement.setString(2, subcategorie.getNaam());
 		preparedStatement.setString(3, subcategorie.getCategorie().toString());
+		preparedStatement.setInt(4, subcategorie.getFK_ID());
 		preparedStatement.execute();
 
 		db.close();
