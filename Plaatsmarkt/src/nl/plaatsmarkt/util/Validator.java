@@ -63,7 +63,7 @@ public class Validator {
 	}
 
 	public boolean datum(String datum){
-		final String DATUM_PATTERN = "(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d)";
+		final String DATUM_PATTERN = "(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[012])-((19|20)\\d\\d)";
 
 		pattern = Pattern.compile(DATUM_PATTERN);
 

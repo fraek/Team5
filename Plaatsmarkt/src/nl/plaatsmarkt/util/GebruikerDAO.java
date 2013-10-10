@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Gebruiker;
@@ -12,14 +11,13 @@ import nl.plaatsmarkt.domain.GebruikerRol;
 
 public class GebruikerDAO implements IDAO<Gebruiker>{
 	private DatabaseDAO db = ServiceProvider.getDatabaseDAO();
-	
+	DateConverter dc = new DateConverter();
 	@Override
 	public void create(Object T) throws SQLException {
 		Gebruiker gebruiker = (Gebruiker) T;
 		db.open();
 		db.createStmt();
 		
-		DateConverter dc = new DateConverter();
 		java.util.Date utilGeboortedatum = gebruiker.getGeboortedatum();
 	    java.sql.Date sqlGeboortedatum = dc.utilToSql(utilGeboortedatum);
 		
@@ -52,6 +50,8 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		ResultSet rs = db.getStmt().executeQuery(query);
 		List<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
 		GebruikerRol rol = null;
+		java.sql.Date date = null;
+		java.util.Date geboortedatum = null;
 		while(rs.next())
 			{
 			
@@ -63,8 +63,10 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 			}else if(rs.getString("ROL").equalsIgnoreCase("Geblokkeerd")){
 				rol = GebruikerRol.Geblokkeerd;
 			}
-			
-			Date datum = null;
+			date = rs.getDate("GEBOORTEDATUM");
+			if(date != null || !date.equals("")){
+				geboortedatum = dc.sqlToUtil(date);
+			}
 			alleGebruikers.add(
 					new Gebruiker	(	
 							Integer.parseInt(rs.getString("ID")),
@@ -77,7 +79,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 							rs.getString("ADRES"),
 							rs.getString("POSTCODE"),
 							rs.getString("WOONPLAATS"),
-							datum, //N.Y.I DATE		
+							geboortedatum, 
 							rs.getLong("TELEFOONNUMMER"),
 							rol) 	);
 			}
@@ -95,11 +97,12 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		try {
 			db.open();
 			GebruikerRol rol = null;
-			Date datum = null;
 			String query = "SELECT * FROM TO5_GEBRUIKER WHERE id = " + ID;
 			PreparedStatement ps;
 			ps = db.getCon().prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
+			java.sql.Date date = null;
+			java.util.Date geboortedatum = null;
 			rs.next();
 		
 			//Per result rol bepalen
@@ -110,6 +113,9 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 			}else if(rs.getString("ROL").equalsIgnoreCase("Geblokkeerd")){
 				rol = GebruikerRol.Geblokkeerd;
 			}
+			
+			date = rs.getDate("GEBOORTEDATUM");
+			geboortedatum  = dc.sqlToUtil(date);
 			
 			opgehaaldeGebruiker = new Gebruiker	(	
 						Integer.parseInt(rs.getString("ID")),
@@ -122,7 +128,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 						rs.getString("ADRES"),
 						rs.getString("POSTCODE"),
 						rs.getString("WOONPLAATS"),
-						datum, //N.Y.I DATE		
+						geboortedatum,	
 						rs.getLong("TELEFOONNUMMER"),
 						rol);
 			
@@ -139,6 +145,8 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 	public void update(Object T) throws SQLException {
 		Gebruiker gebruiker = (Gebruiker)T;
 		int id = gebruiker.getID();
+		java.util.Date date = gebruiker.getGeboortedatum();
+		java.sql.Date geboortedatum = dc.utilToSql(date);
 		
 		db.open();
 		db.createStmt();
@@ -150,7 +158,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		preparedStatement.setString(3, gebruiker.getAchternaam());
 		preparedStatement.setString(4, gebruiker.getEmail());
 		preparedStatement.setString(5, gebruiker.getWachtwoord());
-		preparedStatement.setDate(6, null);								//gebruiker.getGeboortedatum()
+		preparedStatement.setDate(6, geboortedatum);								//gebruiker.getGeboortedatum()
 		preparedStatement.setString(7, gebruiker.getWoonplaats());
 		preparedStatement.setString(8, gebruiker.getPostcode());
 		preparedStatement.setString(9, gebruiker.getAdres());

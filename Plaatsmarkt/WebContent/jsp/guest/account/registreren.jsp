@@ -27,9 +27,9 @@
 			</s:form>
 						<a>Info</a>
 			<div class ="infoveld">
-			Gebruikersnaam: Geen hoofdletters. Cijfers en _ - toegestaan<br />
+			Gebruikersnaam: Cijfers en _ - toegestaan. lengte: 3-15 tekens<br />
 			Wachtwoord: 8 tekens lang, minimaal 1 hoofdletter en 1 cijfer<br />
-			Geboortedatum: dd/mm/yyyy<br />
+			Geboortedatum: dd-mm-yyyy<br />
 			Postcode: 1234AA</div>			
 		    <hr /><br/>
 			</div>
