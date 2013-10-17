@@ -15,6 +15,11 @@ public class TestValidator {
 	@Before
 	public void setUp() throws Exception {
 		v = new Validator();
+		mail = "";
+		postcode="";
+		gebruikersnaam="";
+		wachtwoord="";
+		datum="";
 	}
 	
 	//Testpad ID: 1
