@@ -9,7 +9,7 @@ import nl.plaatsmarkt.util.ServiceProvider;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SubcategorieDetails extends ActionSupport {
+public class SubCategorieDetails extends ActionSupport {
 	private int id;
 	private IDAO<Categorie> dao = ServiceProvider.getCategorieDAO();
 	private IDAO<SubCategorie> subdao = ServiceProvider.getSubCategorieDAO();

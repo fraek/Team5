@@ -31,6 +31,7 @@ public class MyAccountEdit extends ActionSupport implements GebruikerAware{
 	private long telefoonnummer;	//Een int is niet lang genoeg voor een tel.nummer
 	private Gebruiker gebruiker;
 	private GebruikerRol ENUMRol;
+	private DateConverter dc = new DateConverter();
 	
 	/*
 	 * Controle of persoon 16 jaar is of ouder
@@ -45,7 +46,6 @@ public class MyAccountEdit extends ActionSupport implements GebruikerAware{
 		}else if(rol.equalsIgnoreCase("Admin")){
 			ENUMRol = GebruikerRol.Admin;
 		}
-		DateConverter dc = new DateConverter();
 		geboorteDate = dc.stringToDate(geboortedatum);
 		
 		//Als wachtwoord niet verandert is, dan wachtwoord uit DB gebruiken
@@ -247,4 +247,9 @@ public class MyAccountEdit extends ActionSupport implements GebruikerAware{
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public DateConverter getDc() {
+		return dc;
+	}
+
 }

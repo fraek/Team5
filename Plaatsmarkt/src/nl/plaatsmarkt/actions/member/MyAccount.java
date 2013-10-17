@@ -6,6 +6,7 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
 import nl.plaatsmarkt.domain.Gebruiker;
+import nl.plaatsmarkt.util.DateConverter;
 import nl.plaatsmarkt.util.GebruikerAware;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
@@ -18,8 +19,8 @@ public class MyAccount extends ActionSupport implements GebruikerAware, SessionA
 	private IDAO<?> dao = ServiceProvider.getGebruikerDAO();
 	private static final long serialVersionUID = 1L;
 	private Gebruiker gebruiker, SessionGebruiker;
+	private DateConverter dc = new DateConverter();
 
-	
 	public String execute() throws Exception {
 		SessionGebruiker = (Gebruiker)session.get("gebruiker");
 		setGebruiker((Gebruiker)dao.getObject(SessionGebruiker.getID()));
@@ -46,5 +47,10 @@ public class MyAccount extends ActionSupport implements GebruikerAware, SessionA
 	public void setSessionGebruiker(Gebruiker sessionGebruiker) {
 		SessionGebruiker = sessionGebruiker;
 	}
+	
+	public DateConverter getDc() {
+		return dc;
+	}
+
 
 }

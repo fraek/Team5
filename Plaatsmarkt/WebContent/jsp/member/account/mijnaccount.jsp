@@ -18,7 +18,7 @@
 		   	  <s:textfield name="gebruikersnaam" label="Gebruikersnaam*" value="%{gebruiker.gebruikersnaam}"/>
 		   	  <s:password name="wachtwoord1" label="Wachtwoord*"/>
 		   	  <s:password name="wachtwoord2" label="Wachtwoord* bevestiging"/>
-		   	  <s:textfield name="geboortedatum" label="Geboorte Datum*" value="%{gebruiker.geboortedatum}"/>
+		   	  <s:textfield name="geboortedatum" label="Geboorte Datum*" value="%{dc.dateToString(gebruiker.geboortedatum)}"/>
 		   	  <s:textfield name="woonplaats" label="Woonplaats*" value="%{gebruiker.woonplaats}"/>
 		   	  <s:textfield name="postcode" label="Postcode*" value="%{gebruiker.postcode}"/>
 		   	  <s:textfield name="adres" label="Adres" value="%{gebruiker.adres}"/>

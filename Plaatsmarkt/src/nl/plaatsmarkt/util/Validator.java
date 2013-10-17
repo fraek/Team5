@@ -6,7 +6,10 @@ import java.util.regex.Pattern;
 public class Validator {
 	private Pattern pattern;
 	private Matcher matcher;
-
+	
+	public boolean email(String email){
+		return mail(email);
+	}
 	public boolean mail(String email){
 		final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
@@ -35,30 +38,27 @@ public class Validator {
 	}
 
 	public boolean wachtwoord(String wachtwoord){
-		if(wachtwoord.length() < 8){
+		final String PASSWORD_PATTERN="^[A-Za-z0-9]{8,25}$";
+		pattern = Pattern.compile(PASSWORD_PATTERN);
+		matcher = pattern.matcher(wachtwoord);
+		
+		final String FALSE1_PATTERN="^[A-Z]{8,25}$", FALSE2_PATTERN="^[a-z]{8,25}$", FALSE3_PATTERN="^[0-9]{8,25}$",
+		FALSE4_PATTERN="^[A-Za-z]{8,25}$", FALSE5_PATTERN="^[a-z0-9]{8,25}$", FALSE6_PATTERN="^[0-9A-Z]{8,25}$";
+		Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher6;
+		Pattern pattern1, pattern2, pattern3, pattern4, pattern5, pattern6;
+		
+		pattern1 = Pattern.compile(FALSE1_PATTERN); matcher1 = pattern1.matcher(wachtwoord);
+		pattern2 = Pattern.compile(FALSE2_PATTERN); matcher2 = pattern2.matcher(wachtwoord);
+		pattern3 = Pattern.compile(FALSE3_PATTERN); matcher3 = pattern3.matcher(wachtwoord);
+		pattern4 = Pattern.compile(FALSE4_PATTERN); matcher4 = pattern4.matcher(wachtwoord);
+		pattern5 = Pattern.compile(FALSE5_PATTERN); matcher5 = pattern5.matcher(wachtwoord);
+		pattern6 = Pattern.compile(FALSE6_PATTERN); matcher6 = pattern6.matcher(wachtwoord);
+		
+		if(matcher1.matches() || matcher2.matches() || matcher3.matches() || 
+				matcher4.matches() || matcher5.matches() || matcher6.matches()){
 			return false;
 		}else{
-			int hoofdletters =0;
-			int kleineletters =0;
-			int cijfers =0;
-			for(int i = 0; i < wachtwoord.length(); i++){
-				char c = wachtwoord.charAt(i);
-				if(Character.isWhitespace(c)){ return false; }
-				if(Character.isUpperCase(c)){
-					hoofdletters++;
-				}
-				if(Character.isLowerCase(c)){
-					kleineletters++;
-				}
-				if(Character.isDigit(c)){
-					cijfers++;
-				}
-			}
-			if(hoofdletters ==0 || kleineletters ==0 || cijfers ==0){
-				return false;
-			}else{
-				return true;
-			}
+			return matcher.matches();
 		}
 	}
 
