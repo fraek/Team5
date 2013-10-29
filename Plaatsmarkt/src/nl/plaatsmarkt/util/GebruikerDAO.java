@@ -42,6 +42,7 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		db.closeStmt();		
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public List<Gebruiker> read() throws SQLException {
 		db.open();

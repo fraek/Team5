@@ -6,27 +6,41 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.plaatsmarkt.domain.Gebruiker;
+import nl.plaatsmarkt.domain.SubCategorie;
 import nl.plaatsmarkt.domain.Veiling;
 
 public class VeilingDAO implements IDAO<Veiling>{
 	private DatabaseDAO db = ServiceProvider.getDatabaseDAO();
-	DateConverter dc = new DateConverter();
+	private IDAO<Gebruiker> gebdao = ServiceProvider.getGebruikerDAO();
+	private IDAO<SubCategorie> scdao = ServiceProvider.getSubCategorieDAO();
+	private DateConverter dc = new DateConverter();
 	@Override
 	public void create(Object T) throws SQLException {
 		Veiling veiling = (Veiling) T;
 		db.open();
 		db.createStmt();
-		
-		
-		String statement = "INSERT INTO TO5_VEILING(TITEL, BESCHRIJVING, AANMAAKDATUM, VERLOOPDATUM) values (?,?,?,?)";
+
+		java.util.Date aanmaakdate = veiling.getAanmaakDatum();
+		java.sql.Date aanmaakdatum = dc.utilToSql(aanmaakdate);
+		java.util.Date verloopdate = veiling.getVerloopDatum();
+		java.sql.Date verloopdatum = dc.utilToSql(verloopdate);
+
+		String statement = "INSERT INTO TO5_VEILING(TITEL, BESCHRIJVING, AANMAAKDATUM, VERLOOPDATUM, AANBIEDER, SUBCATEGORIE) values (?,?,?,?,?,?)";
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, veiling.getTitel());
+		preparedStatement.setString(2, veiling.getBeschrijving());
+		preparedStatement.setDate(3, aanmaakdatum);
+		preparedStatement.setDate(4, verloopdatum);
+		preparedStatement.setInt(5, veiling.getDeAanbieder().getID());
+		preparedStatement.setInt(6, veiling.getDeSubCategorie().getID());
 		preparedStatement.execute();
-		
+
 		db.close();
 		db.closeStmt();		
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public List<Veiling> read() throws SQLException {
 		db.open();
@@ -34,25 +48,52 @@ public class VeilingDAO implements IDAO<Veiling>{
 		String query = "SELECT * FROM TO5_VEILING";
 		ResultSet rs = db.getStmt().executeQuery(query);
 		List<Veiling> alleVeilingen = new ArrayList<Veiling>();
+		java.sql.Date aanmaakdate = null;
+		java.util.Date aanmaakdatum = null;
 		java.sql.Date verloopdate = null;
 		java.util.Date verloopdatum = null;
+		Gebruiker aanbieder = null;
+		int gebid;
+		SubCategorie subcat = null;
+		int scid;
 		while(rs.next())
-			{
+		{
 
 			verloopdate = rs.getDate("VERLOOPDATUM");
 			if(verloopdate != null || !verloopdate.equals("")){
 				verloopdatum = dc.sqlToUtil(verloopdate);
 			}
-			//alleVeilingen.add(new Veiling	());
+			aanmaakdate = rs.getDate("VERLOOPDATUM");
+			if(aanmaakdate != null || !aanmaakdate.equals("")){
+				aanmaakdatum = dc.sqlToUtil(aanmaakdate);
 			}
+			gebid = rs.getInt("AANBIEDER");
+			if(gebid > 0){
+				aanbieder = (Gebruiker)gebdao.getObject(gebid);
+			}
+			scid = rs.getInt("SUBCATEGORIE");
+			if(scid > 0){
+				subcat = (SubCategorie)scdao.getObject(scid);
+			}
+			alleVeilingen.add(new Veiling(
+					aanbieder,
+					subcat,
+					rs.getString("TITEL"),
+					rs.getString("BESCHRIJVING"),
+					aanmaakdatum,
+					verloopdatum,
+					rs.getInt("ID")
+					));
+		}
 		rs.close();
-		
+
 		db.close();
 		db.closeStmt();		
-		
+
 		return alleVeilingen;
 	}
 
+	@SuppressWarnings("null")
 	@Override
 	public Object getObject(int ID) throws SQLException {
 		Veiling opgehaaldeVeiling = null;
@@ -64,13 +105,40 @@ public class VeilingDAO implements IDAO<Veiling>{
 			ResultSet rs = ps.executeQuery();
 			java.sql.Date verloopdate = null;
 			java.util.Date verloopdatum = null;
+			java.sql.Date aanmaakdate = null;
+			java.util.Date aanmaakdatum = null;
 			rs.next();
 			
+			Gebruiker aanbieder = null;
+			int gebid;
+			SubCategorie subcat = null;
+			int scid;
 			verloopdate = rs.getDate("VERLOOPDATUM");
-			verloopdatum  = dc.sqlToUtil(verloopdate);
+			if(verloopdate != null || !verloopdate.equals("")){
+				verloopdatum = dc.sqlToUtil(verloopdate);
+			}
+			aanmaakdate = rs.getDate("VERLOOPDATUM");
+			if(aanmaakdate != null || !aanmaakdate.equals("")){
+				aanmaakdatum = dc.sqlToUtil(aanmaakdate);
+			}
+			gebid = rs.getInt("AANBIEDER");
+			if(gebid > 0){
+				aanbieder = (Gebruiker)gebdao.getObject(gebid);
+			}
+			scid = rs.getInt("SUBCATEGORIE");
+			if(scid > 0){
+				subcat = (SubCategorie)scdao.getObject(scid);
+			}
 			
-			//opgehaaldeVeiling = new Veiling();
-			
+			opgehaaldeVeiling = new Veiling(
+					aanbieder,
+					subcat,
+					rs.getString("TITEL"),
+					rs.getString("BESCHRIJVING"),
+					aanmaakdatum,
+					verloopdatum,
+					rs.getInt("ID"));
+
 			ps.close();
 			db.close();
 		} catch (SQLException e) {
@@ -82,32 +150,27 @@ public class VeilingDAO implements IDAO<Veiling>{
 
 	@Override
 	public void update(Object T) throws SQLException {
-		Veiling Veiling = (Veiling)T;
-		int id = Veiling.getID();
-		java.util.Date verloopdate = Veiling.getVerloopDatum();
-		java.sql.Date verloopdatum = dc.utilToSql(verloopdate);
-		
+		Veiling veiling = (Veiling)T;
+		int id = veiling.getID();
+
 		db.open();
 		db.createStmt();
-		
-		/*
-		String statement = "UPDATE TO5_Veiling SET NAAM=?, TUSSENVOEGSEL=?, ACHTERNAAM=?, EMAIL=?, WACHTWOORD=?, GEBOORTEDATUM=?, WOONPLAATS=?, POSTCODE=?, ADRES=?, TELEFOONNUMMER=?, VeilingSNAAM=?, ROL=? WHERE ID = " + id;
+
+		java.util.Date aanmaakdate = veiling.getAanmaakDatum();
+		java.sql.Date aanmaakdatum = dc.utilToSql(aanmaakdate);
+		java.util.Date verloopdate = veiling.getVerloopDatum();
+		java.sql.Date verloopdatum = dc.utilToSql(verloopdate);
+
+		String statement = "UPDATE TO5_VEILING SET TITEL=?, BESCHRIJVING=?, AANMAAKDATUM=?, VERLOOPDATUM=?, AANBIEDER=?, SUBCATEGORIE=? WHERE ID="+id;
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
-		preparedStatement.setString(1, Veiling.getVoornaam());
-		preparedStatement.setString(2, Veiling.getTussenvoegsel());
-		preparedStatement.setString(3, Veiling.getAchternaam());
-		preparedStatement.setString(4, Veiling.getEmail());
-		preparedStatement.setString(5, Veiling.getWachtwoord());
-		preparedStatement.setDate(6, geboortedatum);								//Veiling.getGeboortedatum()
-		preparedStatement.setString(7, Veiling.getWoonplaats());
-		preparedStatement.setString(8, Veiling.getPostcode());
-		preparedStatement.setString(9, Veiling.getAdres());
-		preparedStatement.setFloat(10, Veiling.getTelefoonnummer());
-		preparedStatement.setString(11, Veiling.getVeilingsnaam());
-		preparedStatement.setString(12, Veiling.getVeilingRol().toString());
+		preparedStatement.setString(1, veiling.getTitel());
+		preparedStatement.setString(2, veiling.getBeschrijving());
+		preparedStatement.setDate(3, aanmaakdatum);
+		preparedStatement.setDate(4, verloopdatum);
+		preparedStatement.setInt(5, veiling.getDeAanbieder().getID());
+		preparedStatement.setInt(6, veiling.getDeSubCategorie().getID());
 		preparedStatement.execute();
-		*/
-		
+
 		db.close();
 		db.closeStmt();		
 	}
@@ -116,34 +179,34 @@ public class VeilingDAO implements IDAO<Veiling>{
 	public void delete(Object T) throws SQLException {
 		Veiling Veiling = (Veiling)T;
 		int id = Veiling.getID();
-		
+
 		db.open();
 		db.createStmt();
-		
-		String statement = "DELETE FROM TO5_Veiling WHERE id = " + id;
+
+		String statement = "DELETE FROM TO5_VEILING WHERE id = " + id;
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.execute();
-		
+
 		db.close();
 		db.closeStmt();	
 	}
-	
+
 	@Override
 	public void delete(int ID) throws SQLException {
 		db.open();
 		db.createStmt();
-		
+
 		String statement = "DELETE FROM TO5_Veiling WHERE id = " + ID;
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.execute();
-		
+
 		db.close();
 		db.closeStmt();	
 	}
 
 	@Override
 	public int count() {
-		return db.getRows("TO5_Veiling");
+		return db.getRows("TO5_VEILING");
 	}
 
 	@Override

@@ -44,7 +44,6 @@ public class Veilingsite implements Serializable{
 	public void setNaam(String naam) {
 		this.naam = naam;
 	}
-	
 	public void addGebruiker(){
 		
 	}

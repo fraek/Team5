@@ -8,11 +8,7 @@
 			<s:form action="AddVeiling.action">
 				<s:textfield name="titel" label="Titel*" />
 				<s:textarea name="omschrijving" label="Omschrijving*" />
-				<select name="subcategorie" id="subcategorie" label="Subcategorie*"> 
-					<option value="bing.com">bing.com</option> 
-					<option value="yahoo.com">yahoo.com</option> 
-					<option value="baidu.com">baidu.com</option> 
-				</select> 
+				<s:select label ="Sub Categorie" list="subcats" name="subcats" listValue="naam" listKey="ID"/>
 	   	    <s:submit value="Veiling Toevoegen"/>
 			</s:form>		
 			</div>

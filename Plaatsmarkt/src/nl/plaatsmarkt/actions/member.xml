@@ -39,10 +39,10 @@
 		<action name="MijnVeilingen">
 			<result name="success">/jsp/member/veiling/mijnVeilingen.jsp</result>
 		</action>
-		<action name="AddVeilingForm">
+		<action name="AddVeilingForm" class="nl.plaatsmarkt.actions.member.AddVeilingForm">
 			<result name="success">/jsp/member/veiling/addVeilingForm.jsp</result>
 		</action>
-		<action name="AddVeiling">
+		<action name="AddVeiling" class="nl.plaatsmarkt.actions.member.AddVeiling">
 			<result name="success">/jsp/member/veiling/addVeiling.jsp</result>
 		</action>
 		<action name="EditVeilingForm">
