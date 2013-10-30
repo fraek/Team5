@@ -1,0 +1,24 @@
+package nl.team5.app;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Veilingsite implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private ArrayList<Gebruiker> alleGebruikers;
+	private ArrayList<Categorie> alleCategorieën;
+	private ArrayList<Veiling> alleVeilingen;
+	public ArrayList<Gebruiker> getAlleGebruikers() {
+		return alleGebruikers;
+	}
+	public void setAlleGebruikers(ArrayList<Gebruiker> alleGebruikers) {
+		this.alleGebruikers = alleGebruikers;
+	}
+	public ArrayList<Categorie> getAlleCategorieën() {
+		return alleCategorieën;
+	}
+	public void setAlleCategorieën(ArrayList<Categorie> alleCategorieën) {
+		this.alleCategorieën = alleCategorieën;
+	}
+}

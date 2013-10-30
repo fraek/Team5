@@ -1,0 +1,11 @@
+package nl.team5.app;
+
+import java.io.Serializable;
+
+public class Bod implements Serializable{
+	private int Bedrag;
+	private Gebruiker deGebruiker; //Degene die het bod doet
+	private date datum;
+	
+
+}

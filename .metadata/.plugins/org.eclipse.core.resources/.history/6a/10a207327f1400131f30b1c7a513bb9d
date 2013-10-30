@@ -1,0 +1,13 @@
+package nl.team5.app;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Voorwerp implements Serializable{
+	private String naam;
+	private String beschrijving;
+	private String staat;
+	private Categorie categorie; //Discutabel...
+	
+
+}

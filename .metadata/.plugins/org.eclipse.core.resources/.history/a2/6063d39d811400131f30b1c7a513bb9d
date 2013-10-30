@@ -1,0 +1,20 @@
+package nl.team5.app;
+
+import java.io.Serializable;
+import java.sql.Time;
+import java.util.Date;
+
+public class Bod implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private double Bedrag;
+	private Gebruiker deBieder;
+	private Date datum;
+	private Time tijd;
+	public double getBedrag() {
+		return Bedrag;
+	}
+	public void setBedrag(double bedrag) {
+		Bedrag = bedrag;
+	}
+}

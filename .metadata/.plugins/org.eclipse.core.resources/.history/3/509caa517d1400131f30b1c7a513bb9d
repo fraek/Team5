@@ -1,0 +1,12 @@
+package nl.team5.app;
+
+import java.util.ArrayList;
+
+public class Veiling {
+	private Gebruiker deGebruiker;	//Degene die de veiling aanmaakt
+	private Voorwerp hetVoorwerp;
+	private ArrayList<Bod> alleBiedingen;
+	private String beschrijving;
+	private Date aanmaakDatum;
+	private Date verloopDatum;
+}
