@@ -16,8 +16,8 @@
 		   	  <s:textfield name="email1" label="Email*"/>
 		   	  <s:textfield name="email2" label="Email* bevestiging"/>
 		   	  <s:textfield name="gebruikersnaam" label="Gebruikersnaam**"/>
-		   	  <s:password name="wachtwoord1" label="Wachtwoord*"/><!--<s:label cssClass ="infoveld">8 tekens lang, minimaal 1 hoofdletter en 1 cijfer</s:label>-->
-		   	  <s:password name="wachtwoord2" label="Wachtwoord* bevestiging"/>
+		   	  <!--<s:password name="wachtwoord1" label="Wachtwoord*"/><!--<s:label cssClass ="infoveld">8 tekens lang, minimaal 1 hoofdletter en 1 cijfer</s:label>-->
+		   	  <!--<s:password name="wachtwoord2" label="Wachtwoord* bevestiging"/>-->
 		   	  <s:textfield name="geboortedatum" label="Geboorte Datum*"/>
 		   	  <s:textfield name="woonplaats" label="Woonplaats*"/>
 		   	  <s:textfield name="postcode" label="Postcode*"/>
@@ -28,7 +28,8 @@
 						<a>Info</a>
 			<div class ="infoveld">
 			Gebruikersnaam: Cijfers en _ - toegestaan. lengte: 3-15 tekens<br />
-			Wachtwoord: 8 tekens lang, minimaal 1 hoofdletter en 1 cijfer<br />
+			Uw wachtwoord wordt automatisch gegenereerd en U kunt deze later wijzigen<br />
+			<!-- Wachtwoord: 8 tekens lang, minimaal 1 hoofdletter en 1 cijfer<br /> -->
 			Geboortedatum: dd-mm-yyyy<br />
 			Postcode: 1234AA</div>			
 		    <hr /><br/>

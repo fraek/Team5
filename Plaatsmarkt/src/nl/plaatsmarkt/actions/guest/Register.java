@@ -19,7 +19,7 @@ public class Register extends ActionSupport {
 	private String achternaam;
 	private String gebruikersnaam;
 	private String email1, email2;
-	private String wachtwoord1, wachtwoord2;
+	private String wachtwoord1;//, wachtwoord2;
 	private String adres;
 	private String postcode;
 	private String woonplaats;
@@ -40,8 +40,9 @@ public class Register extends ActionSupport {
 	public String execute() throws Exception {
 		DateConverter dc = new DateConverter();
 		java.util.Date geboorteDate = dc.stringToDate(geboortedatum);
-		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
-				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
+		//gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
+		//		wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
+		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
 		dao.create(gebruiker);
 
 		setGeslaagd("U bent succesvol geregisteerd met "+ email1);
@@ -58,8 +59,8 @@ public class Register extends ActionSupport {
 				& 	(gebruikersnaam == null || gebruikersnaam.trim().equals("")	)
 				& 	(email1 == null || email1.trim().equals("")					)						
 				& 	(email2 == null || email2.trim().equals("")					)						
-				& 	(wachtwoord1 == null || wachtwoord1.trim().equals("")		)				
-				& 	(wachtwoord2 == null || wachtwoord2.trim().equals("")		)				
+				//& 	(wachtwoord1 == null || wachtwoord1.trim().equals("")		)				
+				//& 	(wachtwoord2 == null || wachtwoord2.trim().equals("")		)				
 				& 	(geboortedatum == null || geboortedatum.trim().equals("")	)	
 				)
 		{
@@ -84,7 +85,7 @@ public class Register extends ActionSupport {
 			if (!email1.equals(email2)){
 				addFieldError("email1","De e-mail adressen komen niet overeen");
 			}
-			if (validator.isLeeg(wachtwoord1)){
+			/*if (validator.isLeeg(wachtwoord1)){
 				addFieldError("wachtwoord1","Een wachtwoord is vereist");
 			}
 			if (validator.isLeeg(wachtwoord2)){
@@ -92,7 +93,7 @@ public class Register extends ActionSupport {
 			}
 			if (!wachtwoord1.equals(wachtwoord2)){
 				addFieldError("wachtwoord1","De wachtwoorden komen niet overeen");
-			}
+			}*/
 			if (validator.isLeeg(geboortedatum)){
 				addFieldError("geboortedatum","Een geboortedatum is vereist");
 			}
@@ -109,9 +110,9 @@ public class Register extends ActionSupport {
 			if(!validator.datum(geboortedatum)){
 				addFieldError("geboortedatum","Geboorte datum is ongeldig");
 			}
-			if(!validator.wachtwoord(wachtwoord1)){
+			/*if(!validator.wachtwoord(wachtwoord1)){
 				addFieldError("wachtwoord1", "Wachtwoord is ongeldig");
-			}
+			}*/
 		}
 	}
 
@@ -218,13 +219,13 @@ public class Register extends ActionSupport {
 		this.wachtwoord1 = wachtwoord1;
 	}
 
-	public String getWachtwoord2() {
+	/*public String getWachtwoord2() {
 		return wachtwoord2;
 	}
 
 	public void setWachtwoord2(String wachtwoord2) {
 		this.wachtwoord2 = wachtwoord2;
-	}
+	}*/
 
 	public Date getGeboorteDate() {
 		return geboorteDate;

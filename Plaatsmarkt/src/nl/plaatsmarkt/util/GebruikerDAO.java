@@ -21,21 +21,33 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		java.util.Date utilGeboortedatum = gebruiker.getGeboortedatum();
 	    java.sql.Date sqlGeboortedatum = dc.utilToSql(utilGeboortedatum);
 		
-		String statement = "INSERT INTO TO5_GEBRUIKER(NAAM, TUSSENVOEGSEL, ACHTERNAAM, EMAIL, WACHTWOORD, GEBOORTEDATUM, " +
-				"WOONPLAATS, POSTCODE, ADRES, TELEFOONNUMMER, GEBRUIKERSNAAM, ROL) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		//String statement = "INSERT INTO TO5_GEBRUIKER(NAAM, TUSSENVOEGSEL, ACHTERNAAM, EMAIL, WACHTWOORD, GEBOORTEDATUM, " +
+		//		"WOONPLAATS, POSTCODE, ADRES, TELEFOONNUMMER, GEBRUIKERSNAAM, ROL) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+	    String statement = "INSERT INTO TO5_GEBRUIKER(NAAM, TUSSENVOEGSEL, ACHTERNAAM, EMAIL, GEBOORTEDATUM, " +
+	    		"WOONPLAATS, POSTCODE, ADRES, TELEFOONNUMMER, GEBRUIKERSNAAM, ROL) values (?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, gebruiker.getVoornaam());
 		preparedStatement.setString(2, gebruiker.getTussenvoegsel());
 		preparedStatement.setString(3, gebruiker.getAchternaam());
 		preparedStatement.setString(4, gebruiker.getEmail());
-		preparedStatement.setString(5, gebruiker.getWachtwoord());
-		preparedStatement.setDate(6, sqlGeboortedatum); // Util Date omzetten naar SQL Date
-		preparedStatement.setString(7, gebruiker.getWoonplaats());
-		preparedStatement.setString(8, gebruiker.getPostcode());
-		preparedStatement.setString(9, gebruiker.getAdres());
-		preparedStatement.setLong(10, gebruiker.getTelefoonnummer());
-		preparedStatement.setString(11, gebruiker.getGebruikersnaam());
-		preparedStatement.setString(12, gebruiker.getGebruikerRol().toString());
+		//preparedStatement.setString(5, gebruiker.getWachtwoord());
+		//preparedStatement.setDate(6, sqlGeboortedatum); // Util Date omzetten naar SQL Date
+		//preparedStatement.setString(7, gebruiker.getWoonplaats());
+		//preparedStatement.setString(8, gebruiker.getPostcode());
+		//preparedStatement.setString(9, gebruiker.getAdres());
+		//preparedStatement.setLong(10, gebruiker.getTelefoonnummer());
+		//preparedStatement.setString(11, gebruiker.getGebruikersnaam());
+		//preparedStatement.setString(12, gebruiker.getGebruikerRol().toString());
+		
+		preparedStatement.setDate(5, sqlGeboortedatum); // Util Date omzetten naar SQL Date
+		preparedStatement.setString(6, gebruiker.getWoonplaats());
+		preparedStatement.setString(7, gebruiker.getPostcode());
+		preparedStatement.setString(8, gebruiker.getAdres());
+		preparedStatement.setLong(9, gebruiker.getTelefoonnummer());
+		preparedStatement.setString(10, gebruiker.getGebruikersnaam());
+		preparedStatement.setString(11, gebruiker.getGebruikerRol().toString());
+		
+		
 		preparedStatement.execute();
 		
 		db.close();
@@ -211,5 +223,4 @@ public class GebruikerDAO implements IDAO<Gebruiker>{
 		//Deze methode zou theoretisch te gebruiken kunnen zijn bij 1 String waarde
 		return null;
 	}
-
 }

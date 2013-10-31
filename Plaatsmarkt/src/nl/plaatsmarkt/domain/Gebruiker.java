@@ -58,6 +58,23 @@ public class Gebruiker implements Serializable{
 		this.gebruikerRol = rol;
 	}
 	
+	public Gebruiker(String voornaam, String tussenvoegsel, String achternaam, String gebruikersnaam,
+			String email, String adres, String postcode, String woonplaats,
+			Date geboortedatum, long telefoonnummer){
+		
+		this.voornaam = voornaam;
+		this.tussenvoegsel = tussenvoegsel;
+		this.achternaam = achternaam;
+		this.gebruikersnaam = gebruikersnaam;
+		this.email = email;
+		this.adres = adres;
+		this.postcode = postcode;
+		this.woonplaats = woonplaats;
+		this.geboortedatum = geboortedatum;
+		this.telefoonnummer = telefoonnummer;
+		this.gebruikerRol = GebruikerRol.Member;		//Standaard wordt er een member aangemaakt
+	}
+
 	public String toString()
     {
 		if(!tussenvoegsel.equals("") && !tussenvoegsel.equals(null)){
