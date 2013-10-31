@@ -2,7 +2,7 @@ package nl.plaatsmarkt.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+//DateConverter
 public class DateConverter {
 
 	public DateConverter() {

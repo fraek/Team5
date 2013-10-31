@@ -9,7 +9,7 @@ import java.util.List;
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.SubCategorie;
 import nl.plaatsmarkt.domain.Veiling;
-
+//VeilingDAO
 public class VeilingDAO implements IDAO<Veiling>{
 	private DatabaseDAO db = ServiceProvider.getDatabaseDAO();
 	private IDAO<Gebruiker> gebdao = ServiceProvider.getGebruikerDAO();

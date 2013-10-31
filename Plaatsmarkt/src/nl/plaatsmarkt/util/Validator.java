@@ -2,7 +2,7 @@ package nl.plaatsmarkt.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+//Validator
 public class Validator {
 	private Pattern pattern;
 	private Matcher matcher;
