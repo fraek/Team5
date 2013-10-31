@@ -96,24 +96,26 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 			String query = "SELECT * FROM TO5_SUBCATEGORIE WHERE id = " + ID;
 			PreparedStatement ps;
 			ps = db.getCon().prepareStatement(query);
-			ResultSet rs = ps.executeQuery();
-			rs.next();
-			
+			ResultSet oscrs = ps.executeQuery();
+			oscrs.next();
+			String naam = oscrs.getString(3);
+			String omschrijving = oscrs.getString(2);
+			int id = oscrs.getInt(1);
+			int FKID = oscrs.getInt(4);
 			//De categorie van de subcategorie ophalen dmv DAO
-			Categorie categorie = (Categorie) catDAO.getObject(Integer.parseInt(rs.getString("FK_ID")));
-			System.out.println(categorie.getNaam());
-			opgehaaldeSubcategorie = new SubCategorie	(	
-					rs.getString("NAAM"),
-					rs.getString("OMSCHRIJVING"),
-					Integer.parseInt(rs.getString("ID")),
-					(Categorie) catDAO.getObject(categorie.getNaam()),
-					Integer.parseInt(rs.getString("FK_ID"))
-					);
+			Categorie categorie = (Categorie) catDAO.getObject(Integer.parseInt(oscrs.getString("FK_ID")));
+			
+			opgehaaldeSubcategorie = new SubCategorie(	
+					naam,
+					omschrijving,
+					id,
+					(Categorie) catDAO.getObject(categorie.getID()),
+					FKID);
 			ps.close();
 			db.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}
 		return opgehaaldeSubcategorie;
 	}
 	
@@ -127,16 +129,18 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 			ps = db.getCon().prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			
+			String naam = rs.getString(3);
+			String omschrijving = rs.getString(2);
+			int id = rs.getInt(1);
+			int FKID = rs.getInt(4);
 			//De categorie van de subcategorie ophalen dmv DAO
 			Categorie categorie = (Categorie) catDAO.getObject(rs.getString("CATEGORIE"));
 			opgehaaldeSubcategorie = new SubCategorie	(	
-					rs.getString("NAAM"),
-					rs.getString("OMSCHRIJVING"),
-					Integer.parseInt(rs.getString("ID")),
-					categorie,
-					rs.getInt("FK_ID")
-					);
+					naam,
+					omschrijving,
+					id,
+					(Categorie) catDAO.getObject(categorie.getID()),
+					FKID);
 
 			ps.close();
 			db.close();
