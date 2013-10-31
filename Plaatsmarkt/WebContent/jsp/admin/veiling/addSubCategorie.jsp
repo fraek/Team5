@@ -6,6 +6,7 @@
 			<div id="boxHead">Subcategorie Toevoegen</div>
 			<div id="boxBody">
 				U heeft een nieuwe subcategorie aangemaakt
+			<br /><a href="<s:url action='SubCategorieLijst' namespace="/admin"/>">Naar Subcategorie Overzicht</a>
 			</div>
 		</div>
 		

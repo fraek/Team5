@@ -6,6 +6,7 @@
 			<div id="boxHead">Subcategorie Verwijderen</div>
 			<div id="boxBody">
 			U heeft de subcategorie succesvol verwijderd!	
+			<br /><a href="<s:url action='SubCategorieLijst' namespace="/admin"/>">Naar Subcategorie Overzicht</a>
 			</div>
 		</div>
 		

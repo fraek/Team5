@@ -22,11 +22,12 @@ public class EditSubCategorie extends ActionSupport {
 	public String execute() throws Exception {	
 		int temp = Integer.parseInt(categorie);
 		categorieObject = (Categorie) dao.getObject(temp);
-		System.out.println(temp);
-		System.out.println(categorie);
-		//subcategorie = new SubCategorie(naam, omschrijving, categorieo, temp);
+		//System.out.println(temp);
+		//System.out.println(categorie);
+		//subcategorie = new SubCategorie(naam, omschrijving, categorieObject, temp);
+		subcategorie = new SubCategorie(naam, omschrijving, id, categorieObject, temp);
 		
-		//subdao.update(subcategorie);
+		subdao.update(subcategorie);
 		
 		return SUCCESS;
 	}

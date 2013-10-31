@@ -6,7 +6,7 @@
 			<div id="boxHead">Subcategorie Bewerken</div>
 			<div id="boxBody">
 			Subcategorie <i><s:property value="subcategorie.naam"/></i> succesvol bewerkt!	
-			
+			<br /><a href="<s:url action='SubCategorieLijst' namespace="/admin"/>">Naar Subcategorie Overzicht</a>
 			</div>
 		</div>
 		

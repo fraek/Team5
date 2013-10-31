@@ -6,7 +6,7 @@
 			<div id="boxHead">Categorie Bewerken</div>
 			<div id="boxBody">
 			Categorie <i><s:property value="categorie.naam"/></i> succesvol bewerkt!	
-			
+			<br /><a href="<s:url action='CategorieLijst' namespace="/admin"/>">Naar Categorie Overzicht</a>			
 			</div>
 		</div>
 		

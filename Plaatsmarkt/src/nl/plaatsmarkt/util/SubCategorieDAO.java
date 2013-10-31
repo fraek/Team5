@@ -98,19 +98,21 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 			ps = db.getCon().prepareStatement(query);
 			ResultSet oscrs = ps.executeQuery();
 			oscrs.next();
-			String naam = oscrs.getString(3);
-			String omschrijving = oscrs.getString(2);
-			int id = oscrs.getInt(1);
-			int FKID = oscrs.getInt(4);
+			
+			String naam = oscrs.getString("NAAM");
+			String omschrijving = oscrs.getString("OMSCHRIJVING");
+			int id = Integer.parseInt(oscrs.getString("ID"));
+			int FKID = Integer.parseInt(oscrs.getString("FK_ID"));
 			//De categorie van de subcategorie ophalen dmv DAO
-			Categorie categorie = (Categorie) catDAO.getObject(Integer.parseInt(oscrs.getString("FK_ID")));
+			//Categorie categorie = (Categorie) catDAO.getObject(Integer.parseInt(oscrs.getString("FK_ID")));
 			
 			opgehaaldeSubcategorie = new SubCategorie(	
 					naam,
 					omschrijving,
 					id,
-					(Categorie) catDAO.getObject(categorie.getID()),
+					(Categorie) catDAO.getObject(FKID),
 					FKID);
+			
 			ps.close();
 			db.close();
 		} catch (SQLException e) {
@@ -154,16 +156,15 @@ public class SubCategorieDAO implements IDAO<SubCategorie>{
 	public void update(Object T) throws SQLException {
 		SubCategorie subcategorie = (SubCategorie)T;
 		int id = subcategorie.getID();
-
+		System.out.println(subcategorie.getFK_ID());
 		db.open();
 		db.createStmt();
 
-		String statement = "UPDATE TO5_SUBCATEGORIE SET OMSCHRIJVING=?, NAAM=?, CATEGORIE=?, FK_ID=? WHERE ID = " + id;
+		String statement = "UPDATE TO5_SUBCATEGORIE SET OMSCHRIJVING=?, NAAM=?, FK_ID=? WHERE ID = " + id;
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
 		preparedStatement.setString(1, subcategorie.getOmschrijving());
 		preparedStatement.setString(2, subcategorie.getNaam());
-		preparedStatement.setString(3, subcategorie.getCategorie().toString());
-		preparedStatement.setInt(4, subcategorie.getFK_ID());
+		preparedStatement.setInt(3, subcategorie.getFK_ID());
 		preparedStatement.execute();
 
 		db.close();

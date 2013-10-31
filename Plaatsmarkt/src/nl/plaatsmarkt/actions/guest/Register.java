@@ -45,7 +45,9 @@ public class Register extends ActionSupport {
 		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
 		dao.create(gebruiker);
 
-		setGeslaagd("U bent succesvol geregisteerd met "+ email1);
+		//Het wachtwoord moet nog even getoond worden
+		//Gebruiker gebruiker2 = (Gebruiker) dao.getObject(gebruiker.getID());
+		setGeslaagd("U bent succesvol geregisteerd met "+ email1);// + " en met wachtwoord " + gebruiker2.getWachtwoord());
 
 		return SUCCESS;
 	}

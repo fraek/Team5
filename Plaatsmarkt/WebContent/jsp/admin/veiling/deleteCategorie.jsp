@@ -6,6 +6,7 @@
 			<div id="boxHead">Categorie Verwijderen</div>
 			<div id="boxBody">
 			U heeft de categorie succesvol verwijderd!	
+			<br /><a href="<s:url action='CategorieLijst' namespace="/admin"/>">Naar Categorie Overzicht</a>
 			</div>
 		</div>
 		

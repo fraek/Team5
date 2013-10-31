@@ -17,10 +17,10 @@
 		<action name="ZoekVeilingForm">
 			<result name="success">/jsp/guest/veiling/zoekVeilingForm.jsp</result>
 		</action>
-		<action name="CategorieLijst">
+		<action name="CategorieLijst" class="nl.plaatsmarkt.actions.guest.CategorieList">
 			<result name="success">/jsp/guest/veiling/categorieList.jsp</result>
 		</action>
-		<action name="SubCategorieLijst">
+		<action name="SubCategorieLijst" class="nl.plaatsmarkt.actions.guest.SubCategorieList">
 			<result name="success">/jsp/guest/veiling/subCategorieList.jsp</result>
 		</action>
 		

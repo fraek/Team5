@@ -6,6 +6,7 @@
 			<div id="boxHead">Categorie Toevoegen</div>
 			<div id="boxBody">
 				U heeft een nieuwe categorie aangemaakt
+			<br /><a href="<s:url action='CategorieLijst' namespace="/admin"/>">Naar Categorie Overzicht</a>
 			</div>
 		</div>
 		
