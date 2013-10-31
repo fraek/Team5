@@ -19,9 +19,10 @@ public class SubCategorieDetails extends ActionSupport {
 	private List<Categorie> alleCategorieen;
 
 	public String execute() throws Exception {
-		subcategorie = (SubCategorie) subdao.getObject(id);
-		System.out.println(subcategorie.getID());
 		setAlleCategorieen((List<Categorie>)dao.read());
+		System.out.println(id);
+		subcategorie = (SubCategorie) subdao.getObject(id);
+		//System.out.println(subcategorie.getNaam());
 		return SUCCESS;
 	}
 	
