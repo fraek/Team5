@@ -48,7 +48,6 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 		deVeiling = (Veiling) veilingdao.getObject(veilingID);
 		
 		datum = new Date();
-		System.out.println(datum);
 		bod = new Bod(bedrag, gebruiker, datum, deVeiling);
 		
 		boddao.create(bod);
