@@ -3,6 +3,7 @@ package nl.plaatsmarkt.util;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,8 @@ public class BodDAO implements IDAO<Bod>{
 		db.createStmt();
 
 		java.util.Date date = bod.getDatum();
-		java.sql.Timestamp timestamp = dc.dateToTimestamp(date);
+		//java.sql.Timestamp timestamp = dc.dateToTimestamp(date);
+		java.sql.Timestamp timestamp = new Timestamp(date.getTime()); 
 
 		String statement = "INSERT INTO TO5_BOD(TIJD, BEDRAG, BIEDER, VEILING) values (?,?,?,?)";
 		PreparedStatement preparedStatement = db.getCon().prepareStatement(statement);
@@ -37,7 +39,6 @@ public class BodDAO implements IDAO<Bod>{
 		db.closeStmt();		
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public List<Bod> read() throws SQLException {
 		db.open();
@@ -56,6 +57,7 @@ public class BodDAO implements IDAO<Bod>{
 			timestamp = rs.getTimestamp("TIJD");
 			if(timestamp != null){
 				datum = dc.timestampToDate(timestamp);
+				
 			}
 			gebid = rs.getInt("BIEDER");
 			if(gebid > 0){
@@ -96,7 +98,7 @@ public class BodDAO implements IDAO<Bod>{
 			Gebruiker aanbieder = null;
 			int gebid;
 			SubCategorie subcat = null;
-			int scid;
+			//int scid;
 			verloopdate = rs.getDate("VERLOOPDATUM");
 			if(verloopdate != null || !verloopdate.equals("")){
 				verloopdatum = dc.sqlToUtil(verloopdate);
@@ -122,7 +124,6 @@ public class BodDAO implements IDAO<Bod>{
 			ps.close();
 			db.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		return opgehaaldeVeiling;

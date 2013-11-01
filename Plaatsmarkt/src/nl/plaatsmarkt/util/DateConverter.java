@@ -25,6 +25,13 @@ public class DateConverter {
 		return utilDateToString(utilDate);
 	}
 	
+	@SuppressWarnings("deprecation")
+	public java.util.Date timestampToDate(java.sql.Timestamp timestamp){
+		java.util.Date datum = null;
+		datum = new java.util.Date(timestamp.getYear(), timestamp.getMonth(), 
+				timestamp.getDate(), timestamp.getHours(), timestamp.getMinutes(), timestamp.getSeconds());
+		return datum;
+	}
 
 	@SuppressWarnings("deprecation")
 	public String utilDateToString(java.util.Date utilDate){

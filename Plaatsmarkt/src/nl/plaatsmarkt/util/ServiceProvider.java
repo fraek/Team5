@@ -1,5 +1,6 @@
 package nl.plaatsmarkt.util;
 
+import nl.plaatsmarkt.domain.Bod;
 import nl.plaatsmarkt.domain.Categorie;
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.SubCategorie;
@@ -12,6 +13,7 @@ public class ServiceProvider {
 	private static IDAO<Categorie> CategorieDAO = new CategorieDAO();
 	private static IDAO<SubCategorie> SubCategorieDAO = new SubCategorieDAO();
 	private static IDAO<Veiling> VeilingDAO = new VeilingDAO();
+	private static IDAO<Bod> BodDAO = new BodDAO();
 
 	public static IDAO<Gebruiker> getGebruikerDAO() {
 		return GebruikerDAO;
@@ -28,5 +30,7 @@ public class ServiceProvider {
 	public static IDAO<Veiling> getVeilingDAO() {
 		return VeilingDAO;
 	}
-
+	public static IDAO<Bod> getBodDAO() {
+		return BodDAO;
+	}
 }

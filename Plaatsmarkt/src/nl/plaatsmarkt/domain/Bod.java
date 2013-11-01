@@ -12,6 +12,7 @@ public class Bod implements Serializable{
 	private Date datum;
 	private Time tijd;
 	private int ID;
+	private Veiling deVeiling;
 	
 	/* Constructors*/
 	public Bod(double bedrag, Gebruiker deBieder, Date datum, Time tijd, int iD) {
@@ -28,6 +29,20 @@ public class Bod implements Serializable{
 		this.tijd = tijd;
 	}
 	
+	public Bod(double b, Gebruiker bieder, Date d, Veiling v){
+		Bedrag = b;
+		this.deBieder = bieder;
+		this.datum = d;
+		this.setDeVeiling(v);
+	}
+	
+	public Bod(double b, Gebruiker bieder, Date d, Veiling v, int iD){
+		Bedrag = b;
+		this.deBieder = bieder;
+		this.datum = d;
+		this.setDeVeiling(v);
+		ID = iD;
+	}
 	
 	/* Getters en Setters */
 	public double getBedrag() {
@@ -59,5 +74,11 @@ public class Bod implements Serializable{
 	}
 	public void setID(int iD) {
 		ID = iD;
+	}
+	public Veiling getDeVeiling() {
+		return deVeiling;
+	}
+	public void setDeVeiling(Veiling deVeiling) {
+		this.deVeiling = deVeiling;
 	}
 }
