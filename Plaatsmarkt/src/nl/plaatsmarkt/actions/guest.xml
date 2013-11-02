@@ -23,6 +23,9 @@
 		<action name="SubCategorieLijst" class="nl.plaatsmarkt.actions.guest.SubCategorieList">
 			<result name="success">/jsp/guest/veiling/subCategorieList.jsp</result>
 		</action>
+		<action name="VeilingLijst" class="nl.plaatsmarkt.actions.guest.VeilingList">
+			<result name="success">/jsp/guest/veiling/veilingList.jsp</result>
+		</action>
 		
 		<action name="Login" class="nl.plaatsmarkt.actions.guest.Login">
 		 	<result name="success">/jsp/member/welcome.jsp</result>

@@ -59,7 +59,7 @@
 		</action>
 		
 		<!-- Bieden -->
-		<action name="AddBodForm" class="nl.plaatsmarkt.actions.member.AddBodForm">
+		<!-- <action name="AddBodForm" class="nl.plaatsmarkt.actions.member.AddBodForm">
 			<result name="success">/jsp/member/veiling/addBodForm.jsp</result>
 		</action>
 		<action name="AddBod" class="nl.plaatsmarkt.actions.member.AddBod">
@@ -76,7 +76,7 @@
 		</action>
 		<action name="DeleteBod">
 			<result name="success">/jsp/member/veiling/deleteBod.jsp</result>
-		</action>
+		</action>-->
 		
 		<!-- Random -->		
 		<action name="welkom">

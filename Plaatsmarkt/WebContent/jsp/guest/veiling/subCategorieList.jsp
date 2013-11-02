@@ -13,11 +13,11 @@
 						<td width = "200"><b>Omschrijving</b></td>
 					</tr>
 					
-					<s:iterator value="alleSubCategorieen">
+					<s:iterator value="alleSubCategorieenByID">
 					<tr>
 						<td><s:property value="ID" /></td>
 						<td><s:property value="categorie.naam" /></td>
-						<td><s:property value="naam" /></td>
+						<td><a href="<s:url namespace="/" action="VeilingLijst"><s:param name="id" value="ID" /></s:url>"><s:property value="naam"/></a></td>
 						<td><s:property value="omschrijving" /></td>
 					</tr>
 					</s:iterator>

@@ -14,8 +14,8 @@
 					
 					<s:iterator value="alleCategorieen">
 					<tr>
-						<td><s:property value="ID" /></td>
-						<td><s:property value="naam" /></td>
+						<td><s:property value="ID"/></td>
+						<td><a href="<s:url namespace="/" action="SubCategorieLijst"><s:param name="id" value="ID" /></s:url>"><s:property value="naam"/></a></td>
 						<td><s:property value="omschrijving" /></td>
 					</tr>
 					</s:iterator>

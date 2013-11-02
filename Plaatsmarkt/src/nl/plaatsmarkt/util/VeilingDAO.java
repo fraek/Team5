@@ -4,8 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import nl.plaatsmarkt.domain.Categorie;
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.SubCategorie;
 import nl.plaatsmarkt.domain.Veiling;
@@ -43,10 +45,6 @@ public class VeilingDAO implements IDAO<Veiling>{
 	@SuppressWarnings("null")
 	@Override
 	public List<Veiling> read() throws SQLException {
-		db.open();
-		db.createStmt();
-		String query = "SELECT * FROM TO5_VEILING";
-		ResultSet rs = db.getStmt().executeQuery(query);
 		List<Veiling> alleVeilingen = new ArrayList<Veiling>();
 		java.sql.Date aanmaakdate = null;
 		java.util.Date aanmaakdatum = null;
@@ -56,23 +54,32 @@ public class VeilingDAO implements IDAO<Veiling>{
 		int gebid;
 		SubCategorie subcat = null;
 		int scid;
+		
+		db.open();
+		db.createStmt();
+		
+		String query = "SELECT * FROM TO5_VEILING";
+		ResultSet rs = db.getStmt().executeQuery(query);
+		
 		while(rs.next())
 		{
-
+/*
 			verloopdate = rs.getDate("VERLOOPDATUM");
 			if(verloopdate != null || !verloopdate.equals("")){
 				verloopdatum = dc.sqlToUtil(verloopdate);
 			}
-			aanmaakdate = rs.getDate("VERLOOPDATUM");
+			aanmaakdate = rs.getDate("AANMAAKDATUM");
 			if(aanmaakdate != null || !aanmaakdate.equals("")){
 				aanmaakdatum = dc.sqlToUtil(aanmaakdate);
 			}
 			gebid = rs.getInt("AANBIEDER");
 			if(gebid > 0){
+				//De volgende code werkt niet omdat de verbinding in getObject wordt gesloten
 				aanbieder = (Gebruiker)gebdao.getObject(gebid);
 			}
 			scid = rs.getInt("SUBCATEGORIE");
 			if(scid > 0){
+				//De volgende code werkt niet omdat de verbinding in getObject wordt gesloten
 				subcat = (SubCategorie)scdao.getObject(scid);
 			}
 			alleVeilingen.add(new Veiling(
@@ -84,11 +91,46 @@ public class VeilingDAO implements IDAO<Veiling>{
 					verloopdatum,
 					rs.getInt("ID")
 					));
+*/
+			verloopdate = rs.getDate("VERLOOPDATUM");
+			aanmaakdate = rs.getDate("AANMAAKDATUM");
+			gebid = rs.getInt("AANBIEDER");
+			scid = rs.getInt("SUBCATEGORIE");
+			String titel = rs.getString("TITEL");
+			String beschrijving = rs.getString("BESCHRIJVING");
+			int iedee = rs.getInt("ID");
+			
+			if(verloopdate != null || !verloopdate.equals("")){
+				verloopdatum = dc.sqlToUtil(verloopdate);
+			}
+			if(aanmaakdate != null || !aanmaakdate.equals("")){
+				aanmaakdatum = dc.sqlToUtil(aanmaakdate);
+			}
+			if(gebid > 0){
+				//De volgende code werkt niet omdat de verbinding in getObject wordt gesloten
+				//aanbieder = (Gebruiker)gebdao.getObject(gebid);
+				aanbieder = new Gebruiker("guido", "h", "munk", "hallo", "guido@munk.nl", "trompetdreef 5", "3845CJ", "Harderwijk", new Date(), new Long("0625338663"));
+			}
+			if(scid > 0){
+				//De volgende code werkt niet omdat de verbinding in getObject wordt gesloten
+				//subcat = (SubCategorie)scdao.getObject(scid);
+				subcat = new SubCategorie("telefoons", "telefoon veiling", 9, new Categorie("elektronica", "elektronica veilingen"));
+			}
+			
+			alleVeilingen.add(new Veiling(
+					aanbieder,
+					subcat,
+					titel,
+					beschrijving,
+					aanmaakdatum,
+					verloopdatum,
+					iedee
+					));
 		}
 		rs.close();
 
-		db.close();
-		db.closeStmt();		
+		db.closeStmt();
+		db.close();		
 
 		return alleVeilingen;
 	}

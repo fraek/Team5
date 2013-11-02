@@ -10,7 +10,7 @@
     	<i>Welkom <s:property value="#session['gebruiker'].gebruikersnaam"/></i><br/><br/>
     	<b>Veilingen</b><br/>
 	  	<a href="<s:url action='CategorieLijst' namespace="/"/>">Categoriën</a><br/>
-	  	<a href="<s:url action='SubCategorieLijst' namespace="/"/>">Subcategoriën</a><br/>
+	  	<!-- <a href="<s:url action='SubCategorieLijst' namespace="/"/>">Subcategoriën</a><br/> -->
 	    <a href="<s:url action='ZoekVeilingForm' namespace="/"/>">Veiling Zoeken</a><br/>
 	    <a href="<s:url action='AddVeilingForm' namespace="/member"/>">Veiling Toevoegen</a><br/>
 	    <a href="<s:url action='MijnVeilingen' namespace="/member"/>">Mijn Veilingen</a><br/><br/>
@@ -25,7 +25,7 @@
   		<i>Welkom <s:property value="#session['gebruiker'].gebruikersnaam"/></i><br/><br/>
     	<b>Veilingen</b><br/>
 	  	<a href="<s:url action='CategorieLijst' namespace="/"/>">Categoriën</a><br/>
-	  	<a href="<s:url action='SubCategorieLijst' namespace="/"/>">Subcategoriën</a><br/>
+	  	<!-- <a href="<s:url action='SubCategorieLijst' namespace="/"/>">Subcategoriën</a><br/> -->
 	    <a href="<s:url action='ZoekVeilingForm' namespace="/"/>">Veiling Zoeken</a><br/>
 	    <a href="<s:url action='AddVeilingForm' namespace="/member"/>">Veiling Toevoegen</a><br/>
 	    <a href="<s:url action='MijnVeilingen' namespace="/member"/>">Mijn Veilingen</a><br/><br/>
@@ -47,7 +47,7 @@
   	%> 	<!--  Als iemand niet is ingelogd -->
   		<b>Veilingen</b><br/>
   		<a href="<s:url action='CategorieLijst' namespace="/"/>">Categoriën</a><br/>
-	  	<a href="<s:url action='SubCategorieLijst' namespace="/"/>">Subcategoriën</a><br/>
+	  	<!-- <a href="<s:url action='SubCategorieLijst' namespace="/"/>">Subcategoriën</a><br/> -->
 	    <a href="<s:url action='ZoekVeilingForm' namespace="/"/>">Veiling Zoeken</a><br/><br/>
 	    
 	    <b>Account</b><br/>
