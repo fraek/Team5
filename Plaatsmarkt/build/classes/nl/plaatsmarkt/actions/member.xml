@@ -58,6 +58,26 @@
 			<result name="success">/jsp/member/veiling/deleteVeiling.jsp</result>
 		</action>
 		
+		<!-- Bieden -->
+		<action name="AddBodForm" class="nl.plaatsmarkt.actions.member.AddBodForm">
+			<result name="success">/jsp/member/veiling/addBodForm.jsp</result>
+		</action>
+		<action name="AddBod" class="nl.plaatsmarkt.actions.member.AddBod">
+			<result name="success">/jsp/member/veiling/addBod.jsp</result>
+		</action>
+		<action name="EditBodForm">
+			<result name="success">/jsp/member/veiling/editBodForm.jsp</result>
+		</action>
+		<action name="EditBod">
+			<result name="success">/jsp/member/veiling/editBod.jsp</result>
+		</action>
+		<action name="DeleteBodForm">
+			<result name="success">/jsp/member/veiling/deleteBodForm.jsp</result>
+		</action>
+		<action name="DeleteBod">
+			<result name="success">/jsp/member/veiling/deleteBod.jsp</result>
+		</action>
+		
 		<!-- Random -->		
 		<action name="welkom">
 			<result name="success">/jsp/member/welcome.jsp</result>
