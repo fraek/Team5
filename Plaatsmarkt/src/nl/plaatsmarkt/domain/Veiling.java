@@ -28,7 +28,7 @@ public class Veiling implements Serializable{
 		this.verloopDatum = verloopDatum;
 		ID = iD;
 	}
-	
+
 	public Veiling(Gebruiker deAanbieder, SubCategorie deSubCategorie,
 			ArrayList<Bod> alleBiedingen, String titel, String beschrijving,
 			Date aanmaakDatum, Date verloopDatum) {
@@ -113,5 +113,14 @@ public class Veiling implements Serializable{
 	}
 	public void setID(int iD) {
 		ID = iD;
+	}
+
+	@Override
+	public String toString() {
+		return "Veiling [deAanbieder=" + deAanbieder.getVoornaam() + ", deSubCategorie="
+				+ deSubCategorie.getNaam() + ", alleBiedingen=" + alleBiedingen
+				+ ", titel=" + titel + ", beschrijving=" + beschrijving
+				+ ", aanmaakDatum=" + aanmaakDatum + ", verloopDatum="
+				+ verloopDatum + ", ID=" + ID + "]";
 	}
 }

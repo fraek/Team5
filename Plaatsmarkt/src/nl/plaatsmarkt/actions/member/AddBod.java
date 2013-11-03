@@ -49,15 +49,22 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 		
 		datum = new Date();
 		bod = new Bod(bedrag, gebruiker, datum, deVeiling);
+		System.out.println(bod.getBedrag());
+		System.out.println(bod.getDeBieder().getVoornaam());
+		System.out.println(bod.getDatum());
+		System.out.println(bod.getDeVeiling().getID());
 		
 		boddao.create(bod);
 		
 		return SUCCESS;
 	}
 
-	@Override
-	public void validate(){
-		
+	public int getVeilingID() {
+		return veilingID;
+	}
+
+	public void setVeilingID(int veilingID) {
+		this.veilingID = veilingID;
 	}
 
 	public Gebruiker getGebruiker() {

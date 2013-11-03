@@ -1,4 +1,4 @@
-<%@include file="/../jsp/guest/header.jsp" %>
+<%@include file="/../jsp/admin/header.jsp" %>
 <div id="container">
 
 	<div id="center" class="column">
@@ -24,7 +24,10 @@
 						<td><s:property value="deVeiling.verloopDatum"/></td>
 					</tr>
 				</table>
-				<a href="<s:url namespace="/" action="Login"/>">Log in</a> of <a href="<s:url namespace="/" action="Register"/>">Registreer</a> om te kunnen bieden.
+				<s:form action="AddBod.action">
+					<s:textfield name="bedrag" label="Bedrag*" />
+			   	    <s:submit value="Bieden"/>
+				</s:form>
 			</div>
 		</div>
 		
@@ -32,4 +35,4 @@
 	</div>
 	<%@include file="../../menu.jsp" %>
 </div>
-<%@include file="/../jsp/guest/footer.jsp" %>
+<%@include file="/../jsp/admin/footer.jsp" %>
