@@ -109,7 +109,7 @@ public class VeilingDAO implements IDAO<Veiling>{
 			if(gebid > 0){
 				//De volgende code werkt niet omdat de verbinding in getObject wordt gesloten
 				//aanbieder = (Gebruiker)gebdao.getObject(gebid);
-				aanbieder = new Gebruiker("guido", "h", "munk", "hallo", "guido@munk.nl", "trompetdreef 5", "3845CJ", "Harderwijk", new Date(), new Long("0625338663"));
+				aanbieder = new Gebruiker("guido", "P", "munk", "hallo", "guido@munk.nl", "trompetdreef 5", "3845CJ", "Harderwijk", new Date(), new Long("0625338663"));
 			}
 			if(scid > 0){
 				//De volgende code werkt niet omdat de verbinding in getObject wordt gesloten
