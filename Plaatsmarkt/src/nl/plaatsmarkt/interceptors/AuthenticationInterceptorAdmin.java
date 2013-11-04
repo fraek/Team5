@@ -3,6 +3,7 @@ package nl.plaatsmarkt.interceptors;
 import java.util.Map;
 
 import nl.plaatsmarkt.domain.Gebruiker;
+import nl.plaatsmarkt.domain.GebruikerRol;
 import nl.plaatsmarkt.util.GebruikerAware;
 
 import com.opensymphony.xwork2.Action;
@@ -25,7 +26,9 @@ public class AuthenticationInterceptorAdmin implements Interceptor {
 		
 		Gebruiker gebruiker = (Gebruiker) session.get("gebruiker" );
 		
-		if (gebruiker == null) {
+		if (gebruiker == null || 
+				(gebruiker.getGebruikerRol() != GebruikerRol.Member && 
+				gebruiker.getGebruikerRol() != GebruikerRol.Admin) ) {
 		    return Action.LOGIN;
 		} 
 		else {

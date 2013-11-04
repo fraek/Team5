@@ -75,20 +75,17 @@ public class Gebruiker implements Serializable{
 		this.gebruikerRol = GebruikerRol.Member;		//Standaard wordt er een member aangemaakt
 	}
 
-	public String toString()
-    {
-		if(!tussenvoegsel.equals("") && !tussenvoegsel.equals(null)){
-        return "Voornaam: " + voornaam + " Tussenvoegsel: " + tussenvoegsel + " Achternaam: " + achternaam +
-        		" Gebruikersnaam: " + gebruikersnaam + " E-mail: " + email + " Wachtwoord: " + wachtwoord + 
-        		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats
-        		+ " Telefoonnummer: " + telefoonnummer;
-		}else{
-		return "Voornaam: " + voornaam + " Achternaam: " + achternaam +
-        		" Gebruikersnaam: " + gebruikersnaam + " E-mail: " + email + " Wachtwoord: " + wachtwoord + 
-        		" Adres: " + adres + " Postcode: " + postcode + " Woonplaats: " + woonplaats + 
-        		" Telefoonnummer: " + telefoonnummer;	
-		}
-    }
+	@Override
+	public String toString() {
+		return "Gebruiker [ID=" + ID + ", voornaam=" + voornaam
+				+ ", tussenvoegsel=" + tussenvoegsel + ", achternaam="
+				+ achternaam + ", gebruikersnaam=" + gebruikersnaam
+				+ ", email=" + email + ", wachtwoord=" + wachtwoord
+				+ ", adres=" + adres + ", postcode=" + postcode
+				+ ", woonplaats=" + woonplaats + ", geboortedatum="
+				+ geboortedatum + ", gebruikerRol=" + gebruikerRol
+				+ ", telefoonnummer=" + telefoonnummer + "]";
+	}
 
 	/* Getters en Setters */
 	public String getVoornaam() {

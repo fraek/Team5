@@ -2,18 +2,26 @@ package nl.plaatsmarkt.actions.member;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
 
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
-public class VeilingList extends ActionSupport {
+public class VeilingList extends ActionSupport implements SessionAware{
 	private IDAO<Veiling> vdao = ServiceProvider.getVeilingDAO();
 	private static final long serialVersionUID = 1L;
 	private List<Veiling> alleVeilingen, alleVeilingenByID, alleVeilingenEigenaar;
 	private int id;
+	@SuppressWarnings("rawtypes")
+	private SessionMap session;
+	private Gebruiker SessionGebruiker;
 
 	public String execute() throws Exception {
 		alleVeilingenByID = new ArrayList<Veiling>();
@@ -27,8 +35,10 @@ public class VeilingList extends ActionSupport {
 			}
 		}
 		
+		SessionGebruiker = (Gebruiker)session.get("gebruiker");		
+		
 		for(Veiling c:alleVeilingen){
-			if(c.getDeAanbieder().getID() == id){
+			if(c.getDeAanbieder().getID() == (SessionGebruiker.getID())){
 				alleVeilingenEigenaar.add(c);
 			}
 		}
@@ -65,5 +75,18 @@ public class VeilingList extends ActionSupport {
 
 	public void setAlleVeilingenEigenaar(List<Veiling> alleVeilingenEigenaar) {
 		this.alleVeilingenEigenaar = alleVeilingenEigenaar;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void setSession(Map session) {
+		this.session = (SessionMap) session;
+	}
+
+	public Gebruiker getSessionGebruiker() {
+		return SessionGebruiker;
+	}
+
+	public void setSessionGebruiker(Gebruiker sessionGebruiker) {
+		SessionGebruiker = sessionGebruiker;
 	}
 }
