@@ -113,5 +113,24 @@ public class Validator {
 		}
 		else return false;
 	}
-
+	
+	public boolean beschrijving(String s){
+		if(s.length() > 150 || s.length() < 5){
+			return false;
+		}
+		else return true;
+	}
+	
+	public boolean bedrag(String bedrag){
+		final String BEDRAG_PATTERN = "(^[0-9]{1,}.{0,1}[0-9]{0,2})$";
+		pattern = Pattern.compile(BEDRAG_PATTERN);
+		matcher = pattern.matcher(bedrag);
+		try{
+			Double d = Double.parseDouble(bedrag);
+			return matcher.matches();
+			
+		}catch(Exception e){
+			return false;
+		}
+	}
 }
