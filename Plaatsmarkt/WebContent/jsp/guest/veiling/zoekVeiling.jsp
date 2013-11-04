@@ -24,7 +24,7 @@
 						<s:iterator value="alleVeilingenByTitel">
 						<tr>
 							<td><s:property value="ID" /></td>
-							<td><a href="<s:url namespace="/member" action="DeVeiling"><s:param name="id" value="ID" /></s:url>"><s:property value="titel"/></a></td>
+							<td><a href="<s:url namespace="/" action="DeVeiling"><s:param name="id" value="ID" /></s:url>"><s:property value="titel"/></a></td>
 							<td><s:property value="beschrijving" /></td>
 							<td><s:property value="deAanbieder.gebruikersnaam" /></td>
 							<td><s:property value="aanmaakDatum" /></td>
