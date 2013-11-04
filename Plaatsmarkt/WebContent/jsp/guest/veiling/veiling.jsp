@@ -24,6 +24,24 @@
 						<td><s:property value="deVeiling.verloopDatum"/></td>
 					</tr>
 				</table>
+				<table>
+					<tr>
+						<td width = "100"><b>Biedingen</b></td>
+					</tr>
+				<s:if test="%{deVeiling.alleBiedingen.isEmpty()}">
+			    <tr>
+			        <td>Nog geen biedingen</td>
+			    </tr>
+				</s:if>
+				<s:else>
+					<s:iterator value="deVeiling.alleBiedingen">
+						<tr>
+							<td><s:property value="deBieder.voornaam"/></td>
+							<td><s:property value="Bedrag"/></td>
+						</tr>
+					</s:iterator>
+				</s:else>
+				</table>
 				<a href="<s:url namespace="/" action="Login"/>">Log in</a> of <a href="<s:url namespace="/" action="Register"/>">Registreer</a> om te kunnen bieden.
 			</div>
 		</div>

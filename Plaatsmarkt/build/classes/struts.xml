@@ -12,6 +12,6 @@
 		
     <include file="nl/plaatsmarkt/actions/guest.xml"/>
     <include file="nl/plaatsmarkt/actions/member.xml"/>
-    <include file="nl/plaatsmarkt/actions/admin.xml"/>
+	<include file="nl/plaatsmarkt/actions/admin.xml"/>
  
 </struts>

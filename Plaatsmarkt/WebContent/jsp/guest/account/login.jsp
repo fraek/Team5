@@ -11,7 +11,7 @@
 	    
 		    	<hr />
 				<s:form action="Login.action">
-				 	<s:textfield name="gebruikersnaam" label="Gebruikersnaam**"/>
+				 	<s:textfield name="gebruikersnaam" label="Gebruikersnaam*"/>
 		   	 		 <s:password name="wachtwoord" label="Wachtwoord*"/>
 					<s:submit value="Inloggen" />
 				</s:form>
