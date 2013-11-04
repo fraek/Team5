@@ -18,6 +18,7 @@ public class DeVeiling extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private Veiling deVeiling;
+	private boolean afgelopen;
 	private List<Bod> alleBiedingen, alleBiedingenByID;
 
 	public String execute() throws Exception {
