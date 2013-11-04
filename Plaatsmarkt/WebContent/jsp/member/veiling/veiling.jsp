@@ -34,34 +34,22 @@
 				</s:if>
 				<s:else>
 					<s:iterator value="deVeiling.alleBiedingen">
-						<s:if test="#eigenaar == false">
 						<tr>
 							<td><s:property value="deBieder.voornaam"/></td>
 							<td><s:property value="Bedrag"/></td>
 						</tr>
-						</s:if>
-						<s:else>
 						<tr>
 							<td><s:property value="deBieder.voornaam"/></td>
 							<td><s:property value="Bedrag"/></td>
 							<td><s:property value="deBieder.email" /></td>
 						</tr>
-						</s:else>
 					</s:iterator>
 				</s:else>
 				</table>
 				<s:form action="AddBod.action">
-				<s:if test="#afgelopen == false">
 					<s:textfield name="bedrag" label="Bedrag*" />
 					<s:hidden name="veilingID" value="%{deVeiling.ID}"/>
-			   	    <s:submit value="Bieden"/>
-			   	</s:if>
-			   	<s:else>
-			   		<s:textfield name="bedrag" label="Bedrag*" disabled="true" />
-			   		<s:label name="melding" value="deze veiling is gesloten, de aanbieder kiest een winnaar"/>
-			   		<s:hidden name="veilingID" value="%{deVeiling.ID}"/>
-			   	    <s:submit value="Bieden" disabled="true" />
-			   	</s:else>
+			   	    <s:submit value="Bieden"/
 				</s:form>
 			</div>
 		</div>
