@@ -74,6 +74,13 @@
 			<result name="success">/jsp/member/veiling/veiling.jsp</result>
 		</action>
 		
+		<action name="ZoekVeilingForm">
+			<result name="success">/jsp/guest/veiling/zoekVeilingForm.jsp</result>
+		</action>
+		<action name="ZoekVeiling" class="nl.plaatsmarkt.actions.guest.ZoekVeiling">
+			<result name="success">/jsp/guest/veiling/zoekVeiling.jsp</result>
+		</action>
+		
 		<!-- Bieden -->
 		<action name="AddBod" class="nl.plaatsmarkt.actions.member.AddBod">
 			<result name="success">/jsp/member/veiling/addBod.jsp</result>

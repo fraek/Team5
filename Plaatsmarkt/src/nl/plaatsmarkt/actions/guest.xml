@@ -11,11 +11,11 @@
 		    <result name="input">/jsp/guest/account/registreren.jsp</result>
 		</action>	
 		
-		<action name="ZoekVeiling">
-			<result name="success">/jsp/guest/veiling/zoekVeiling.jsp</result>
-		</action>
 		<action name="ZoekVeilingForm">
 			<result name="success">/jsp/guest/veiling/zoekVeilingForm.jsp</result>
+		</action>
+		<action name="ZoekVeiling" class="nl.plaatsmarkt.actions.guest.ZoekVeiling">
+			<result name="success">/jsp/guest/veiling/zoekVeiling.jsp</result>
 		</action>
 		<action name="CategorieLijst" class="nl.plaatsmarkt.actions.guest.CategorieList">
 			<result name="success">/jsp/guest/veiling/categorieList.jsp</result>
