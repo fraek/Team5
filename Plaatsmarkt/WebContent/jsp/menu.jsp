@@ -14,7 +14,7 @@
 	    <a href="<s:url action='ZoekVeilingForm' namespace="/"/>">Veiling Zoeken</a><br/>
 	    <a href="<s:url action='AddVeilingForm' namespace="/member"/>">Veiling Toevoegen</a><br/>
 	    <a href="<s:url action='MijnVeilingen' namespace="/member"><s:param name='id' value='#session["gebruiker"].ID' /></s:url>">Mijn Veilingen</a><br/><br/>
-	    
+	    <a href="<s:url namespace="/member" action="VeilingOverzicht"/>">Veiling Overzicht</a>
 	    <b>Account</b><br/>
 	    <a href="<s:url action='MyAccount' namespace="/member"/>">Mijn Account</a><br/>
 	    <a href="#"><del>Inbox</del></a><br/>
