@@ -9,6 +9,7 @@
 				<s:textfield name="titel" label="Titel*" />
 				<s:textarea name="omschrijving" label="Omschrijving*" />
 				<s:select label ="Sub Categorie" list="subcats" name="subcats" listValue="naam" listKey="ID"/>
+				<s:textfield name="verloopDatum" label="Verloop Datum*" value="dd-mm-yyyy"/>
 	   	    <s:submit value="Veiling Toevoegen"/>
 			</s:form>		
 			</div>
