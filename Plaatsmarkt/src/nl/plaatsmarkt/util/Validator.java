@@ -121,6 +121,10 @@ public class Validator {
 		else return true;
 	}
 	
+	public boolean omschrijving(String s){
+		return beschrijving(s);
+	}
+	
 	public boolean bedrag(String bedrag){
 		final String BEDRAG_PATTERN = "(^[0-9]{1,}.{0,1}[0-9]{0,2})$";
 		pattern = Pattern.compile(BEDRAG_PATTERN);
