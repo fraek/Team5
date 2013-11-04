@@ -84,6 +84,7 @@
 		<!-- Bieden -->
 		<action name="AddBod" class="nl.plaatsmarkt.actions.member.AddBod">
 			<result name="success">/jsp/member/veiling/addBod.jsp</result>
+			<result name="input">/jsp/member/veiling/veiling.jsp</result>
 		</action>
 		<!-- <action name="EditBodForm">
 			<result name="success">/jsp/member/veiling/editBodForm.jsp</result>
