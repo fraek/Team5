@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Bod;
-import nl.plaatsmarkt.domain.Categorie;
 import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
