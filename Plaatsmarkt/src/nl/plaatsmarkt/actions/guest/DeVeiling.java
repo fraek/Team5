@@ -1,9 +1,12 @@
 package nl.plaatsmarkt.actions.guest;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Bod;
+import nl.plaatsmarkt.domain.Categorie;
 import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
@@ -28,9 +31,18 @@ public class DeVeiling extends ActionSupport {
 		setAlleBiedingen(bdao.read());
 		for(Bod b:alleBiedingen) {
 			if(b.getDeVeiling().getID() == deVeiling.getID()) {
-				alleBiedingenByID.add(b);
+				if(b.getBedrag() > 0) alleBiedingenByID.add(b);
 			}
 		}
+		
+		//Sorteren
+		Collections.sort(alleBiedingenByID, new Comparator<Bod>() {
+		    @Override
+		    public int compare(Bod c1, Bod c2) {
+		        return new Double(c2.getBedrag()).compareTo(new Double(c1.getBedrag()));
+		    }
+		});
+		
 		deVeiling.setAlleBiedingen((ArrayList<Bod>) alleBiedingenByID);
 		return SUCCESS;
 	}
