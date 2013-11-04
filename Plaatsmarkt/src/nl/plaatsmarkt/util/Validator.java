@@ -1,12 +1,17 @@
 package nl.plaatsmarkt.util;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import nl.plaatsmarkt.domain.Bod;
+import nl.plaatsmarkt.domain.Veiling;
 //Validator
 public class Validator {
 	private Pattern pattern;
 	private Matcher matcher;
-	
+
 	public boolean email(String email){
 		return mail(email);
 	}
@@ -27,12 +32,12 @@ public class Validator {
 		matcher = pattern.matcher(postcode);
 		return matcher.matches();
 	}
-	
+
 	public boolean gebruikersnaam(String gebruikersnaam){
 		final String USERNAME_PATTERN = "^[A-Za-z0-9_-]{3,15}$";
-		
+
 		pattern = Pattern.compile(USERNAME_PATTERN);
-		
+
 		matcher = pattern.matcher(gebruikersnaam);
 		return matcher.matches();
 	}
@@ -41,19 +46,19 @@ public class Validator {
 		final String PASSWORD_PATTERN="^[A-Za-z0-9]{8,25}$";
 		pattern = Pattern.compile(PASSWORD_PATTERN);
 		matcher = pattern.matcher(wachtwoord);
-		
+
 		final String FALSE1_PATTERN="^[A-Z]{8,25}$", FALSE2_PATTERN="^[a-z]{8,25}$", FALSE3_PATTERN="^[0-9]{8,25}$",
-		FALSE4_PATTERN="^[A-Za-z]{8,25}$", FALSE5_PATTERN="^[a-z0-9]{8,25}$", FALSE6_PATTERN="^[0-9A-Z]{8,25}$";
+				FALSE4_PATTERN="^[A-Za-z]{8,25}$", FALSE5_PATTERN="^[a-z0-9]{8,25}$", FALSE6_PATTERN="^[0-9A-Z]{8,25}$";
 		Matcher matcher1, matcher2, matcher3, matcher4, matcher5, matcher6;
 		Pattern pattern1, pattern2, pattern3, pattern4, pattern5, pattern6;
-		
+
 		pattern1 = Pattern.compile(FALSE1_PATTERN); matcher1 = pattern1.matcher(wachtwoord);
 		pattern2 = Pattern.compile(FALSE2_PATTERN); matcher2 = pattern2.matcher(wachtwoord);
 		pattern3 = Pattern.compile(FALSE3_PATTERN); matcher3 = pattern3.matcher(wachtwoord);
 		pattern4 = Pattern.compile(FALSE4_PATTERN); matcher4 = pattern4.matcher(wachtwoord);
 		pattern5 = Pattern.compile(FALSE5_PATTERN); matcher5 = pattern5.matcher(wachtwoord);
 		pattern6 = Pattern.compile(FALSE6_PATTERN); matcher6 = pattern6.matcher(wachtwoord);
-		
+
 		if(matcher1.matches() || matcher2.matches() || matcher3.matches() || 
 				matcher4.matches() || matcher5.matches() || matcher6.matches()){
 			return false;
@@ -113,18 +118,18 @@ public class Validator {
 		}
 		else return false;
 	}
-	
+
 	public boolean beschrijving(String s){
 		if(s.length() > 150 || s.length() < 5){
 			return false;
 		}
 		else return true;
 	}
-	
+
 	public boolean omschrijving(String s){
 		return beschrijving(s);
 	}
-	
+
 	public boolean bedrag(String bedrag){
 		final String BEDRAG_PATTERN = "(^[0-9]{1,}.{0,1}[0-9]{0,2})$";
 		pattern = Pattern.compile(BEDRAG_PATTERN);
@@ -132,9 +137,16 @@ public class Validator {
 		try{
 			Double d = Double.parseDouble(bedrag);
 			return matcher.matches();
-			
+
 		}catch(Exception e){
 			return false;
 		}
+	}
+
+	public boolean bod(int veilingID, List<Bod> alleBiedingen, Double bedrag){
+		MaxAmount MA = new MaxAmount();
+		double max = MA.bedrag(veilingID, alleBiedingen);
+		if(max > bedrag){ return false; } 
+		else{ return true; }
 	}
 }

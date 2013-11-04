@@ -1,6 +1,8 @@
 package nl.plaatsmarkt.actions.member;
 
+import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import nl.plaatsmarkt.domain.Bod;
@@ -9,6 +11,7 @@ import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.GebruikerAware;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
+import nl.plaatsmarkt.util.Validator;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -21,9 +24,11 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	private IDAO<Veiling> veilingdao = ServiceProvider.getVeilingDAO();
 	private IDAO<Gebruiker> gebruikerdao = ServiceProvider.getGebruikerDAO();
 	private IDAO<Bod> boddao = ServiceProvider.getBodDAO();
+	private List<Bod> alleBiedingen;
 
 	//private Gebruiker deBieder;
-	private double bedrag;
+	private double amount;
+	private String bedrag;
 	private Date datum;
 	private Bod bod;
 	private int veilingID;
@@ -32,6 +37,8 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	@SuppressWarnings("rawtypes")
 	private SessionMap session;
 	private Gebruiker SessionGebruiker, gebruiker;
+	
+	private Validator validator = new Validator();
 
 	@Override
 	public String execute() throws Exception {
@@ -48,7 +55,7 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 		deVeiling = (Veiling) veilingdao.getObject(veilingID);
 		
 		datum = new Date();
-		bod = new Bod(bedrag, gebruiker, datum, deVeiling);
+		bod = new Bod(amount, gebruiker, datum, deVeiling);
 		System.out.println(bod.getBedrag());
 		System.out.println(bod.getDeBieder().getVoornaam());
 		System.out.println(bod.getDatum());
@@ -57,6 +64,19 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 		boddao.create(bod);
 		
 		return SUCCESS;
+	}
+	
+	public void validate(){
+		try { alleBiedingen = boddao.read();
+		} catch (SQLException e) { e.printStackTrace(); }
+		double d = 0;
+		if(validator.bedrag(bedrag)){
+			d = Double.parseDouble(bedrag);
+		} else addFieldError("bedrag","Incorrect bedrag");
+		if(!validator.bod(veilingID, alleBiedingen, d)){
+			addFieldError("bedrag","Bedrag is lager dan er al geboden is.");
+		}
+		
 	}
 
 	public int getVeilingID() {
@@ -87,11 +107,11 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	public void setSessionGebruiker(Gebruiker sessionGebruiker) {
 		SessionGebruiker = sessionGebruiker;
 	}
-	public double getBedrag() {
+	public String getBedrag() {
 		return bedrag;
 	}
 
-	public void setBedrag(double bedrag) {
+	public void setBedrag(String bedrag) {
 		this.bedrag = bedrag;
 	}
 
@@ -110,4 +130,13 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	public void setBod(Bod bod) {
 		this.bod = bod;
 	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
 }
