@@ -76,4 +76,20 @@ public class DateConverter {
 		}
 		return date; 
 	}
+	
+	public boolean datePassed(java.util.Date datum){
+		boolean b = false;
+		java.util.Date date = new java.util.Date();
+		if(datum.compareTo(date)>0){
+    		b = false;
+    		System.out.println(datum.toString() + " is later dan " + date.toString() + " return false");
+    	}else if(datum.compareTo(date)<0){
+    		b = true;
+    		System.out.println(datum.toString() + " is eerder dan " + date.toString() + " return true");
+    	}else if(datum.compareTo(date)==0){
+    		b = false;
+    		System.out.println(datum.toString() + " is hetzelfde als " + date.toString() + "return false");
+    	}
+		return b;
+	}
 }

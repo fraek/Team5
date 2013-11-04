@@ -1,6 +1,8 @@
 package nl.plaatsmarkt.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import nl.plaatsmarkt.util.DateConverter;
 import nl.plaatsmarkt.util.Validator;
 
 import org.junit.Before;
@@ -74,5 +76,19 @@ public class TestValidatorDatum {
 		datum="31-02-2000";
 		boolean result = v.datum(datum);
 		assertFalse("failure - should be false", result);
+	}
+	@Test
+	public void testDatumtestje1(){
+		DateConverter dc = new DateConverter();
+		String datumstr="31-02-2000";
+		java.util.Date datumpje = dc.stringToDate(datumstr);
+		assertTrue("failure - should be true", dc.datePassed(datumpje));
+	}
+	@Test
+	public void testDatumtestje2(){
+		DateConverter dc = new DateConverter();
+		String datumstr="21-02-2015";
+		java.util.Date datumpje = dc.stringToDate(datumstr);
+		assertTrue("failure - should be true", dc.datePassed(datumpje));
 	}
 }

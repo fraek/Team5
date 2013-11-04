@@ -42,9 +42,17 @@
 				</s:else>
 				</table>
 				<s:form action="AddBod.action">
+				<s:if test="#afgelopen == false">
 					<s:textfield name="bedrag" label="Bedrag*" />
 					<s:hidden name="veilingID" value="%{deVeiling.ID}"/>
 			   	    <s:submit value="Bieden"/>
+			   	</s:if>
+			   	<s:else>
+			   		<s:textfield name="bedrag" label="Bedrag*" disabled="true" />
+			   		<s:label name="melding" value="deze veiling is gesloten, de aanbieder kiest een winnaar"/>
+			   		<s:hidden name="veilingID" value="%{deVeiling.ID}"/>
+			   	    <s:submit value="Bieden" disabled="true" />
+			   	</s:else>
 				</s:form>
 			</div>
 		</div>

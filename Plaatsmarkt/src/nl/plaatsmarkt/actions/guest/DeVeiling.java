@@ -7,6 +7,7 @@ import java.util.List;
 
 import nl.plaatsmarkt.domain.Bod;
 import nl.plaatsmarkt.domain.Veiling;
+import nl.plaatsmarkt.util.DateConverter;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
 
@@ -20,7 +21,8 @@ public class DeVeiling extends ActionSupport {
 	private Veiling deVeiling;
 	private boolean afgelopen;
 	private List<Bod> alleBiedingen, alleBiedingenByID;
-
+	private DateConverter dc = new DateConverter();
+	
 	public String execute() throws Exception {
 		alleBiedingen = new ArrayList<Bod>();
 		alleBiedingenByID = new ArrayList<Bod>();
@@ -35,6 +37,7 @@ public class DeVeiling extends ActionSupport {
 			}
 		}
 		
+		afgelopen = dc.datePassed(deVeiling.getVerloopDatum());
 		//Sorteren
 		Collections.sort(alleBiedingenByID, new Comparator<Bod>() {
 		    @Override
