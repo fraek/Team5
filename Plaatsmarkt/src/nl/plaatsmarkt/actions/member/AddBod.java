@@ -10,6 +10,7 @@ import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.GebruikerAware;
 import nl.plaatsmarkt.util.IDAO;
+import nl.plaatsmarkt.util.MaxAmount;
 import nl.plaatsmarkt.util.ServiceProvider;
 import nl.plaatsmarkt.util.Validator;
 
@@ -36,7 +37,7 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	//session user
 	@SuppressWarnings("rawtypes")
 	private SessionMap session;
-	private Gebruiker SessionGebruiker, gebruiker;
+	private Gebruiker SessionGebruiker, gebruiker, deBieder;
 	
 	private Validator validator = new Validator();
 
@@ -72,13 +73,21 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 		double d = 0;
 		if(validator.bedrag(bedrag)){
 			d = Double.parseDouble(bedrag);
-		} else addFieldError("bedrag","Incorrect bedrag");
+		} else { addFieldError("bedrag","Incorrect bedrag"); veilingenOphalen(); }
 		if(!validator.bod(veilingID, alleBiedingen, d)){
-			addFieldError("bedrag","Bedrag is lager dan er al geboden is.");
+			veilingenOphalen();
+			MaxAmount mx = new MaxAmount();
+			double a = mx.bedrag(veilingID, alleBiedingen) + 0.1;
+			addFieldError("bedrag","Bedrag is lager dan er al geboden is. Bied minimaal " +a+ " euro.");
 		}
-		
 	}
-
+	
+	public void veilingenOphalen(){
+		//om performance te verbeteren en alleen een connectie met db maken als het nodig is:
+		try { deVeiling = (Veiling) veilingdao.getObject(veilingID);
+		} catch (SQLException e1) { e1.printStackTrace(); }
+	}
+	
 	public int getVeilingID() {
 		return veilingID;
 	}
@@ -138,5 +147,14 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
+	public Veiling getDeVeiling() {
+		return deVeiling;
+	}
+
+	public void setDeVeiling(Veiling deVeiling) {
+		this.deVeiling = deVeiling;
+	}
+	
 	
 }
