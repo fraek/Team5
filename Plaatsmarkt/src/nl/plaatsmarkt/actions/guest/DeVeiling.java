@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import nl.plaatsmarkt.domain.Bod;
-import nl.plaatsmarkt.domain.Categorie;
 import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
@@ -19,6 +18,7 @@ public class DeVeiling extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private Veiling deVeiling;
+	private boolean afgelopen;
 	private List<Bod> alleBiedingen, alleBiedingenByID;
 
 	public String execute() throws Exception {

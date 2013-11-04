@@ -27,6 +27,10 @@ public class MijnVeilingen extends ActionSupport implements SessionAware{
 		alleVeilingenEigenaar = new ArrayList<Veiling>();
 		
 		setAlleVeilingen(vdao.read());
+<<<<<<< HEAD
+=======
+		//Wordt gebruikt bij MijnVeilingen
+>>>>>>> f090ba0e490af2589616d1f5b6b95e41809e209c
 		SessionGebruiker = (Gebruiker)session.get("gebruiker");		
 		
 		for(Veiling c:alleVeilingen){

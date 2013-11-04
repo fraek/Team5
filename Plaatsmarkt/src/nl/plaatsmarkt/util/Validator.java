@@ -145,6 +145,9 @@ public class Validator {
 
 	public boolean bod(int veilingID, List<Bod> alleBiedingen, Double bedrag){
 		MaxAmount MA = new MaxAmount();
+		if(alleBiedingen == null){
+			return true;
+		}
 		double max = MA.bedrag(veilingID, alleBiedingen);
 		if(bedrag < max + 0.1){ return false; } 
 		else{ return true; }
