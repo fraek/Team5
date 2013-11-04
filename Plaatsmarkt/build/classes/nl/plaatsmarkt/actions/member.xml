@@ -39,7 +39,7 @@
 		<action name="VeilingOverzicht" class="nl.plaatsmarkt.actions.member.VeilingOverzicht">
 			<result name="success">/jsp/member/veiling/veilingOverzicht.jsp</result>
 		</action>
-		<action name="MijnVeilingen">
+		<action name="MijnVeilingen" class="nl.plaatsmarkt.actions.member.VeilingList">
 			<result name="success">/jsp/member/veiling/mijnVeilingen.jsp</result>
 		</action>
 		<action name="AddVeilingForm" class="nl.plaatsmarkt.actions.member.AddVeilingForm">

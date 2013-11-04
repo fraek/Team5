@@ -1,16 +1,18 @@
 package nl.plaatsmarkt.actions.member;
 
+import java.util.Date;
 import java.util.Map;
-
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
 
 import nl.plaatsmarkt.domain.Gebruiker;
 import nl.plaatsmarkt.domain.SubCategorie;
 import nl.plaatsmarkt.domain.Veiling;
+import nl.plaatsmarkt.util.DateConverter;
 import nl.plaatsmarkt.util.GebruikerAware;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -20,8 +22,11 @@ public class AddVeiling extends ActionSupport implements GebruikerAware, Session
 	private IDAO<SubCategorie> subcatdao = ServiceProvider.getSubCategorieDAO();
 	private IDAO<Veiling> veilingdao = ServiceProvider.getVeilingDAO();
 	private IDAO<Gebruiker> gebruikerdao = ServiceProvider.getGebruikerDAO();
+	private DateConverter dc = new DateConverter();
+	
 	private String titel;
 	private String omschrijving;
+	private String verloopDatum;
 	private int subcats;
 	private SubCategorie subcategorie;
 	//session user
@@ -33,12 +38,17 @@ public class AddVeiling extends ActionSupport implements GebruikerAware, Session
 	public String execute() throws Exception {
 		SessionGebruiker = (Gebruiker)session.get("gebruiker");
 		setGebruiker((Gebruiker)gebruikerdao.getObject(SessionGebruiker.getID()));
-		//Veiling veiling = new Veiling();
+		
 		subcategorie = (SubCategorie) subcatdao.getObject(subcats);
-		System.out.println(subcategorie);
+		Date verloopDate = dc.stringToDate(verloopDatum);
+		System.out.println(subcategorie.getID());
 		System.out.println("subcategorie id: " + subcats + ", naam: ");
 		System.out.println("Gebruiker: " + gebruiker.getGebruikersnaam());
 		System.out.println("Veiling titel: " + titel + ", omschrijving: " + omschrijving);
+		
+		Veiling veiling = new Veiling(gebruiker, subcategorie, titel, omschrijving, new Date(), verloopDate);
+		veilingdao.create(veiling);
+		
 		return SUCCESS;
 	}
 
@@ -97,6 +107,14 @@ public class AddVeiling extends ActionSupport implements GebruikerAware, Session
 
 	public void setSubcategorie(SubCategorie subcategorie) {
 		this.subcategorie = subcategorie;
+	}
+
+	public String getVerloopDatum() {
+		return verloopDatum;
+	}
+
+	public void setVerloopDatum(String verloopDatum) {
+		this.verloopDatum = verloopDatum;
 	}
 	
 	

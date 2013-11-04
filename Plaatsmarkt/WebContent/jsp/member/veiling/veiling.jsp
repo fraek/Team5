@@ -3,7 +3,7 @@
 
 	<div id="center" class="column">
 		<div id="box">
-			<div id="boxHead">Subcategoriën Lijst</div>
+			<div id="boxHead">Veiling</div>
 			<div id="boxBody">
 				<table>
 					<tr>
