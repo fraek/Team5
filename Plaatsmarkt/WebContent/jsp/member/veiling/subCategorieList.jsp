@@ -3,13 +3,13 @@
 
 	<div id="center" class="column">
 		<div id="box">
-			<div id="boxHead">Subcategoriën Lijst</div>
+			<div id="boxHead">Subcategoriën Lijst | <s:property value="locatie" /></div>
 			<div id="boxBody">
 				<table>
 					<tr>
 						<td width = "25"><b>ID</b></td>
 						<td width = "100"><b>Hoofdcategorie</b></td>
-						<td width = "75"><b>Naam</b></td>
+						<td width = "150"><b>Naam</b></td>
 						<td width = "200"><b>Omschrijving</b></td>
 					</tr>
 					

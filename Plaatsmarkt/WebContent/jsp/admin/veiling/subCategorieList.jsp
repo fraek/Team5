@@ -8,9 +8,9 @@
 				<table>
 					<tr>
 						<td width = "25"><b>ID</b></td>
-						<td width = "100"><b>Hoofdcategorie</b></td>
-						<td width = "75"><b>Naam</b></td>
-						<td width = "200"><b>Omschrijving</b></td>
+						<td width = "125"><b>Hoofdcategorie</b></td>
+						<td width = "150"><b>Naam</b></td>
+						<td width = "350"><b>Omschrijving</b></td>
 					</tr>
 					
 					<s:iterator value="alleSubCategorieen">
@@ -24,7 +24,7 @@
 					<tr>
 						<td><s:property value="ID" /></td>
 						<td><s:property value="categorie.naam" /></td>
-						<td><s:property value="naam" /></td>
+						<td><s:property value="naam" /></td>						
 						<td><s:property value="omschrijving" /></td>
 						<td><a href="<s:property value="#editURL" />"><img src="../img/edit.png"></a></td>
 						<td><a href="<s:property value="#deleteURL" />"><img src="../img/delete.png"></a></td>

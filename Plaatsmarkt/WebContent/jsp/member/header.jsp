@@ -11,4 +11,4 @@
 
 <body>
 <div id="wrapper">
-<div id="header" onclick="Index.action" style="cursor:pointer;">»Plaatsmarkt</div>
+<div id="header"  style="cursor:hand; cursor:pointer;" onClick="location.href='../Index.action';">»Plaatsmarkt</div>

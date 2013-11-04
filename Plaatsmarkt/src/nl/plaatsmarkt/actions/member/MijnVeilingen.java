@@ -1,37 +1,37 @@
-package nl.plaatsmarkt.actions.guest;
+package nl.plaatsmarkt.actions.member;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import nl.plaatsmarkt.domain.Gebruiker;
-import nl.plaatsmarkt.domain.SubCategorie;
 import nl.plaatsmarkt.domain.Veiling;
 import nl.plaatsmarkt.util.IDAO;
 import nl.plaatsmarkt.util.ServiceProvider;
 
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
-public class VeilingList extends ActionSupport{
+public class MijnVeilingen extends ActionSupport implements SessionAware{
 	private IDAO<Veiling> vdao = ServiceProvider.getVeilingDAO();
-	private IDAO<SubCategorie> scdao = ServiceProvider.getSubCategorieDAO();
 	private static final long serialVersionUID = 1L;
-	private List<Veiling> alleVeilingen, alleVeilingenByID, alleVeilingenEigenaar;
+	private List<Veiling> alleVeilingen, alleVeilingenEigenaar;
 	private int id;
+	@SuppressWarnings("rawtypes")
+	private SessionMap session;
 	private Gebruiker SessionGebruiker;
-	private String locatie;
 
 	public String execute() throws Exception {
-		alleVeilingenByID = new ArrayList<Veiling>();
 		alleVeilingenEigenaar = new ArrayList<Veiling>();
 		
 		setAlleVeilingen(vdao.read());
+		SessionGebruiker = (Gebruiker)session.get("gebruiker");		
 		
-		SubCategorie sc = (SubCategorie) scdao.getObject(id);
-		locatie = sc.getCategorie().getNaam() + "  |  " + sc.getNaam();
-		
-		for(Veiling v:alleVeilingen){
-			if(v.getDeSubCategorie().getID() == id){
-				alleVeilingenByID.add(v);
+		for(Veiling c:alleVeilingen){
+			if(c.getDeAanbieder().getID() == (SessionGebruiker.getID())){
+				alleVeilingenEigenaar.add(c);
 			}
 		}
 		return SUCCESS;
@@ -43,14 +43,6 @@ public class VeilingList extends ActionSupport{
 
 	public void setAlleVeilingen(List<Veiling> alleVeilingen) {
 		this.alleVeilingen = alleVeilingen;
-	}
-
-	public List<Veiling> getAlleVeilingenByID() {
-		return alleVeilingenByID;
-	}
-
-	public void setAlleVeilingenByID(List<Veiling> alleVeilingenByID) {
-		this.alleVeilingenByID = alleVeilingenByID;
 	}
 
 	public int getId() {
@@ -69,19 +61,16 @@ public class VeilingList extends ActionSupport{
 		this.alleVeilingenEigenaar = alleVeilingenEigenaar;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public void setSession(Map session) {
+		this.session = (SessionMap) session;
+	}
+
 	public Gebruiker getSessionGebruiker() {
 		return SessionGebruiker;
 	}
 
 	public void setSessionGebruiker(Gebruiker sessionGebruiker) {
 		SessionGebruiker = sessionGebruiker;
-	}
-
-	public String getLocatie() {
-		return locatie;
-	}
-
-	public void getLocatie(String locatie) {
-		this.locatie = locatie;
 	}
 }

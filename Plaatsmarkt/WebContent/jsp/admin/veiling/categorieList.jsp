@@ -8,8 +8,8 @@
 				<table>
 					<tr>
 						<td width = "25"><b>ID</b></td>
-						<td width = "75"><b>Naam</b></td>
-						<td width = "200"><b>Omschrijving</b></td>
+						<td width = "125"><b>Naam</b></td>
+						<td width = "350"><b>Omschrijving</b></td>
 					</tr>
 					
 					<s:iterator value="alleCategorieen">
