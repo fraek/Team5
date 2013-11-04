@@ -6,7 +6,7 @@
 			<div id="boxHead">Bod Toevoegen</div>
 			<div id="boxBody">
 				Je hebt een bod toegevoegd
-				<br /><a href="<s:url namespace="/member" action="DeVeiling"><s:param name="id" value="ID" /></s:url>">Terug naar de Veiling</a>
+				<br /><a href="<s:url namespace="/member" action="DeVeiling"><s:param name="id" value="veilingID" /></s:url>">Terug naar de Veiling</a>
 				<br /><a href="<s:url action='CategorieLijst' namespace="/member"/>">Terug naar de Categorieën</a>
 			</div>
 		</div>

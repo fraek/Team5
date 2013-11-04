@@ -68,25 +68,21 @@ public class AddBod extends ActionSupport implements GebruikerAware, SessionAwar
 	}
 	
 	public void validate(){
+		try { deVeiling = (Veiling) veilingdao.getObject(veilingID);
+		} catch (SQLException e1) { e1.printStackTrace(); }
 		try { alleBiedingen = boddao.read();
 		} catch (SQLException e) { e.printStackTrace(); }
 		double d = 0;
 		if(validator.bedrag(bedrag)){
 			d = Double.parseDouble(bedrag);
-		} else { addFieldError("bedrag","Incorrect bedrag"); veilingenOphalen(); }
+		} else { addFieldError("bedrag","Incorrect bedrag"); }
 		if(!validator.bod(veilingID, alleBiedingen, d)){
-			veilingenOphalen();
 			MaxAmount mx = new MaxAmount();
 			double a = mx.bedrag(veilingID, alleBiedingen) + 0.1;
 			addFieldError("bedrag","Bedrag is lager dan er al geboden is. Bied minimaal " +a+ " euro.");
 		}
 	}
 	
-	public void veilingenOphalen(){
-		//om performance te verbeteren en alleen een connectie met db maken als het nodig is:
-		try { deVeiling = (Veiling) veilingdao.getObject(veilingID);
-		} catch (SQLException e1) { e1.printStackTrace(); }
-	}
 	
 	public int getVeilingID() {
 		return veilingID;
