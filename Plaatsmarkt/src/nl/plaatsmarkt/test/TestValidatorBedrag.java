@@ -62,7 +62,7 @@ public class TestValidatorBedrag {
 		boolean result = v.bedrag(bedrag);
 		assertTrue("failure - should be true", result);
 	}
-	//Testpad ID: 2
+	//Testpad ID: 7
 	@Test
 	public void testBedragCorrect() {
 		bedrag="12.2";
