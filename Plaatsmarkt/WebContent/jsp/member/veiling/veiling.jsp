@@ -34,10 +34,19 @@
 				</s:if>
 				<s:else>
 					<s:iterator value="deVeiling.alleBiedingen">
+						<s:if test="#eigenaar == false">
 						<tr>
 							<td><s:property value="deBieder.voornaam"/></td>
 							<td><s:property value="Bedrag"/></td>
 						</tr>
+						</s:if>
+						<s:else>
+						<tr>
+							<td><s:property value="deBieder.voornaam"/></td>
+							<td><s:property value="Bedrag"/></td>
+							<td><s:property value="deBieder.email" /></td>
+						</tr>
+						</s:else>
 					</s:iterator>
 				</s:else>
 				</table>
