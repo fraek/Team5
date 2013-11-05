@@ -40,9 +40,9 @@ public class Register extends ActionSupport {
 	public String execute() throws Exception {
 		DateConverter dc = new DateConverter();
 		java.util.Date geboorteDate = dc.stringToDate(geboortedatum);
-		//gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
-		//		wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
-		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
+		gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, 
+				wachtwoord1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
+		//gebruiker = new Gebruiker(voornaam, tussenvoegsel, achternaam, gebruikersnaam, email1, adres, postcode, woonplaats, geboorteDate, telefoonnummer);
 		dao.create(gebruiker);
 
 		//Het wachtwoord moet nog even getoond worden

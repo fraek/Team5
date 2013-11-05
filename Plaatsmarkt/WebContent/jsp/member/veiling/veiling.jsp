@@ -49,7 +49,7 @@
 				<s:form action="AddBod.action">
 					<s:textfield name="bedrag" label="Bedrag*" />
 					<s:hidden name="veilingID" value="%{deVeiling.ID}"/>
-			   	    <s:submit value="Bieden"/
+			   	    <s:submit value="Bieden"/>
 				</s:form>
 			</div>
 		</div>
